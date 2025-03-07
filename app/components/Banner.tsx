@@ -55,7 +55,7 @@ export const Hero = () => {
 
         <p
           className={cn(
-            "text-muted-foreground max-w-2xl mx-auto mb-12 text-base sm:text-lg",
+            "text-muted-foreground max-w-2xl mx-auto mb-12 text-base sm:text-lg font-mono",
             isVisible ? "animate-slide-in" : "opacity-0"
           )}
           style={{ animationDelay: "0.4s" }}
@@ -66,7 +66,7 @@ export const Hero = () => {
 
         <div
           className={cn(
-            "flex flex-wrap justify-center gap-4",
+            "flex flex-wrap justify-center gap-4 font-sans",
             isVisible ? "animate-slide-in" : "opacity-0"
           )}
           style={{ animationDelay: "0.5s" }}
