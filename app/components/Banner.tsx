@@ -85,15 +85,14 @@ export const Hero = () => {
           </a>
         </div>
       </div>
-
-      <a
-        href="#about"
-        className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-muted-foreground hover:text-foreground transition-colors"
-        aria-label="Scroll down"
-      >
-        <span className="text-sm mb-2">Scroll down</span>
-        <ArrowDownIcon className="h-5 w-5 animate-pulse" />
-      </a>
+      {/* <a */}
+      {/*    href="#about" */}
+      {/*    className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-muted-foreground hover:text-foreground transition-colors" */}
+      {/*    aria-label="Scroll down" */}
+      {/*  > */}
+      {/*    <span className="text-sm mb-2">Scroll down</span> */}
+      {/*    <ArrowDownIcon className="h-5 w-5 animate-pulse" /> */}
+      {/*  </a> */}
     </section>
   );
 };
