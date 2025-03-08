@@ -66,7 +66,7 @@ export const Hero = () => {
 
         <div
           className={cn(
-            "flex flex-wrap justify-center gap-4 font-sans",
+            "flex flex-wrap justify-center gap-4 font-mono",
             isVisible ? "animate-slide-in" : "opacity-0"
           )}
           style={{ animationDelay: "0.5s" }}
@@ -81,7 +81,7 @@ export const Hero = () => {
             href="#projects"
             className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-medium py-3 px-8 rounded-md transition-all duration-300 transform hover:translate-y-[-2px]"
           >
-            View my work
+            View my blogs
           </a>
         </div>
       </div>
