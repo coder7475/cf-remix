@@ -1,4 +1,3 @@
-import { ArrowDownIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "~/libs/utils";
 
