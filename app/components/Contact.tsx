@@ -62,7 +62,7 @@ export const Contact = () => {
           </h2>
           <p
             className={cn(
-              "text-center text-muted-foreground max-w-2xl mx-auto mb-16",
+              "text-center text-muted-foreground max-w-2xl mx-auto mb-16 font-mono",
               isVisible ? "animate-slide-in" : "opacity-0"
             )}
             style={{ animationDelay: "0.1s" }}
@@ -81,16 +81,16 @@ export const Contact = () => {
               style={{ animationDelay: "0.2s" }}
             >
               <div>
-                <h3 className="text-xl font-bold mb-4">Contact Information</h3>
-                <p className="text-muted-foreground text-sm">Feel free to reach out through any of these channels.</p>
+                <h3 className="text-xl font-bold font-mono mb-4">Contact Information</h3>
+                <p className="text-muted-foreground font-display">Feel free to reach out through any of these channels.</p>
               </div>
 
               <div className="space-y-4">
-                <a href="mailto:john.doe@example.com" className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
+                <a href="mailto:robiulhossain7475@gmail.com" className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors font-display">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                     <Mail className="w-5 h-5 text-primary" />
                   </div>
-                  <span>john.doe@example.com</span>
+                  <span>robiulhossain7475@gmail.com</span>
                 </a>
               </div>
 
@@ -118,7 +118,7 @@ export const Contact = () => {
               )}
               style={{ animationDelay: "0.3s" }}
             >
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6 font-mono">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium text-muted-foreground">
