@@ -1,5 +1,6 @@
 import type { MetaFunction } from "@remix-run/cloudflare";
 import { Hero } from "~/components/Banner";
+import { Contact } from "~/components/Contact";
 
 export const meta: MetaFunction = () => {
   return [
@@ -12,6 +13,7 @@ export default function Index() {
   return (
     <div className="flex flex-col">
       <Hero />
+      <Contact />
     </div>
   );
 }
