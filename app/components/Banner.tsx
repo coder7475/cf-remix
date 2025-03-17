@@ -71,7 +71,7 @@ export const Hero = () => {
           style={{ animationDelay: "0.5s" }}
         >
           <a
-            href="#contact"
+            href="contact"
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-3 px-8 rounded-md transition-all duration-300 transform hover:translate-y-[-2px]"
           >
             Get in touch
@@ -84,14 +84,6 @@ export const Hero = () => {
           </a>
         </div>
       </div>
-      {/* <a */}
-      {/*    href="#about" */}
-      {/*    className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-muted-foreground hover:text-foreground transition-colors" */}
-      {/*    aria-label="Scroll down" */}
-      {/*  > */}
-      {/*    <span className="text-sm mb-2">Scroll down</span> */}
-      {/*    <ArrowDownIcon className="h-5 w-5 animate-pulse" /> */}
-      {/*  </a> */}
     </section>
   );
 };
