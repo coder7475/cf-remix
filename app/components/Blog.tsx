@@ -1,9 +1,9 @@
 
 import { useState, useEffect, useRef } from "react";
-import { cn } from "~/lib/utils";
 import { CalendarIcon, Clock, ArrowRight } from "lucide-react";
 import axios from "axios";
 import { useToast } from "~/hooks/use-toast";
+import { cn } from "~/libs/utils";
 
 interface BlogPost {
   id: number;
@@ -31,7 +31,7 @@ export const Blog = () => {
           params: {
             per_page: 3, // Fetch only 3 posts
             // You can uncomment and use this when you have your own username
-            // username: 'yourusername', 
+            username: 'coder7475',
           }
         });
         setBlogPosts(response.data);
@@ -92,7 +92,7 @@ export const Blog = () => {
           </h2>
           <p
             className={cn(
-              "text-center text-muted-foreground max-w-2xl mx-auto mb-16",
+              "text-center text-muted-foreground max-w-2xl mx-auto mb-16 font-mono",
               isVisible ? "animate-slide-in" : "opacity-0"
             )}
             style={{ animationDelay: "0.1s" }}
@@ -128,7 +128,7 @@ export const Blog = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cn(
-                    "block glass-morphism rounded-lg p-6 hover:border-primary/50 transition-colors",
+                    "font-display block glass-morphism rounded-lg p-6 hover:border-primary/50 transition-colors",
                     isVisible ? "animate-slide-in" : "opacity-0"
                   )}
                   style={{ animationDelay: `${0.2 + index * 0.1}s` }}
@@ -165,10 +165,10 @@ export const Blog = () => {
             style={{ animationDelay: "0.5s" }}
           >
             <a
-              href="https://dev.to/"
+              href="https://dev.to/coder7475"
               target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
+              // rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-mono text-primary hover:text-primary/80 transition-colors"
             >
               <span>View all articles</span>
               <ArrowRight className="w-4 h-4" />
