@@ -74,7 +74,7 @@ export const Blog = () => {
           </h2>
           <p
             className={cn(
-              "text-center text-muted-foreground max-w-2xl mx-auto mb-16",
+              "text-center text-muted-foreground max-w-2xl mx-auto mb-16 font-display",
               isVisible ? "animate-slide-in" : "opacity-0"
             )}
             style={{ animationDelay: "0.1s" }}
@@ -83,7 +83,7 @@ export const Blog = () => {
             software engineering, and emerging technologies.
           </p>
 
-          <div className="space-y-8">
+          <div className="space-y-8 font-display">
             {blogPosts.map((post, index) => (
               <a
                 key={post.title}
@@ -119,7 +119,7 @@ export const Blog = () => {
 
           <div
             className={cn(
-              "mt-12 text-center",
+              "mt-12 text-center font-mono",
               isVisible ? "animate-slide-in" : "opacity-0"
             )}
             style={{ animationDelay: "0.5s" }}
