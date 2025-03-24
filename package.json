@@ -15,9 +15,11 @@
 		"cf-typegen": "wrangler types"
 	},
 	"dependencies": {
+		"@radix-ui/react-toast": "^1.2.6",
 		"@remix-run/cloudflare": "^2.15.3",
 		"@remix-run/cloudflare-pages": "^2.15.3",
 		"@remix-run/react": "^2.15.3",
+		"axios": "^1.8.4",
 		"clsx": "^2.1.1",
 		"isbot": "^4.1.0",
 		"lucide-react": "^0.477.0",
