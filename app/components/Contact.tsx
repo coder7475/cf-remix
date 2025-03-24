@@ -97,13 +97,13 @@ export const Contact = () => {
               <div>
                 <h4 className="text-sm font-semibold text-muted-foreground mb-4">SOCIAL PROFILES</h4>
                 <div className="flex gap-3">
-                  <a href="https://github.com/coder7475/coder7475" className="w-10 h-10 rounded-full bg-secondary/70 flex items-center justify-center hover:bg-primary/10 transition-colors">
+                  <a target="_blank" href="https://github.com/coder7475/coder7475" className="w-10 h-10 rounded-full bg-secondary/70 flex items-center justify-center hover:bg-primary/10 transition-colors">
                     <Github className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" />
                   </a>
-                  <a href="https://www.linkedin.com/in/robiul7475" className="w-10 h-10 rounded-full bg-secondary/70 flex items-center justify-center hover:bg-primary/10 transition-colors">
+                  <a target="_blank" href="https://www.linkedin.com/in/robiul7475" className="w-10 h-10 rounded-full bg-secondary/70 flex items-center justify-center hover:bg-primary/10 transition-colors">
                     <Linkedin className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" />
                   </a>
-                  <a href="https://x.com/robiul7475" className="w-10 h-10 rounded-full bg-secondary/70 flex items-center justify-center hover:bg-primary/10 transition-colors">
+                  <a target="_blank" href="https://x.com/robiul7475" className="w-10 h-10 rounded-full bg-secondary/70 flex items-center justify-center hover:bg-primary/10 transition-colors">
                     <Twitter className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" />
                   </a>
                 </div>
