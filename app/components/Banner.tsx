@@ -49,7 +49,7 @@ export const Hero = () => {
           )}
           style={{ animationDelay: "0.3s" }}
         >
-          Software & DevOps Engineer
+          Software Engineer
         </h2>
 
         <p
@@ -59,8 +59,7 @@ export const Hero = () => {
           )}
           style={{ animationDelay: "0.4s" }}
         >
-          I build scalable systems and automate deployment pipelines.
-          Passionate about cloud infrastructure, containerization, and continuous integration.
+          From Code to Cloud: Crafting Robust and Secure Web Solutions!
         </p>
 
         <div
@@ -77,7 +76,7 @@ export const Hero = () => {
             Get in touch
           </a>
           <a
-            href="blog"
+            href="#projects"
             className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-medium py-3 px-8 rounded-md transition-all duration-300 transform hover:translate-y-[-2px]"
           >
             View my blogs
