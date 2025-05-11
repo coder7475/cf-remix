@@ -76,7 +76,7 @@ export const Hero = () => {
             Get in touch
           </a>
           <a
-            href="#projects"
+            href="blog"
             className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-medium py-3 px-8 rounded-md transition-all duration-300 transform hover:translate-y-[-2px]"
           >
             View my blogs
