@@ -23,7 +23,7 @@ jobs:
         cache: 'npm'
 
     - name: Install pnpm
-      run: pnpm/action-setup@v4    
+      uses: pnpm/action-setup@v4    
 
     - name: Install dependencies
       run: pnpm install
