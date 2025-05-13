@@ -1,0 +1,5 @@
+name = "cf-remix"
+compatibility_date = "2024-02-20"
+
+[site]
+bucket = "./build/client" 
