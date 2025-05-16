@@ -167,7 +167,7 @@ export const Blog = () => {
             <a
               href="https://dev.to/coder7475"
               target="_blank"
-              // rel="noopener noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-mono text-primary hover:text-primary/80 transition-colors"
             >
               <span>View all articles</span>
