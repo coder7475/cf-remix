@@ -99,7 +99,7 @@ export const Contact = () => {
                 <div className="flex gap-3">
                   <a target="_blank"
                     rel="noopener noreferrer"
-                    href="https://github.com/coder7475/coder7475"
+                    href="https://github.com/coder7475"
                     className="w-10 h-10 rounded-full bg-secondary/70 flex items-center justify-center hover:bg-primary/10 transition-colors"
                   >
                     <Github className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" />
