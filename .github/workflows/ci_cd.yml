@@ -2,8 +2,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main ]
-
+    branches: [main]
 
 jobs:
   build:
@@ -14,40 +13,41 @@ jobs:
         node-version: [22.x]
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
 
-    - name: Install pnpm
-      uses: pnpm/action-setup@v4    
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
 
-    - name: Install dependencies
-      run: pnpm install
+      - name: Install dependencies
+        run: pnpm install
 
-    - name: Type check
-      run: npm run typecheck
+      - name: Type check
+        run: npm run typecheck
 
-    - name: Lint
-      run: npm run lint
+      - name: Lint
+        run: npm run lint
 
-    - name: Build
-      run: npm run build
-      env:
-        NODE_ENV: production
+      - name: Build
+        run: npm run build
+        env:
+          NODE_ENV: production
 
-    - name: Cache build output
-      uses: actions/cache@v3
-      with:
-        path: |
-          build
-          public/build
-        key: ${{ runner.os }}-build-${{ github.sha }}
-        restore-keys: |
-          ${{ runner.os }}-build- 
+      - name: Cache build output
+        uses: actions/cache@v3
+        with:
+          path: |
+            build
+            public/build
+          key: ${{ runner.os }}-build-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-build-
 
-    - name: Deploy to cloudflare page
-      run: pnpm deploy
+      - name: Deploy to cloudflare page
+        run: pnpm run deploy
+
