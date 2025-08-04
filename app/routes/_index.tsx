@@ -9,6 +9,11 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+/**
+ * Renders the main landing page with hero and about-me sections.
+ *
+ * Displays the `Hero` and `AboutMe` components in a vertically stacked layout.
+ */
 export default function Index() {
   return (
     <div className="flex flex-col">
