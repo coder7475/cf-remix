@@ -9,6 +9,7 @@ import {
 
 import "./tailwind.css";
 import { Footer } from "./components/Footer";
+import { Navbar } from "./components/Navbar";
 
 export const links: LinksFunction = () => [
   { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
@@ -47,6 +48,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <Navbar />
         {children}
         <Footer />
         <ScrollRestoration />
