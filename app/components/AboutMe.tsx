@@ -80,15 +80,15 @@ export const AboutMe = () => {
               <div className="relative">
                 <div className="rounded-lg glass-morphism p-1 max-w-xs">
                   <div className="aspect-square rounded overflow-hidden bg-secondary">
-                    {/* You would replace this with an actual image */}
                     <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm">
-                      Profile Image
+                      <img
+                        src="/profile.png"
+                        alt="Robiul Hossain"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
                 </div>
-                {/* Decorative elements */}
-                <div className="absolute -bottom-4 -right-4 w-full h-full rounded-lg border border-primary/50 -z-10"></div>
-                <div className="absolute -top-4 -left-4 w-40 h-40 rounded-full bg-primary/5 -z-10"></div>
               </div>
             </div>
           </div>
