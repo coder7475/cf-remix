@@ -8,11 +8,22 @@ import {
 } from "@remix-run/react";
 
 import "./tailwind.css";
+import { Footer } from "./components/Footer";
 
 export const links: LinksFunction = () => [
   { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
-  { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
-  { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
+  {
+    rel: "icon",
+    type: "image/png",
+    sizes: "32x32",
+    href: "/favicon-32x32.png",
+  },
+  {
+    rel: "icon",
+    type: "image/png",
+    sizes: "16x16",
+    href: "/favicon-16x16.png",
+  },
   { rel: "manifest", href: "/site.webmanifest" },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -22,7 +33,7 @@ export const links: LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@203..800&display=swap"
+    href: "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@203..800&display=swap",
   },
 ];
 
@@ -37,6 +48,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
+        <Footer />
         <ScrollRestoration />
         <Scripts />
       </body>
