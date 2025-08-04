@@ -1,9 +1,7 @@
-import { Contact } from "~/components/Contact"
+import { Contact } from "~/components/GetInTouch";
 
 const ContactRoute = () => {
-  return (
-    <Contact />
-  )
-}
+  return <Contact />;
+};
 
-export default ContactRoute
+export default ContactRoute;
