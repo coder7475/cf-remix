@@ -85,6 +85,7 @@ export const AboutMe = () => {
                         src="/profile.png"
                         alt="Robiul Hossain"
                         className="w-full h-full object-cover"
+                        loading="lazy"
                       />
                     </div>
                   </div>
