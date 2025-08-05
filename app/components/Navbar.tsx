@@ -9,7 +9,7 @@ export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "About", href: "#about" },
+    { name: "About", href: "/#about" },
     { name: "Experiences", href: "/experiences" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "/projects" },
