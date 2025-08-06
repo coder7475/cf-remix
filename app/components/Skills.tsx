@@ -118,9 +118,8 @@ export const Skills = () => {
                           isVisible ? "animate-slide-in" : "opacity-0"
                         )}
                         style={{
-                          animationDelay: `${
-                            0.2 + categoryIndex * 0.1 + skillIndex * 0.05
-                          }s`,
+                          animationDelay: `${0.2 + categoryIndex * 0.1 + skillIndex * 0.05
+                            }s`,
                         }}
                       >
                         <IconComponent className="w-8 h-8 mb-2 text-primary" />
@@ -159,7 +158,7 @@ export const Skills = () => {
                 "Cypress",
                 "OOP",
                 "Design Patterns",
-                "Microservices",
+                //                "Microservices",
                 "System Design",
                 "Networking",
                 "Security",
