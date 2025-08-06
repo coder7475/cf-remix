@@ -34,15 +34,15 @@ jobs:
         env:
           NODE_ENV: production
 
-      - name: Cache build output
-        uses: actions/cache@v3
-        with:
-          path: |
-            build
-            public/build
-          key: ${{ runner.os }}-build-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-build-
+      # - name: Cache build output
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: |
+      #       build
+      #       public/build
+      #     key: ${{ runner.os }}-build-${{ github.sha }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-build-
 
       - name: Deploy to cloudflare page
         uses: cloudflare/pages-action@v1
