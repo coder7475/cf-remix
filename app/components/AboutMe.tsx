@@ -47,17 +47,22 @@ export const AboutMe = () => {
                 style={{ animationDelay: "0.1s" }}
               >
                 <p>
-                  Hello! I&apos;m Robiul Hossain — a Software Engineer focused
-                  on building scalable, secure, and high-performance backend
-                  systems. I specialize in TypeScript, Node.js, Express.js,
-                  NestJS, and databases like PostgreSQL and MongoDB.
+                  I am a software developer with over one years of experience in
+                  the tech industry, specializing in full-stack development.
                 </p>
                 <p>
-                  I work across backend development and DevOps, with hands-on
-                  experience in Docker, Nginx, GitHub Actions, and system
-                  monitoring tools like Prometheus and Grafana. I emphasize
-                  clean architecture, efficient database design, automation, and
-                  system resilience.
+                  Throughout my career, I have worked with various technologies
+                  and programming languages, including JavaScript, TypeScript,
+                  and Python. I have a strong background in developing web
+                  applications, and I am particularly passionate about creating
+                  user-friendly, efficient, and scalable solutions.
+                </p>
+                <p>
+                  I am always eager to learn and grow. Apart from my project
+                  work, I regularly engage in professional development
+                  activities. This includes taking online courses to stay
+                  updated with the latest technological trends, participating in
+                  coding challenges, and building side projects.
                 </p>
                 <p>
                   Over the next 4-5 years, I aim to grow into a Principal
