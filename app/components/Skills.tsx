@@ -45,7 +45,7 @@ export const Skills = () => {
         { name: "Node.js", icon: Server, category: "Frameworks & Tools" },
         { name: "React", icon: Code, category: "Frameworks & Tools" },
         { name: "Express", icon: Server, category: "Frameworks & Tools" },
-        { name: "NEST", icon: Server, category: "Frameworks & Tools" },
+        { name: "NestJS", icon: Server, category: "Frameworks & Tools" },
         { name: "MongoDB", icon: Database, category: "Frameworks & Tools" },
         { name: "PostgreSQL", icon: Database, category: "Frameworks & Tools" },
       ],
