@@ -18,7 +18,7 @@ export const Experience = () => {
     {
       title: "DevOps Engineer",
       company: "Monster Studio",
-      date: "Aug 2024 - April 2025",
+      date: "Aug 2024 - Apr 2025",
       description: [
         "Designed and implemented robust CI/CD pipelines for 20+ production web applications, ensuring rapid and reliable deployments",
         "Automated deployment workflows, reducing release times by 70% and minimizing manual intervention",

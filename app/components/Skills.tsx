@@ -40,17 +40,6 @@ export const Skills = () => {
       ],
     },
     {
-      name: "DevOps & Cloud",
-      skills: [
-        { name: "LINUX", icon: Server, category: "DevOps & Cloud" },
-        { name: "Docker", icon: Container, category: "DevOps & Cloud" },
-        { name: "NGINX", icon: ServerCog, category: "DevOps & Cloud" },
-        { name: "AWS", icon: Cloud, category: "DevOps & Cloud" },
-        { name: "ANSIBLE", icon: Settings, category: "DevOps & Cloud" },
-        { name: "CI/CD", icon: GitBranch, category: "DevOps & Cloud" },
-      ],
-    },
-    {
       name: "Frameworks & Tools",
       skills: [
         { name: "Node.js", icon: Server, category: "Frameworks & Tools" },
@@ -59,6 +48,17 @@ export const Skills = () => {
         { name: "NEST", icon: Server, category: "Frameworks & Tools" },
         { name: "MongoDB", icon: Database, category: "Frameworks & Tools" },
         { name: "PostgreSQL", icon: Database, category: "Frameworks & Tools" },
+      ],
+    },
+    {
+      name: "DevOps & Cloud",
+      skills: [
+        { name: "LINUX", icon: Server, category: "DevOps & Cloud" },
+        { name: "Docker", icon: Container, category: "DevOps & Cloud" },
+        { name: "NGINX", icon: ServerCog, category: "DevOps & Cloud" },
+        { name: "AWS", icon: Cloud, category: "DevOps & Cloud" },
+        { name: "ANSIBLE", icon: Settings, category: "DevOps & Cloud" },
+        { name: "CI/CD", icon: GitBranch, category: "DevOps & Cloud" },
       ],
     },
   ];
@@ -158,6 +158,7 @@ export const Skills = () => {
                 "Cypress",
                 "OOP",
                 "Design Patterns",
+                "Cron Jobs",
                 //                "Microservices",
                 "System Design",
                 "Networking",
