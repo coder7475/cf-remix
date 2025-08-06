@@ -47,7 +47,7 @@ export const AboutMe = () => {
                 style={{ animationDelay: "0.1s" }}
               >
                 <p>
-                  I am a software developer with over one years of experience in
+                  I&apos;m a software developer with over one years of experience in
                   the tech industry, specializing in full-stack development.
                 </p>
                 <p>
