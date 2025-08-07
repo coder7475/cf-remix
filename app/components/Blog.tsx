@@ -13,7 +13,15 @@ interface BlogPost {
   reading_time_minutes: number;
   tag_list: string[];
   url: string;
+  cover_image: string;
 }
+
+// Default placeholder images in case posts don't have cover images
+const placeholderImages = [
+  "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
+];
 
 export const Blog = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,6 +41,7 @@ export const Blog = () => {
             username: "coder7475",
           },
         });
+        console.log(response);
         setBlogPosts(response.data);
       } catch (error) {
         console.error("Error fetching blog posts:", (error as Error).message);
@@ -103,7 +112,7 @@ export const Blog = () => {
           </p>
 
           {isLoading ? (
-            <div className="space-y-8">
+            <div className="space-y-8 font-display">
               {[...Array(4)].map((_, index) => (
                 <div
                   key={index}
@@ -121,7 +130,7 @@ export const Blog = () => {
               ))}
             </div>
           ) : (
-            <div className="space-y-8">
+            <div className="space-y-8 font-display">
               {!isLoading && blogPosts.length === 0 && (
                 <p className="text-center text-red-500">No blog posts found.</p>
               )}
@@ -133,35 +142,48 @@ export const Blog = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cn(
-                    "font-display block glass-morphism rounded-lg p-6 hover:border-primary/50 transition-colors",
+                    "flex flex-col md:flex-row glass-morphism rounded-lg overflow-hidden hover:border-primary/50 transition-colors",
                     isVisible ? "animate-slide-in" : "opacity-0"
                   )}
                   style={{ animationDelay: `${0.2 + index * 0.1}s` }}
                 >
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {post.tag_list.slice(0, 3).map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs bg-primary/10 text-primary px-2 py-1 rounded"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                  <div className="w-full md:w-1/3 h-48">
+                    <img
+                      src={
+                        post.cover_image ||
+                        placeholderImages[index % placeholderImages.length]
+                      }
+                      alt={post.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
                   </div>
-                  <h3 className="text-xl font-bold mb-3 hover:text-primary transition-colors">
-                    {post.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4">
-                    {post.description}
-                  </p>
-                  <div className="flex items-center text-sm text-muted-foreground">
-                    <div className="flex items-center mr-4">
-                      <CalendarIcon className="w-4 h-4 mr-1" />
-                      <span>{formatDate(post.published_at)}</span>
+                  <div className="w-full md:w-2/3 p-6">
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {post.tag_list.slice(0, 4).map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-xs bg-primary/10 text-primary px-2 py-1 rounded font-mono"
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     </div>
-                    <div className="flex items-center">
-                      <Clock className="w-4 h-4 mr-1" />
-                      <span>{post.reading_time_minutes} min read</span>
+                    <h3 className="text-xl font-bold mb-3 hover:text-primary transition-colors">
+                      {post.title}
+                    </h3>
+                    <p className="text-muted-foreground mb-4">
+                      {post.description}
+                    </p>
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <div className="flex items-center mr-4">
+                        <CalendarIcon className="w-4 h-4 mr-1" />
+                        <span>{formatDate(post.published_at)}</span>
+                      </div>
+                      <div className="flex items-center">
+                        <Clock className="w-4 h-4 mr-1" />
+                        <span>{post.reading_time_minutes} min read</span>
+                      </div>
                     </div>
                   </div>
                 </Link>
