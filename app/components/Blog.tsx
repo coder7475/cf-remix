@@ -23,6 +23,8 @@ const placeholderImages = [
   "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
 ];
 
+
+
 export const Blog = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
@@ -41,7 +43,6 @@ export const Blog = () => {
             username: "coder7475",
           },
         });
-        console.log(response);
         setBlogPosts(response.data);
       } catch (error) {
         console.error("Error fetching blog posts:", (error as Error).message);

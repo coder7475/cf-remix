@@ -1,4 +1,5 @@
-import type { LinksFunction } from "@remix-run/cloudflare";
+import type { MetaFunction , LinksFunction } from "@remix-run/cloudflare";
+
 import {
   Links,
   Meta,
@@ -37,6 +38,30 @@ export const links: LinksFunction = () => [
     href: "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@203..800&display=swap",
   },
 ];
+
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Robiul Hossain | Software Engineer" },
+    { name: "description", content: "Robiul Hossain's personal portfolio showcasing projects, blog posts, and skills in web development, DevOps, and system design." },
+
+    // Open Graph (for Facebook, LinkedIn, etc.)
+    { property: "og:title", content: "Robiul Hossain | Software Engineer" },
+    { property: "og:description", content: "Explore Robiul Hossain’s portfolio, featuring projects and experience in MERN stack, DevOps, and more." },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: "https://robiulhossain.com" }, // update with actual domain
+    { property: "og:image", content: "https://robiulhossain.com/profile.png" }, // optional image
+    { property: "og:site_name", content: "Robiul Hossain Portfolio" },
+    { property: "og:locale", content: "en_US" },
+
+    // Twitter Card
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: "Robiul Hossain | Software Engineer" },
+    { name: "twitter:description", content: "Visit Robiul Hossain’s portfolio to see projects, skills, and experience in modern web development." },
+    { name: "twitter:image", content: "https://x.com/robiul7475/photo" }, // optional image
+  ];
+};
+
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
