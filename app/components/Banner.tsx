@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { cn } from "~/libs/utils";
 
@@ -69,21 +70,20 @@ export const Hero = () => {
           )}
           style={{ animationDelay: "0.5s" }}
         >
-          <a
-            href="contact"
+          <Link
+            to="contact"
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-3 px-8 rounded-md transition-all duration-300 transform hover:translate-y-[-2px]"
           >
             Get in touch
-          </a>
-          <a
-            href="blog"
+          </Link>
+          <Link
+            to="blog"
             className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-medium py-3 px-8 rounded-md transition-all duration-300 transform hover:translate-y-[-2px]"
           >
             View my blogs
-          </a>
+          </Link>
         </div>
       </div>
     </section>
   );
 };
-

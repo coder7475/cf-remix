@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { cn } from "~/libs/utils";
 import { Mail, Github, Linkedin, Twitter, Youtube } from "lucide-react";
+import { Link } from "@remix-run/react";
 
 export const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -70,15 +71,15 @@ export const Contact = () => {
               </div>
 
               <div className="space-y-4">
-                <a
-                  href="mailto:john.doe@example.com"
+                <Link
+                  to="mailto:john.doe@example.com"
                   className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors font-mono"
                 >
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                     <Mail className="w-5 h-5 text-primary" />
                   </div>
                   <span>robiulhossain7475@gmail.com</span>
-                </a>
+                </Link>
               </div>
 
               <div>
@@ -86,38 +87,38 @@ export const Contact = () => {
                   SOCIAL PROFILES
                 </h4>
                 <div className="flex gap-3">
-                  <a
+                  <Link
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://github.com/coder7475"
+                    to="https://github.com/coder7475"
                     className="w-10 h-10 rounded-full bg-secondary/70 flex items-center justify-center hover:bg-primary/10 transition-colors"
                   >
                     <Github className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" />
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://www.linkedin.com/in/robiul7475"
+                    to="https://www.linkedin.com/in/robiul7475"
                     className="w-10 h-10 rounded-full bg-secondary/70 flex items-center justify-center hover:bg-primary/10 transition-colors"
                   >
                     <Linkedin className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" />
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://x.com/robiul7475"
+                    to="https://x.com/robiul7475"
                     className="w-10 h-10 rounded-full bg-secondary/70 flex items-center justify-center hover:bg-primary/10 transition-colors"
                   >
                     <Twitter className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" />
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://www.youtube.com/@RobiulHossain-f2k"
+                    to="https://www.youtube.com/@RobiulHossain-f2k"
                     className="w-10 h-10 rounded-full bg-secondary/70 flex items-center justify-center hover:bg-primary/10 transition-colors"
                   >
                     <Youtube className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

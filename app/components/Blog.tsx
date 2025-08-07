@@ -1,9 +1,9 @@
-
 import { useState, useEffect, useRef } from "react";
 import { CalendarIcon, Clock, ArrowRight } from "lucide-react";
 import axios from "axios";
 import { useToast } from "~/hooks/use-toast";
 import { cn } from "~/libs/utils";
+import { Link } from "@remix-run/react";
 
 interface BlogPost {
   id: number;
@@ -27,19 +27,20 @@ export const Blog = () => {
       try {
         setIsLoading(true);
         // Replace with your dev.to username if you have one
-        const response = await axios.get('https://dev.to/api/articles', {
+        const response = await axios.get("https://dev.to/api/articles", {
           params: {
             per_page: 3, // Fetch only 3 posts
             // You can uncomment and use this when you have your own username
-            username: 'coder7475',
-          }
+            username: "coder7475",
+          },
         });
         setBlogPosts(response.data);
       } catch (error) {
         console.error("Error fetching blog posts:", error);
         toast({
           title: "Error fetching articles",
-          description: "Could not load blog posts from dev.to. Please try again later.",
+          description:
+            "Could not load blog posts from dev.to. Please try again later.",
           variant: "destructive",
         });
       } finally {
@@ -71,10 +72,10 @@ export const Blog = () => {
   // Format the date to a more readable format
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   };
 
@@ -97,8 +98,8 @@ export const Blog = () => {
             )}
             style={{ animationDelay: "0.1s" }}
           >
-            I regularly share my knowledge and experiences through articles on DevOps practices,
-            software engineering, and emerging technologies.
+            I regularly share my knowledge and experiences through articles on
+            DevOps practices, software engineering, and emerging technologies.
           </p>
 
           {isLoading ? (
@@ -122,9 +123,9 @@ export const Blog = () => {
           ) : (
             <div className="space-y-8">
               {blogPosts.map((post, index) => (
-                <a
+                <Link
                   key={post.id}
-                  href={post.url}
+                  to={post.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cn(
@@ -135,13 +136,20 @@ export const Blog = () => {
                 >
                   <div className="flex flex-wrap gap-2 mb-3">
                     {post.tag_list.slice(0, 3).map((tag) => (
-                      <span key={tag} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
+                      <span
+                        key={tag}
+                        className="text-xs bg-primary/10 text-primary px-2 py-1 rounded"
+                      >
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <h3 className="text-xl font-bold mb-3 hover:text-primary transition-colors">{post.title}</h3>
-                  <p className="text-muted-foreground mb-4">{post.description}</p>
+                  <h3 className="text-xl font-bold mb-3 hover:text-primary transition-colors">
+                    {post.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-4">
+                    {post.description}
+                  </p>
                   <div className="flex items-center text-sm text-muted-foreground">
                     <div className="flex items-center mr-4">
                       <CalendarIcon className="w-4 h-4 mr-1" />
@@ -152,7 +160,7 @@ export const Blog = () => {
                       <span>{post.reading_time_minutes} min read</span>
                     </div>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           )}
@@ -164,19 +172,18 @@ export const Blog = () => {
             )}
             style={{ animationDelay: "0.5s" }}
           >
-            <a
-              href="https://dev.to/coder7475"
+            <Link
+              to="https://dev.to/coder7475"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-mono text-primary hover:text-primary/80 transition-colors"
             >
               <span>View all articles</span>
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
     </section>
   );
 };
-

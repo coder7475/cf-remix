@@ -55,13 +55,13 @@ export const Navbar = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-6">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
-              href={link.href}
+              to={link.href}
               className="relative font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 after:origin-bottom-right after:transition-transform hover:after:scale-x-100 hover:after:origin-bottom-left font-mono"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -84,14 +84,14 @@ export const Navbar = () => {
         <div className="md:hidden fixed inset-0 z-40 bg-background/95 backdrop-blur-sm">
           <div className="flex flex-col items-center justify-center h-full space-y-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.href}
                 className="text-xl font-medium text-foreground hover:text-primary transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
             <button
               onClick={() => setIsMobileMenuOpen(false)}

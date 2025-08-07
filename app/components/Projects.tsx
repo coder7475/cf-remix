@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { ExternalLink, Github, ArrowRight } from "lucide-react";
 import { cn } from "~/libs/utils";
+import { Link } from "@remix-run/react";
 
 interface Project {
   title: string;
@@ -134,26 +135,26 @@ export const Projects = () => {
                   </div>
                   <div className="flex gap-4">
                     {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
+                      <Link
+                        to={project.githubUrl}
                         className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <Github className="w-4 h-4" />
                         <span>Source Code</span>
-                      </a>
+                      </Link>
                     )}
                     {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
+                      <Link
+                        to={project.liveUrl}
                         className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         <ExternalLink className="w-4 h-4" />
                         <span>Live Demo</span>
-                      </a>
+                      </Link>
                     )}
                   </div>
                 </div>
@@ -168,13 +169,13 @@ export const Projects = () => {
             )}
             style={{ animationDelay: "0.6s" }}
           >
-            <a
-              href="https://github.com/coder7475"
+            <Link
+              to="https://github.com/coder7475"
               className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
             >
               <span>View all projects</span>
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
