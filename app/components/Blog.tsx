@@ -24,19 +24,19 @@ export const Blog = () => {
 
   useEffect(() => {
     const fetchBlogPosts = async () => {
+      setIsLoading(true);
       try {
-        setIsLoading(true);
         // Replace with your dev.to username if you have one
         const response = await axios.get("https://dev.to/api/articles", {
           params: {
-            per_page: 3, // Fetch only 3 posts
-            // You can uncomment and use this when you have your own username
+            per_page: 4, // Fetch only 3 posts
             username: "coder7475",
           },
         });
         setBlogPosts(response.data);
       } catch (error) {
-        console.error("Error fetching blog posts:", error);
+        console.error("Error fetching blog posts:", (error as Error).message);
+
         toast({
           title: "Error fetching articles",
           description:
@@ -104,7 +104,7 @@ export const Blog = () => {
 
           {isLoading ? (
             <div className="space-y-8">
-              {[...Array(3)].map((_, index) => (
+              {[...Array(4)].map((_, index) => (
                 <div
                   key={index}
                   className={cn(
@@ -122,10 +122,14 @@ export const Blog = () => {
             </div>
           ) : (
             <div className="space-y-8">
+              {!isLoading && blogPosts.length === 0 && (
+                <p className="text-center text-red-500">No blog posts found.</p>
+              )}
               {blogPosts.map((post, index) => (
                 <Link
                   key={post.id}
                   to={post.url}
+                  aria-label={`Read more: ${post.title}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cn(
