@@ -70,6 +70,22 @@ export const projects: Project[] = [
     description: "Collection of Scripts to Automate Tasks",
     technologies: ["Bash", "Python", "Docker", "JavaScript"],
     image: "", // Placeholder
-    githubUrl: "#",
+    githubUrl: "https://github.com/coder7475/scripts",
+  },
+  {
+    title: "Sentiment Analysis Bangla",
+    description:
+      "A machine learning project for sentiment analysis on Bangla text. Utilizes various NLP techniques and models to classify Bangla sentences as positive, negative, or neutral. Includes data preprocessing, feature extraction, model training, and evaluation.",
+    technologies: [
+      "Python",
+      "scikit-learn",
+      "NLTK",
+      "Pandas",
+      "Jupyter Notebook",
+      "Machine Learning",
+      "Natural Language Processing",
+    ],
+    image: "", // Placeholder
+    githubUrl: "https://github.com/coder7475/sentiment_analysis_bangla",
   },
 ];
