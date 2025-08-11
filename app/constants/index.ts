@@ -4,7 +4,7 @@ export const projects: Project[] = [
   {
     title: "English Quiz Test",
     description:
-      "A modern, scalable digital competency assessment platform built with a TypeScript monorepo architecture using Turborepo. This system provides comprehensive functionality for students, supervisors, and administrators to assess and certify digital skills across levels A1 to C2, similar to standardized competency frameworks.",
+      "A digital competency assessment platform built with a TypeScript monorepo using Turborepo. Provides comprehensive features for students, supervisors, and admins to assess and certify digital skills across A1 to C2 levels.",
     technologies: [
       "Node.js",
       "Redis",
@@ -24,7 +24,7 @@ export const projects: Project[] = [
   {
     title: "Ride Booking System",
     description:
-      "A secure, scalable, and role-based backend API for a ride booking system using Express.js and Mongoose.",
+      "A scalable, secure backend API for a ride booking platform. Features role-based access, RESTful endpoints, and robust data management using Express.js and Mongoose.",
     technologies: [
       "Node.js",
       "TypeScript",
@@ -41,7 +41,7 @@ export const projects: Project[] = [
   {
     title: "Library Management System",
     description:
-      "A modern library management system built with React, TypeScript, Vite, Redux Toolkit, RTK Query, Tailwind CSS, and Shadcn UI. Includes CRUD, borrow flow, genre filter, pagination, modals, type-safe forms, and is ready to deploy.",
+      "A modern library management app with React, TypeScript, Redux Toolkit, and Shadcn UI. Supports CRUD, borrow flow, genre filtering, pagination, modals, and type-safe forms.",
     technologies: [
       "Node.js",
       "React",
@@ -58,16 +58,16 @@ export const projects: Project[] = [
   {
     title: "Custom WC Tool",
     description:
-      "This is a custom implementation of the Unix wc (word count) command-line utility, developed as part of the challenge-wc from codingchallenges.fyi.",
+      "A custom implementation of the Unix wc (word count) command-line utility, developed for a coding challenge. Supports counting lines, words, and characters efficiently.",
     technologies: ["C++", "Make"],
     image: "", // Placeholder
-
     githubUrl:
       "https://github.com/coder7475/coding-challenges/tree/main/wc-tool",
   },
   {
     title: "Scripts",
-    description: "Collection of Scripts to Automate Tasks",
+    description:
+      "A collection of automation scripts for various tasks, including system management, data processing, and development workflows using Bash, Python, and Docker.",
     technologies: ["Bash", "Python", "Docker", "JavaScript"],
     image: "", // Placeholder
     githubUrl: "https://github.com/coder7475/scripts",
@@ -75,7 +75,7 @@ export const projects: Project[] = [
   {
     title: "Sentiment Analysis Bangla",
     description:
-      "A machine learning project for sentiment analysis on Bangla text. Utilizes various NLP techniques and models to classify Bangla sentences as positive, negative, or neutral. Includes data preprocessing, feature extraction, model training, and evaluation.",
+      "A machine learning project for Bangla sentiment analysis. Uses NLP techniques and models to classify sentences as positive, negative, or neutral, with full data processing and evaluation.",
     technologies: [
       "Python",
       "scikit-learn",

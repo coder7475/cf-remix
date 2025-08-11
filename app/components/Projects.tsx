@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ExternalLink, Github, ArrowRight } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 import { cn } from "~/libs/utils";
 import { Link } from "@remix-run/react";
 import { projects } from "~/constants";
@@ -54,7 +54,7 @@ export const Projects = () => {
       className="py-20 md:py-32 bg-secondary/30 font-display"
     >
       <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h2
             className={cn(
               "text-3xl md:text-4xl font-display font-bold mb-6 tracking-tight text-center",
@@ -74,40 +74,56 @@ export const Projects = () => {
             expertise and problem-solving capabilities.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Improved grid: responsive, min-h for card, flex col for card content */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
             {paginatedProjects.map((project, index) => (
               <div
                 key={project.title}
                 className={cn(
-                  "glass-morphism rounded-lg overflow-hidden group hover:border-primary/50 transition-colors",
+                  "glass-morphism rounded-lg overflow-hidden group hover:border-primary/50 transition-colors flex flex-col h-full min-h-[370px]",
                   isVisible ? "animate-slide-in" : "opacity-0"
                 )}
                 style={{ animationDelay: `${0.2 + index * 0.1}s` }}
               >
-                <div className="p-6">
+                <div className="p-6 flex flex-col h-full">
                   <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4 text-sm">
+                  {/* Fixed height for description, ellipsis for overflow */}
+                  <p className="text-muted-foreground mb-4 text-sm min-h-[64px] line-clamp-4">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="text-xs bg-secondary/70 px-2 py-1 rounded text-muted-foreground"
+                        className={cn(
+                          "text-xs font-semibold px-3 py-1 rounded-full border border-primary bg-primary/10 text-primary shadow-sm tracking-wide transition-colors",
+                          "hover:bg-primary/20"
+                        )}
+                        style={{
+                          letterSpacing: "0.04em",
+                          boxShadow: "0 1px 4px 0 rgba(80, 80, 180, 0.08)",
+                        }}
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
-                  <div className="flex gap-4">
+                  {/* Push links to bottom */}
+                  <div className="flex gap-4 mt-auto">
                     {project.githubUrl && (
                       <Link
                         to={project.githubUrl}
-                        className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        className={cn(
+                          "flex items-center gap-2 text-sm font-semibold px-3 py-2 rounded border border-muted-foreground/30 bg-muted/40 text-muted-foreground shadow-sm transition-all duration-200",
+                          "hover:bg-primary/10 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
+                        )}
                         target="_blank"
                         rel="noopener noreferrer"
+                        style={{
+                          boxShadow: "0 2px 8px 0 rgba(80, 80, 180, 0.08)",
+                        }}
                       >
                         <Github className="w-4 h-4" />
                         <span>Source Code</span>
@@ -116,9 +132,15 @@ export const Projects = () => {
                     {project.liveUrl && (
                       <Link
                         to={project.liveUrl}
-                        className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        className={cn(
+                          "flex items-center gap-2 text-sm font-semibold px-3 py-2 rounded border border-primary bg-primary/5 text-primary shadow-sm transition-all duration-200",
+                          "hover:bg-primary/10 hover:text-primary-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+                        )}
                         target="_blank"
                         rel="noopener noreferrer"
+                        style={{
+                          boxShadow: "0 2px 8px 0 rgba(80, 80, 180, 0.10)",
+                        }}
                       >
                         <ExternalLink className="w-4 h-4" />
                         <span>Live Demo</span>
@@ -170,7 +192,7 @@ export const Projects = () => {
               </button>
             </div>
           )}
-
+          {/* 
           <div
             className={cn(
               "mt-16 text-center",
@@ -185,7 +207,7 @@ export const Projects = () => {
               <span>View all projects</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
