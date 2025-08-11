@@ -72,13 +72,13 @@ export const Contact = () => {
 
               <div className="space-y-4">
                 <Link
-                  to="mailto:john.doe@example.com"
+                  to="mailto:contact@robiulhossain.com"
                   className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors font-mono"
                 >
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                     <Mail className="w-5 h-5 text-primary" />
                   </div>
-                  <span>robiulhossain7475@gmail.com</span>
+                  <span>contact@robiulhossain.com</span>
                 </Link>
               </div>
 
