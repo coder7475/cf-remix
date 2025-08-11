@@ -2,64 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { ExternalLink, Github, ArrowRight } from "lucide-react";
 import { cn } from "~/libs/utils";
 import { Link } from "@remix-run/react";
-
-interface Project {
-  title: string;
-  description: string;
-  technologies: string[];
-  image: string;
-  liveUrl?: string;
-  githubUrl?: string;
-}
+import { projects } from "~/constants";
 
 export const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-
-  const projects: Project[] = [
-    {
-      title: "Ride Booking System",
-      description:
-        "A secure, scalable, and role-based backend API for a ride booking system using Express.js and Mongoose.",
-      technologies: ["Node.js", "TypeScript", "MongoDB", "RESTAPIs"],
-      image: "", // Placeholder
-      liveUrl: "https://ride-booking-system-wine.vercel.app/",
-      githubUrl: "https://github.com/coder7475/ride-booking-system",
-    },
-    {
-      title: "Library Management System",
-      description:
-        "A modern library management system built with React, TypeScript, Vite, Redux Toolkit, RTK Query, Tailwind CSS, and Shadcn UI. Includes CRUD, borrow flow, genre filter, pagination, modals, type-safe forms, and is ready to deploy.",
-      technologies: [
-        "React",
-        "Redux",
-        "TypeScript",
-        "Zod",
-        "Shadcn",
-        "Express",
-      ],
-      image: "", // Placeholder
-      liveUrl: "https://library.robiulhossain.com",
-      githubUrl: "https://github.com/coder7475/libraray_management_frontend",
-    },
-    {
-      title: "Custom WC Tool",
-      description:
-        "This is a custom implementation of the Unix wc (word count) command-line utility, developed as part of the challenge-wc from codingchallenges.fyi.",
-      technologies: ["C++", "Make"],
-      image: "", // Placeholder
-
-      githubUrl:
-        "https://github.com/coder7475/coding-challenges/tree/main/wc-tool",
-    },
-    {
-      title: "Scripts",
-      description: "Collection of Scripts to Automate Tasks",
-      technologies: ["Bash", "Python", "Docker", "JavaScript"],
-      image: "", // Placeholder
-      githubUrl: "#",
-    },
-  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
