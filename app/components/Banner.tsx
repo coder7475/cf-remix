@@ -60,7 +60,7 @@ export const Hero = () => {
           )}
           style={{ animationDelay: "0.4s" }}
         >
-          From Code to Cloud: Crafting Robust and Secure Web Solutions!
+          Software Engineer Building a Path to Architectural Excellence
         </p>
 
         <div
@@ -71,16 +71,44 @@ export const Hero = () => {
           style={{ animationDelay: "0.5s" }}
         >
           <Link
-            to="contact"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-3 px-8 rounded-md transition-all duration-300 transform hover:translate-y-[-2px]"
+            to="projects"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3 px-8 rounded-md shadow-md transition-all duration-200 transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/50"
+            aria-label="View my projects"
           >
-            Get in touch
+            <span className="inline-flex items-center gap-2">
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7" />
+                <path d="M16 3v4" />
+                <path d="M8 3v4" />
+                <path d="M4 11h16" />
+              </svg>
+              View Projects
+            </span>
           </Link>
           <Link
-            to="blog"
-            className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-medium py-3 px-8 rounded-md transition-all duration-300 transform hover:translate-y-[-2px]"
+            to="experiences"
+            className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold py-3 px-8 rounded-md shadow-md transition-all duration-200 transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-secondary/50"
+            aria-label="See my experiences"
           >
-            View my blogs
+            <span className="inline-flex items-center gap-2">
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z" />
+                <path d="M6.5 20a6.5 6.5 0 0 1 11 0" />
+              </svg>
+              My Experience
+            </span>
           </Link>
         </div>
       </div>
