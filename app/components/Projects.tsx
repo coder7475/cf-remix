@@ -1,10 +1,28 @@
 import { useState, useEffect, useRef } from "react";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, CheckCircle } from "lucide-react";
 import { cn } from "~/libs/utils";
 import { Link } from "@remix-run/react";
 import { projects } from "~/constants";
 
 const PROJECTS_PER_PAGE = 4;
+
+// Status badge component
+const StatusBadge = ({ status }: { status: "in-progress" | "finished" }) => {
+  if (status === "in-progress") {
+    return (
+      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-yellow-100 text-yellow-800 text-xs font-semibold border border-yellow-300">
+        {/* <Loader2 className="w-3 h-3 animate-spin" /> */}
+        Ongoing
+      </span>
+    );
+  }
+  return (
+    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-100 text-green-800 text-xs font-semibold border border-green-300">
+      <CheckCircle className="w-3 h-3" />
+      Completed
+    </span>
+  );
+};
 
 export const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -86,9 +104,12 @@ export const Projects = () => {
                 style={{ animationDelay: `${0.2 + index * 0.1}s` }}
               >
                 <div className="p-6 flex flex-col h-full">
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-xl font-bold group-hover:text-primary transition-colors">
+                      {project.title}
+                    </h3>
+                    <StatusBadge status={project.status} />
+                  </div>
                   {/* Fixed height for description, ellipsis for overflow */}
                   <p className="text-muted-foreground mb-4 text-sm min-h-[64px] line-clamp-4">
                     {project.description}
@@ -192,22 +213,6 @@ export const Projects = () => {
               </button>
             </div>
           )}
-          {/* 
-          <div
-            className={cn(
-              "mt-16 text-center",
-              isVisible ? "animate-slide-in" : "opacity-0"
-            )}
-            style={{ animationDelay: "0.6s" }}
-          >
-            <Link
-              to="https://github.com/coder7475"
-              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
-            >
-              <span>View all projects</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div> */}
         </div>
       </div>
     </section>
