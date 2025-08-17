@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { cn } from "~/libs/utils";
-import { Mail, Github, Linkedin, Twitter, Youtube } from "lucide-react";
+import { Mail, Github, Linkedin, Twitter, Youtube, Users } from "lucide-react";
 import { Link } from "@remix-run/react";
 
 export const Contact = () => {
@@ -167,6 +167,26 @@ export const Contact = () => {
                     <Youtube className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors" />
                   </Link>
                 </div>
+              </div>
+
+              <div>
+                <h4 className="text-sm font-semibold text-muted-foreground mb-4">
+                  EDUCATIONAL GROUP
+                </h4>
+                <Link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  to="https://dly.to/VgMLbgyno0F"
+                  className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors font-mono p-3 rounded-md border border-border/50 hover:border-primary/30 bg-secondary/30 hover:bg-primary/5"
+                >
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Users className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <span className="block text-sm font-semibold text-foreground">Join Dev Daily Group</span>
+                    <span className="block text-xs text-muted-foreground">Educational community for developers</span>
+                  </div>
+                </Link>
               </div>
             </div>
 
