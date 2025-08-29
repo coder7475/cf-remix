@@ -79,7 +79,7 @@ export const projects: Project[] = [
     status: "finished",
     title: "Library Management System",
     description:
-      "A modern library management app with React, TypeScript, Redux Toolkit, and Shadcn UI. Supports CRUD, borrow flow, genre filtering, pagination, modals, and type-safe forms.",
+      "A full-stack library management application featuring an Express backend with MongoDB and Mongoose, and a modern React frontend using Redux Toolkit and Shadcn UI. Includes robust CRUD operations, book borrowing workflows, genre-based filtering, pagination, interactive modals, and type-safe forms for a seamless user experience.",
     technologies: [
       "Node.js",
       "React",
