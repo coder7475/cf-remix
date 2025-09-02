@@ -20,13 +20,32 @@ export const projects: Project[] = [
       "React",
       "Redux",
       "ShadCn",
-      "WebSocket",
-      "RabbitMQ",
-      "SSLCommerz",
+      // "WebSocket",
+      // "RabbitMQ",
+      // "SSLCommerz",
     ],
     image: "", // Placeholder
-    liveUrl: "https://ride-booking-system-wine.vercel.app/",
+    liveUrl: "https://ride.robiulhossain.com",
     githubUrl: "https://github.com/coder7475/ride-booking-system",
+  },
+  {
+    status: "finished",
+    title: "Churn Prediction Pipeline",
+    description:
+      "Aim of this project is to develop a ml system to predict the behavior of customers as to retain customer.",
+    technologies: [
+      "Python",
+      "Modular Architecture",
+      "Machine Learning",
+      "Pipeline",
+      "FastAPI",
+      "Flask",
+      "Docker",
+    ],
+    image: "", // Placeholder
+    liveUrl: "", // No live deployment
+    githubUrl:
+      "https://github.com/coder7475/model-training-with-modular-workflow",
   },
   {
     status: "finished",
