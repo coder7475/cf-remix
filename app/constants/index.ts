@@ -1,8 +1,8 @@
-import { Project } from "~/types";
+import { Project, ProjectStatus } from "~/types";
 
 export const projects: Project[] = [
   {
-    status: "in-progress",
+    status: ProjectStatus.InProgress,
     title: "Ride Booking System",
     description:
       "A scalable and secure ride booking platform designed for reliability and performance. Implements robust role-based access control, comprehensive RESTful APIs, and efficient data management with Express.js and Mongoose. The frontend is built with React and Redux for a seamless user experience.",
@@ -29,7 +29,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/coder7475/ride-booking-system",
   },
   {
-    status: "finished",
+    status: ProjectStatus.InProgress,
     title: "Churn Prediction Pipeline",
     description:
       "Aim of this project is to develop a ml system to predict the behavior of customers as to retain customer.",
@@ -48,7 +48,7 @@ export const projects: Project[] = [
       "https://github.com/coder7475/model-training-with-modular-workflow",
   },
   {
-    status: "finished",
+    status: ProjectStatus.Finished,
     title: "School Management APIs",
     description:
       "A mini school management apis, built with Node.js, NestJs, TypeScript, Drizzle and PostgreSQL. Features include user authentication, role-based access, student and teacher management, class scheduling, and more. Designed for scalability and maintainability.",
@@ -68,6 +68,25 @@ export const projects: Project[] = [
     image: "", // Placeholder
     liveUrl: "https://school-management-apis.vercel.app/api", // No live deployment
     githubUrl: "https://github.com/coder7475/school_management_apis",
+  },
+  {
+    status: ProjectStatus.Finished,
+    title: "YouTube Video Title Generator",
+    description:
+      "A Retrieval-Augmented Generation (RAG) system implemented in Python. Generates engaging, click-worthy YouTube video titles (with optional emojis and hashtags) powered by FastAPI, MongoDB Atlas Vector Search, and LLMs. Integrates LLMs with external data sources for enhanced question answering and information retrieval. Designed for modularity and extensibility.",
+    technologies: [
+      "Python",
+      "RAG",
+      "LLM",
+      "LangChain",
+      "FastAPI",
+      "Docker",
+      "Hugging Face",
+      "MongoDB Atlas",
+    ],
+    image: "", // Placeholder
+    liveUrl: "", // No live deployment
+    githubUrl: "https://github.com/coder7475/rag-python",
   },
   {
     status: "finished",

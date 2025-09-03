@@ -7,3 +7,8 @@ export interface Project {
   liveUrl?: string;
   githubUrl?: string;
 }
+
+export enum ProjectStatus {
+  Finished = "finished",
+  InProgress = "in-progress",
+}
