@@ -42,7 +42,7 @@ export const Skills = () => {
     {
       name: "Frameworks & Tools",
       skills: [
-        { name: "Node.js", icon: Server, category: "Frameworks & Tools" },
+        { name: "FastAPI", icon: Server, category: "Frameworks & Tools" },
         { name: "React", icon: Code, category: "Frameworks & Tools" },
         { name: "Express", icon: Server, category: "Frameworks & Tools" },
         { name: "NestJS", icon: Server, category: "Frameworks & Tools" },
@@ -118,8 +118,9 @@ export const Skills = () => {
                           isVisible ? "animate-slide-in" : "opacity-0"
                         )}
                         style={{
-                          animationDelay: `${0.2 + categoryIndex * 0.1 + skillIndex * 0.05
-                            }s`,
+                          animationDelay: `${
+                            0.2 + categoryIndex * 0.1 + skillIndex * 0.05
+                          }s`,
                         }}
                       >
                         <IconComponent className="w-8 h-8 mb-2 text-primary" />
@@ -152,6 +153,7 @@ export const Skills = () => {
                 "Prometheus",
                 "Grafana",
                 "Redis",
+                "Node.js",
                 "RESTful APIs",
                 "Jest",
                 "Vitest",
