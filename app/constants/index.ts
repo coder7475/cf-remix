@@ -30,6 +30,24 @@ export const projects: Project[] = [
   },
   {
     status: ProjectStatus.InProgress,
+    title: "Socket Programming Examples",
+    description:
+      "A collection of practical socket programming examples in JavaScript.",
+    technologies: [
+      "JavaScript",
+      "Node.js",
+      "ws",
+      "Web Sockets",
+      "Socket.io",
+      "TCP/IP",
+      "UDP",
+    ],
+    image: "", // Placeholder
+    liveUrl: "", // No live deployment
+    githubUrl: "https://github.com/coder7475/socket_programming",
+  },
+  {
+    status: ProjectStatus.Finished,
     title: "Churn Prediction Pipeline",
     description:
       "Aim of this project is to develop a ml system to predict the behavior of customers as to retain customer.",
@@ -88,33 +106,9 @@ export const projects: Project[] = [
     liveUrl: "", // No live deployment
     githubUrl: "https://github.com/coder7475/rag-python",
   },
+
   {
-    status: "finished",
-    title: "Auth Shops",
-    description:
-      "A full-stack authentication Built with NestJs, TypeScript, Prisma, and PostgreSQL, with a pnpm monorepo architecture.",
-    technologies: [
-      "NestJs",
-      "Prisma",
-      "PostgreSQL",
-      "TypeScript",
-      "Tailwind CSS",
-      "React",
-      "Redux",
-      "TailwindCss",
-      "ShadCn",
-      "Vercel",
-      "Cloudflare",
-      "DNS",
-      "JWT",
-      "OOP",
-    ],
-    image: "", // Placeholder
-    liveUrl: "https://shops.robiulhossain.com",
-    githubUrl: "https://github.com/coder7475/auth-shops",
-  },
-  {
-    status: "finished",
+    status: ProjectStatus.Finished,
     title: "Library Management System",
     description:
       "A full-stack library management application featuring an Express backend with MongoDB and Mongoose, and a modern React frontend using Redux Toolkit and Shadcn UI. Includes robust CRUD operations, book borrowing workflows, genre-based filtering, pagination, interactive modals, and type-safe forms for a seamless user experience.",
