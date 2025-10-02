@@ -29,8 +29,8 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/coder7475/ride-booking-system",
   },
   {
-    status: ProjectStatus.InProgress,
-    title: "Socket Programming Examples",
+    status: ProjectStatus.Finished,
+    title: "Socket Programming",
     description:
       "A collection of practical socket programming examples in JavaScript.",
     technologies: [
