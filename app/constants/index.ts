@@ -3,6 +3,24 @@ import { Project, ProjectStatus } from "~/types";
 export const projects: Project[] = [
   {
     status: ProjectStatus.InProgress,
+    title: "Text2SQL",
+    description:
+      "A system to convert natural language questions into SQL queries using large language models. Offers a streamlined workflow for data analysts and business users to query databases without writing SQL. Features model serving, prompt engineering",
+    technologies: [
+      "Python",
+      "FastAPI",
+      "Pytest",
+      "Gemini API",
+      "Docker",
+      "SQL",
+      "Prompt Engineering",
+    ],
+    image: "", // Placeholder
+    liveUrl: "",
+    githubUrl: "https://github.com/coder7475/text2sql",
+  },
+  {
+    status: ProjectStatus.InProgress,
     title: "Ride Booking System",
     description:
       "A scalable and secure ride booking platform designed for reliability and performance. Implements robust role-based access control, comprehensive RESTful APIs, and efficient data management with Express.js and Mongoose. The frontend is built with React and Redux for a seamless user experience.",
