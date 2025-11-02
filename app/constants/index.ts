@@ -17,11 +17,11 @@ export const projects: Project[] = [
       "Key Cloak",
     ],
     image: "", // Placeholder
-    liveUrl: "",
+    liveUrl: "https://microservice-monorepo.vercel.app/",
     githubUrl: "https://github.com/coder7475/microservice-monorepo",
   },
   {
-    status: ProjectStatus.InProgress,
+    status: ProjectStatus.Finished,
     title: "Text2SQL",
     description:
       "A system to convert natural language questions into SQL queries using large language models. Offers a streamlined workflow for data analysts and business users to query databases without writing SQL. Features model serving, prompt engineering",
