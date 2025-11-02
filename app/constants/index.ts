@@ -17,8 +17,8 @@ export const projects: Project[] = [
       "Key Cloak",
     ],
     image: "", // Placeholder
-    liveUrl: "https://microservice-monorepo.vercel.app/",
-    githubUrl: "https://github.com/coder7475/microservice-monorepo",
+    liveUrl: "",
+    githubUrl: "https://github.com/coder7475/ecommerce_microservices",
   },
   {
     status: ProjectStatus.Finished,
