@@ -3,6 +3,25 @@ import { Project, ProjectStatus } from "~/types";
 export const projects: Project[] = [
   {
     status: ProjectStatus.InProgress,
+    title: "E-commerce Microservice",
+    description: "Building Microservices for an e-commerce project",
+    technologies: [
+      "Node.js",
+      "Microservices",
+      "Turborepo",
+      "Hono",
+      "Nest.js",
+      "Kong - API Gateway",
+      "Rabbit MQ",
+      "Redis",
+      "Key Cloak",
+    ],
+    image: "", // Placeholder
+    liveUrl: "",
+    githubUrl: "https://github.com/coder7475/microservice-monorepo",
+  },
+  {
+    status: ProjectStatus.InProgress,
     title: "Text2SQL",
     description:
       "A system to convert natural language questions into SQL queries using large language models. Offers a streamlined workflow for data analysts and business users to query databases without writing SQL. Features model serving, prompt engineering",
@@ -20,7 +39,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/coder7475/text2sql",
   },
   {
-    status: ProjectStatus.InProgress,
+    status: ProjectStatus.Finished,
     title: "Ride Booking System",
     description:
       "A scalable and secure ride booking platform designed for reliability and performance. Implements robust role-based access control, comprehensive RESTful APIs, and efficient data management with Express.js and Mongoose. The frontend is built with React and Redux for a seamless user experience.",
@@ -46,43 +65,7 @@ export const projects: Project[] = [
     liveUrl: "https://ride.robiulhossain.com",
     githubUrl: "https://github.com/coder7475/ride-booking-system",
   },
-  {
-    status: ProjectStatus.Finished,
-    title: "Socket Programming",
-    description:
-      "A collection of practical socket programming examples in JavaScript.",
-    technologies: [
-      "JavaScript",
-      "Node.js",
-      "ws",
-      "Web Sockets",
-      "Socket.io",
-      "TCP/IP",
-      "UDP",
-    ],
-    image: "", // Placeholder
-    liveUrl: "", // No live deployment
-    githubUrl: "https://github.com/coder7475/socket_programming",
-  },
-  {
-    status: ProjectStatus.Finished,
-    title: "Churn Prediction Pipeline",
-    description:
-      "Aim of this project is to develop a ml system to predict the behavior of customers as to retain customer.",
-    technologies: [
-      "Python",
-      "Modular Architecture",
-      "Machine Learning",
-      "Pipeline",
-      "FastAPI",
-      "Flask",
-      "Docker",
-    ],
-    image: "", // Placeholder
-    liveUrl: "", // No live deployment
-    githubUrl:
-      "https://github.com/coder7475/model-training-with-modular-workflow",
-  },
+
   {
     status: ProjectStatus.Finished,
     title: "School Management APIs",
@@ -124,7 +107,6 @@ export const projects: Project[] = [
     liveUrl: "", // No live deployment
     githubUrl: "https://github.com/coder7475/rag-python",
   },
-
   {
     status: ProjectStatus.Finished,
     title: "Library Management System",
@@ -142,6 +124,43 @@ export const projects: Project[] = [
     image: "", // Placeholder
     liveUrl: "https://library.robiulhossain.com",
     githubUrl: "https://github.com/coder7475/libraray_management_frontend",
+  },
+  {
+    status: ProjectStatus.Finished,
+    title: "Socket Programming",
+    description:
+      "A collection of practical socket programming examples in JavaScript.",
+    technologies: [
+      "JavaScript",
+      "Node.js",
+      "ws",
+      "Web Sockets",
+      "Socket.io",
+      "TCP/IP",
+      "UDP",
+    ],
+    image: "", // Placeholder
+    liveUrl: "", // No live deployment
+    githubUrl: "https://github.com/coder7475/socket_programming",
+  },
+  {
+    status: ProjectStatus.Finished,
+    title: "Churn Prediction Pipeline",
+    description:
+      "Aim of this project is to develop a ml system to predict the behavior of customers as to retain customer.",
+    technologies: [
+      "Python",
+      "Modular Architecture",
+      "Machine Learning",
+      "Pipeline",
+      "FastAPI",
+      "Flask",
+      "Docker",
+    ],
+    image: "", // Placeholder
+    liveUrl: "", // No live deployment
+    githubUrl:
+      "https://github.com/coder7475/model-training-with-modular-workflow",
   },
   {
     status: "finished",

@@ -18,7 +18,7 @@ export const Experience = () => {
     {
       title: "Backend Engineer",
       company: "Makbell",
-      date: "Oct 2024 - Nov 2025",
+      date: "Oct 2024 - Present",
       description: [
         "Developed robust web scraping and automation solutions using Python and Selenium, enabling efficient data extraction from diverse sources.",
         "Designed and implemented scalable microservices with Python, FastAPI, and PostgreSQL, promoting modularity and performance.",
