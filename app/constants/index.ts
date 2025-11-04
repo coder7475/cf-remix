@@ -40,6 +40,23 @@ export const projects: Project[] = [
   },
   {
     status: ProjectStatus.Finished,
+    title: "GraphQL POC",
+    description:
+      "A proof-of-concept GraphQL server built using TypeScript and Apollo Server. Demonstrates schema design, resolvers, and CRUD operations for interconnected entities like games, reviews, and authors. Includes a legacy JavaScript version for comparison and learning purposes.",
+    technologies: [
+      "TypeScript",
+      "GraphQL",
+      "Apollo Server",
+      "Node.js",
+      "pnpm",
+      "tsx",
+    ],
+    image: "", // Placeholder
+    liveUrl: "",
+    githubUrl: "https://github.com/coder7475/graphql-poc",
+  },
+  {
+    status: ProjectStatus.Finished,
     title: "Ride Booking System",
     description:
       "A scalable and secure ride booking platform designed for reliability and performance. Implements robust role-based access control, comprehensive RESTful APIs, and efficient data management with Express.js and Mongoose. The frontend is built with React and Redux for a seamless user experience.",
