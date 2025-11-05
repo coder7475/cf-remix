@@ -47,29 +47,40 @@ export const AboutMe = () => {
                 style={{ animationDelay: "0.1s" }}
               >
                 <p>
-                  I&apos;m a software developer with over one years of experience in
-                  the tech industry, specializing in full-stack development.
+                  Assalamu Alaikum, I’m Robiul Hossain — a Software Engineer
+                  with one and a half years of experience, specializing in
+                  full-stack development.
                 </p>
+
                 <p>
-                  Throughout my career, I have worked with various technologies
-                  and programming languages, including JavaScript, TypeScript,
-                  and Python. I have a strong background in developing web
-                  applications, and I am particularly passionate about creating
-                  user-friendly, efficient, and scalable solutions.
+                  I’ve worked on SaaS products in the creator economy, including
+                  a CMS powering 20+ free tools. My work spans implementing
+                  secure authentication systems, RAG-based features, and
+                  scalable infrastructure across 10+ servers. I’ve also built
+                  CI/CD pipelines, reverse proxies, monitoring setups, and
+                  automated workflows to make development fast and reliable.
                 </p>
+
                 <p>
-                  I am always eager to learn and grow. Apart from my project
-                  work, I regularly engage in professional development
-                  activities. This includes taking online courses to stay
-                  updated with the latest technological trends, participating in
-                  coding challenges, and building side projects.
+                  Throughout my journey, I’ve worked with JavaScript,
+                  TypeScript, and Python — developing efficient, maintainable,
+                  and user-focused web applications. I’m passionate about system
+                  design, backend infrastructure, and building solutions that
+                  scale gracefully.
                 </p>
+
                 <p>
-                  Over the next 4-5 years, I aim to grow into a Principal
-                  Software Engineer, specializing in system design, backend
-                  infrastructure, DevOps, and platform reliability, while
-                  improving leadership and communication skills to drive
-                  impactful projects.
+                  I actively learn through online courses, coding challenges,
+                  and side projects to stay updated with evolving technologies.
+                  Over the next few years, I aspire to grow into a Software
+                  Architect, deepening my expertise in DevOps, platform
+                  reliability, and system scalability while improving leadership
+                  and communication skills to drive impactful projects.
+                </p>
+
+                <p>
+                  I would love to bring my experience in design, development,
+                  and automation to help build and scale your product.
                 </p>
               </div>
             </div>

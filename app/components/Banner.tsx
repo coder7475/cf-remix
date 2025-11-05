@@ -60,7 +60,7 @@ export const Hero = () => {
           )}
           style={{ animationDelay: "0.4s" }}
         >
-          Software Engineer Building a Path to Architectural Excellence
+          Software Engineer on a journey to become a Software Architect
         </p>
 
         <div
