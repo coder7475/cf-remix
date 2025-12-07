@@ -24,6 +24,22 @@ export const projects: Project[] = [
   },
   {
     status: ProjectStatus.Finished,
+    title: "Nextjs-auth",
+    description:
+      "Lightweight Next.js (App Router) authentication example with a protected dashboard, cookie-based login, and a minimal UI.",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "TailwindCSS",
+      "Vercel",
+    ],
+    image: "", // Placeholder
+    liveUrl: "https://nextjs-auth-mu-two.vercel.app/",
+    githubUrl: "https://github.com/coder7475/nextjs-auth",
+  },
+  {
+    status: ProjectStatus.Finished,
     title: "Text2SQL",
     description:
       "A system to convert natural language questions into SQL queries using large language models. Offers a streamlined workflow for data analysts and business users to query databases without writing SQL. Features model serving, prompt engineering",
