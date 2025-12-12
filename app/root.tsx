@@ -1,7 +1,13 @@
-import { captureRemixErrorBoundaryError, withSentry } from "@sentry/remix";
-import type { MetaFunction , LinksFunction } from "@remix-run/cloudflare";
+import type { MetaFunction, LinksFunction } from "@remix-run/cloudflare";
 
-import { Links, Meta, Outlet, Scripts, ScrollRestoration, useRouteError } from "@remix-run/react";
+import {
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useRouteError,
+} from "@remix-run/react";
 
 import "./tailwind.css";
 import { Footer } from "./components/Footer";
@@ -34,15 +40,22 @@ export const links: LinksFunction = () => [
   },
 ];
 
-
 export const meta: MetaFunction = () => {
   return [
     { title: "Robiul Hossain | Software Engineer" },
-    { name: "description", content: "Robiul Hossain's personal portfolio showcasing projects, blog posts, and skills in web development, DevOps, and system design." },
+    {
+      name: "description",
+      content:
+        "Robiul Hossain's personal portfolio showcasing projects, blog posts, and skills in web development, DevOps, and system design.",
+    },
 
     // Open Graph (for Facebook, LinkedIn, etc.)
     { property: "og:title", content: "Robiul Hossain | Software Engineer" },
-    { property: "og:description", content: "Explore Robiul Hossain’s portfolio, featuring projects and experience in MERN stack, DevOps, and more." },
+    {
+      property: "og:description",
+      content:
+        "Explore Robiul Hossain’s portfolio, featuring projects and experience in MERN stack, DevOps, and more.",
+    },
     { property: "og:type", content: "website" },
     { property: "og:url", content: "https://robiulhossain.com" }, // update with actual domain
     { property: "og:image", content: "https://robiulhossain.com/profile.png" }, // optional image
@@ -52,11 +65,14 @@ export const meta: MetaFunction = () => {
     // Twitter Card
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: "Robiul Hossain | Software Engineer" },
-    { name: "twitter:description", content: "Visit Robiul Hossain’s portfolio to see projects, skills, and experience in modern web development." },
+    {
+      name: "twitter:description",
+      content:
+        "Visit Robiul Hossain’s portfolio to see projects, skills, and experience in modern web development.",
+    },
     { name: "twitter:image", content: "https://x.com/robiul7475/photo" }, // optional image
   ];
 };
-
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -84,8 +100,35 @@ function App() {
 
 export const ErrorBoundary = () => {
   const error = useRouteError();
-  captureRemixErrorBoundaryError(error);
-  return <div>Something went wrong</div>;
+  captureRemixErrorBoundaryError(error); // keep/remove as needed
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-slate-950 px-4">
+      <div className="w-full max-w-md rounded-xl border border-slate-800 bg-slate-900/60 p-6 shadow-xl shadow-black/40">
+        <h1 className="text-2xl font-semibold text-red-400">
+          Something went wrong
+        </h1>
+        <p className="mt-2 text-sm text-slate-300">
+          An unexpected error occurred while loading this page.
+        </p>
+        <p className="mt-1 text-sm text-slate-400">
+          You can try refreshing the page, or come back again in a moment.
+        </p>
+        <button
+          type="button"
+          onClick={() => location.reload()}
+          className="mt-4 inline-flex items-center rounded-md bg-red-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2 focus:ring-offset-slate-900"
+        >
+          Refresh page
+        </button>
+      </div>
+    </div>
+  );
 };
 
-export default withSentry(App);
+function captureRemixErrorBoundaryError(error: unknown) {
+  console.log(error);
+  throw new Error("Function not implemented.");
+}
+
+export default App;
