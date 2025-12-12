@@ -2,7 +2,7 @@ import { AboutMe } from "~/components/AboutMe";
 import { Hero } from "~/components/Banner";
 
 import type { MetaFunction } from "@remix-run/cloudflare";
-
+import { Skills } from "~/components/Skills";
 
 export const meta: MetaFunction = () => {
   return [
@@ -10,7 +10,6 @@ export const meta: MetaFunction = () => {
     { name: "description", content: "Learn more about Robiul Hossain." },
   ];
 };
-
 
 /**
  * Renders the main landing page with hero and about-me sections.
@@ -22,6 +21,7 @@ export default function Index() {
     <div className="flex flex-col">
       <Hero />
       <AboutMe />
+      <Skills />
     </div>
   );
 }
