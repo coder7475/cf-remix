@@ -3,6 +3,9 @@ import { Hero } from "~/components/Banner";
 
 import type { MetaFunction } from "@remix-run/cloudflare";
 import { Skills } from "~/components/Skills";
+import { Experience } from "~/components/Experience";
+import { Blog } from "~/components/Blog";
+import { Contact } from "~/components/GetInTouch";
 
 export const meta: MetaFunction = () => {
   return [
@@ -22,6 +25,9 @@ export default function Index() {
       <Hero />
       <AboutMe />
       <Skills />
+      <Experience />
+      <Blog />
+      <Contact />
     </div>
   );
 }

@@ -24,16 +24,26 @@ export const projects: Project[] = [
   },
   {
     status: ProjectStatus.Finished,
-    title: "Nextjs-auth",
+    title: "Smart-todo-app",
     description:
-      "Lightweight Next.js (App Router) authentication example with a protected dashboard, cookie-based login, and a minimal UI.",
+      "AI-assisted to‑do list that prioritizes and categorizes your tasks. Monorepo with a Vite/React frontend and an Express/TypeScript backend powered by Google Gemini for task prioritization.",
     technologies: [
-      "Next.js",
+      "Express.js",
       "React",
       "TypeScript",
       "TailwindCSS",
-      "Vercel",
+      "Google Gemini API",
     ],
+    image: "", // Placeholder
+    liveUrl: "",
+    githubUrl: "https://github.com/coder7475/smart-todo-app",
+  },
+  {
+    status: ProjectStatus.Finished,
+    title: "Nextjs-auth",
+    description:
+      "Lightweight Next.js (App Router) authentication example with a protected dashboard, cookie-based login, and a minimal UI.",
+    technologies: ["Next.js", "React", "TypeScript", "TailwindCSS", "Vercel"],
     image: "", // Placeholder
     liveUrl: "https://nextjs-auth-mu-two.vercel.app/",
     githubUrl: "https://github.com/coder7475/nextjs-auth",

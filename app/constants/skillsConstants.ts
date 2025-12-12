@@ -101,5 +101,6 @@ export const additionalSkills = [
   "UFW",
   "Vitest",
   "VSCode",
+  "YAML",
   "Warp Terminal",
 ];
