@@ -16,8 +16,15 @@ export const Experience = () => {
 
   const experiences: ExperienceItem[] = [
     {
+      title: "Junior Software Engineer",
+      company: "Elementix Software Ventures LLC",
+      date: "Dec 2025 - Present",
+      description: [],
+      icon: Briefcase,
+    },
+    {
       title: "Backend Engineer",
-      company: "Makbell",
+      company: "Makebell",
       date: "Oct 2025 - Nov 2025",
       description: [
         "Developed robust web scraping and automation solutions using Python and Selenium, enabling efficient data extraction from diverse sources.",

@@ -1,7 +1,14 @@
 export interface SitemapEntry {
   url: string;
   lastmod?: string;
-  changefreq?: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
+  changefreq?:
+    | "always"
+    | "hourly"
+    | "daily"
+    | "weekly"
+    | "monthly"
+    | "yearly"
+    | "never";
   priority?: number;
 }
 
@@ -9,7 +16,7 @@ export interface SitemapConfig {
   baseUrl: string;
   routes: {
     path: string;
-    changefreq?: SitemapEntry['changefreq'];
+    changefreq?: SitemapEntry["changefreq"];
     priority?: number;
   }[];
 }
@@ -18,41 +25,41 @@ export interface SitemapConfig {
  * Configuration for the portfolio sitemap
  */
 export const sitemapConfig: SitemapConfig = {
-  baseUrl: 'https://robiulhossain.com', // Update with your actual domain
+  baseUrl: "https://robiulhossain.com", // Update with your actual domain
   routes: [
     {
-      path: '/',
-      changefreq: 'monthly',
+      path: "/",
+      changefreq: "weekly",
       priority: 1.0,
     },
     {
-      path: '/about',
-      changefreq: 'monthly',
+      path: "/about",
+      changefreq: "monthly",
       priority: 0.8,
     },
     {
-      path: '/projects',
-      changefreq: 'weekly',
+      path: "/projects",
+      changefreq: "weekly",
       priority: 0.9,
     },
     {
-      path: '/experiences',
-      changefreq: 'monthly',
+      path: "/experiences",
+      changefreq: "monthly",
       priority: 0.8,
     },
     {
-      path: '/skills',
-      changefreq: 'monthly',
+      path: "/skills",
+      changefreq: "monthly",
       priority: 0.7,
     },
     {
-      path: '/blog',
-      changefreq: 'weekly',
+      path: "/blog",
+      changefreq: "weekly",
       priority: 0.8,
     },
     {
-      path: '/contact',
-      changefreq: 'yearly',
+      path: "/contact",
+      changefreq: "yearly",
       priority: 0.6,
     },
   ],
@@ -66,17 +73,17 @@ export function createSitemapEntry(
   path: string,
   options: {
     lastmod?: string;
-    changefreq?: SitemapEntry['changefreq'];
+    changefreq?: SitemapEntry["changefreq"];
     priority?: number;
   } = {}
 ): SitemapEntry {
-  const url = `${baseUrl.replace(/\/$/, '')}${path}`;
-  const lastmod = options.lastmod || new Date().toISOString().split('T')[0];
-  
+  const url = `${baseUrl.replace(/\/$/, "")}${path}`;
+  const lastmod = options.lastmod || new Date().toISOString().split("T")[0];
+
   return {
     url,
     lastmod,
-    changefreq: options.changefreq || 'monthly',
+    changefreq: options.changefreq || "monthly",
     priority: options.priority || 0.5,
   };
 }
@@ -94,7 +101,7 @@ export function generateSitemapXML(entries: SitemapEntry[]): string {
     <priority>${entry.priority}</priority>
   </url>`
     )
-    .join('\n');
+    .join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
