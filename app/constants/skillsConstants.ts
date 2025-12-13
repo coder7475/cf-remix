@@ -46,6 +46,11 @@ export const categories: SkillCategory[] = [
         category: "Frameworks & Libraries",
       },
       { name: "NestJS", icon: Code2Icon, category: "Frameworks & Libraries" },
+      {
+        name: "FastAPI",
+        icon: Code2Icon,
+        category: "Frameworks & Libraries",
+      },
       { name: "React", icon: Code, category: "Frameworks & Libraries" },
 
       {
@@ -53,12 +58,8 @@ export const categories: SkillCategory[] = [
         icon: Code,
         category: "Frameworks & Libraries",
       },
-      {
-        name: "FastAPI",
-        icon: Code2Icon,
-        category: "Frameworks & Libraries",
-      },
-      { name: "Redux", icon: Code, category: "Frameworks & Libraries" },
+
+      { name: "Remix", icon: Code, category: "Frameworks & Libraries" },
     ],
   },
   {
@@ -79,6 +80,7 @@ export const additionalSkills = [
   "Cron Jobs",
   "Cypress",
   "Cursor",
+  "Deno",
   "Design Patterns",
   "Fail2Ban",
   "GitHub",
@@ -87,7 +89,6 @@ export const additionalSkills = [
   "Jest",
   "Microservices",
   "Networking",
-  "Neovim",
   "Node.js",
   "npm",
   "pnpm",
@@ -102,5 +103,4 @@ export const additionalSkills = [
   "Vitest",
   "VSCode",
   "YAML",
-  "Warp Terminal",
 ];

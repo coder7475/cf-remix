@@ -19,7 +19,9 @@ export const Experience = () => {
       title: "Junior Software Engineer",
       company: "Elementix Software Ventures LLC",
       date: "Dec 2025 - Present",
-      description: [],
+      description: [
+        "Contributing to projects using JavaScript, TypeScript, Python, Next.js, Jest etc",
+      ],
       icon: Briefcase,
     },
     {
@@ -27,12 +29,9 @@ export const Experience = () => {
       company: "Makebell",
       date: "Oct 2025 - Nov 2025",
       description: [
-        "Developed robust web scraping and automation solutions using Python and Selenium, enabling efficient data extraction from diverse sources.",
         "Designed and implemented scalable microservices with Python, FastAPI, and PostgreSQL, promoting modularity and performance.",
-        "Created and maintained comprehensive unit and end-to-end tests with Pytest, ensuring code quality and reliability throughout the development lifecycle.",
-        "Built advanced Retrieval-Augmented Generation (RAG) systems integrating vector databases and LLMs (OpenAI, DeepSeek, Gemini) to enhance information retrieval.",
-        "Engineered automated PDF  extraction and data formatting tools, improving document processing efficiency and accuracy.",
         "Refactored and migrated complex business logic from Flask to FastAPI applications, resulting in improved maintainability and system performance.",
+        "Developed robust web scraping and automation solutions using Python and Selenium, enabling efficient data extraction from diverse sources.",
       ],
       icon: Briefcase,
     },
