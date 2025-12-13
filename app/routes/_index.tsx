@@ -9,8 +9,42 @@ import { Contact } from "~/components/GetInTouch";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Home | Robiul Hossain" },
-    { name: "description", content: "Learn more about Robiul Hossain." },
+    { title: "Robiul Hossain | Software Engineer" },
+    {
+      name: "description",
+      content:
+        "Portfolio of Robiul Hossain, a software engineer and full-stack developer specializing in scalable, secure, and high-performance web applications with JavaScript, TypeScript and Python",
+    },
+
+    // Basic SEO helpers
+    { name: "author", content: "Robiul Hossain" },
+    {
+      name: "keywords",
+      content:
+        "Robiul Hossain, software engineer, full-stack developer, TypeScript, React, Node.js, NestJS, Next.js, AWS, PostgreSQL, portfolio",
+    },
+
+    // Open Graph (for social previews)
+    { property: "og:title", content: "Robiul Hossain | Software Engineer" },
+    {
+      property: "og:description",
+      content:
+        "Explore the portfolio of Robiul Hossain, a software engineer and full-stack developer building scalable, secure, and high-performance web applications.",
+    },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: "https://your-domain.com" },
+    { property: "og:image", content: "https://your-domain.com/og-image.jpg" },
+
+    // Twitter Card
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: "Robiul Hossain | Software Engineer" },
+    {
+      name: "twitter:description",
+      content:
+        "Software engineer and full-stack developer building scalable, secure, and high-performance web applications.",
+    },
+    { name: "twitter:image", content: "https://your-domain.com/og-image.jpg" },
+    { name: "twitter:site", content: "@your_twitter_handle" },
   ];
 };
 
