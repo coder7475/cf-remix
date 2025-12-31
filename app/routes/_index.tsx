@@ -32,8 +32,8 @@ export const meta: MetaFunction = () => {
         "Explore the portfolio of Robiul Hossain, a software engineer and full-stack developer building scalable, secure, and high-performance web applications.",
     },
     { property: "og:type", content: "website" },
-    { property: "og:url", content: "https://your-domain.com" },
-    { property: "og:image", content: "https://your-domain.com/og-image.jpg" },
+    { property: "og:url", content: "https://robiulhossain.com" },
+    { property: "og:image", content: "https://robiulhossain.com/og-image.jpg" },
 
     // Twitter Card
     { name: "twitter:card", content: "summary_large_image" },
@@ -43,8 +43,8 @@ export const meta: MetaFunction = () => {
       content:
         "Software engineer and full-stack developer building scalable, secure, and high-performance web applications.",
     },
-    { name: "twitter:image", content: "https://your-domain.com/og-image.jpg" },
-    { name: "twitter:site", content: "@your_twitter_handle" },
+    { name: "twitter:image", content: "https://robiulhossain.com/og-image.jpg" },
+    { name: "twitter:site", content: "@robiul7475" },
   ];
 };
 
