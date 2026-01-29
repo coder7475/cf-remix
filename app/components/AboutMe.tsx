@@ -24,10 +24,9 @@ export const AboutMe = () => {
   }, []);
 
   return (
-    <section id="about" ref={sectionRef} className="py-20 md:py-32">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-center gap-12 md:gap-16">
+    <section id="about" ref={sectionRef} className="py-20 md:py-28">
+      <div className="max-w-5xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-center gap-12 md:gap-16">
             {/* About Text */}
             <div className="md:w-3/5">
               <h2
@@ -41,7 +40,7 @@ export const AboutMe = () => {
 
               <div
                 className={cn(
-                  "space-y-4 text-muted-foreground font-display",
+                  "space-y-4 text-muted-foreground font-display text-sm sm:text-base leading-relaxed",
                   isVisible ? "animate-slide-in" : "opacity-0"
                 )}
                 style={{ animationDelay: "0.1s" }}
@@ -93,22 +92,36 @@ export const AboutMe = () => {
               )}
               style={{ animationDelay: "0.2s" }}
             >
-              <div className="relative">
-                <div className="rounded-lg glass-morphism p-1 max-w-xs">
-                  <div className="aspect-square rounded overflow-hidden bg-secondary">
-                    <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm">
-                      <img
-                        src="/profile.png"
-                        alt="Robiul Hossain"
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
+              <div className="relative w-64 sm:w-72">
+                <div className="absolute -left-10 -top-6 h-32 w-32 rounded-full bg-emerald-400/25 blur-3xl" />
+                <div className="absolute -right-6 bottom-0 h-24 w-24 rounded-full bg-emerald-400/15 blur-3xl" />
+
+                <div className="relative rounded-[1.75rem] glass-morphism border-emerald-400/25 bg-slate-900/60 p-3 shadow-[0_18px_60px_rgba(0,0,0,0.9)]">
+                  <div className="aspect-[4/5] overflow-hidden rounded-[1.5rem] bg-gradient-to-b from-slate-900 via-slate-900/70 to-slate-950">
+                    <img
+                      src="/profile.png"
+                      alt="Robiul Hossain"
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div className="mt-4 flex items-center justify-between gap-3">
+                    <div className="space-y-0.5">
+                      <p className="text-[0.7rem] font-mono uppercase tracking-[0.2em] text-emerald-200/80">
+                        Role
+                      </p>
+                      <p className="text-sm font-semibold text-slate-50">
+                        Software Engineer
+                      </p>
+                    </div>
+                    <div className="rounded-full border border-emerald-400/40 bg-slate-950/70 px-3 py-1 text-[0.7rem] font-mono text-emerald-100/80">
+                      Architect in progress
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </section>

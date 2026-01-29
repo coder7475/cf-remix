@@ -1,11 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import { cn } from "~/libs/utils";
 import { Mail, Github, Linkedin, Twitter, Youtube, Users } from "lucide-react";
-import { Link } from "@remix-run/react";
+import { Form, Link, useActionData, useNavigation } from "@remix-run/react";
 
 export const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+
+  const actionData = useActionData<{
+    success?: boolean;
+    error?: string;
+  }>();
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
 
   // Contact form state
   const [form, setForm] = useState({
@@ -16,7 +23,6 @@ export const Contact = () => {
   const [formStatus, setFormStatus] = useState<null | "success" | "error">(
     null
   );
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,49 +42,30 @@ export const Contact = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Simple client-side form handler that opens mailto
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormStatus(null);
+  useEffect(() => {
+    if (!actionData) return;
 
-    if (!form.name || !form.email || !form.message) {
-      setFormStatus("error");
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    // Construct mailto link
-    const subject = `Contact from ${form.name}`;
-    // Use CRLF for newlines in mailto body for better compatibility
-    const body = `Name: ${form.name}\r\nEmail: ${form.email}\r\n\r\n${form.message}`;
-    const mailto = `mailto:contact@robiulhossain.com?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-
-    window.location.href = mailto;
-
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setFormStatus("success");
+    if (actionData.success) {
       setForm({ name: "", email: "", message: "" });
-    }, 500);
-  };
+      setFormStatus("success");
+    } else if (actionData.error) {
+      setFormStatus("error");
+    }
+  }, [actionData]);
 
   return (
     <section
       id="contact"
       ref={sectionRef}
-      className="py-20 md:py-32 bg-secondary/30"
+      className="py-20 md:py-28"
     >
-      <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto">
+      <div className="max-w-5xl mx-auto">
           <h2
             className={cn(
               "text-3xl md:text-4xl font-display font-bold mb-6 tracking-tight text-center",
@@ -103,7 +90,7 @@ export const Contact = () => {
             {/* Contact Information */}
             <div
               className={cn(
-                "glass-morphism rounded-lg p-8 max-w-md w-full space-y-8",
+                "glass-morphism rounded-2xl p-8 max-w-md w-full space-y-8 bg-slate-950/70 border-emerald-400/15",
                 isVisible ? "animate-slide-in" : "opacity-0"
               )}
               style={{ animationDelay: "0.2s" }}
@@ -191,10 +178,10 @@ export const Contact = () => {
             </div>
 
             {/* Contact Form */}
-            <form
-              onSubmit={handleSubmit}
+            <Form
+              method="post"
               className={cn(
-                "glass-morphism rounded-lg p-8 max-w-md w-full space-y-6",
+                "glass-morphism rounded-2xl p-8 max-w-md w-full space-y-6 bg-slate-950/70 border-emerald-400/15",
                 isVisible ? "animate-slide-in" : "opacity-0"
               )}
               style={{ animationDelay: "0.3s" }}
@@ -271,19 +258,18 @@ export const Contact = () => {
               </button>
               {formStatus === "success" && (
                 <p className="text-green-600 text-sm font-mono text-center mt-2">
-                  Your email client should have opened. If not, please email me
-                  directly!
+                    Message sent successfully! I will get back to you soon.
                 </p>
               )}
               {formStatus === "error" && (
                 <p className="text-red-600 text-sm font-mono text-center mt-2">
-                  Please fill in all fields.
+                  Something went wrong. Please check the fields and try again, or
+                  email me directly.
                 </p>
               )}
-            </form>
+            </Form>
           </div>
         </div>
-      </div>
     </section>
   );
 };

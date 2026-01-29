@@ -12,6 +12,7 @@ A modern portfolio website built with **Remix** and deployed on **Cloudflare Pag
 - 🎯 **TypeScript**: Full type safety throughout the application
 - 🎭 **Interactive Components**: Toast notifications and smooth animations
 - 📊 **Portfolio Sections**: About, Experience, Projects, Skills, Blog, and Contact pages
+- ✉️ **Contact Form Emailing**: Server-side contact form powered by Resend for reliable email delivery
 
 ## 🛠️ Tech Stack
 
@@ -163,13 +164,26 @@ The project uses a custom Tailwind CSS setup with:
 
 ### Environment Variables
 
-Create a `.env` file in the root directory for local development:
+For local development you can use a `.env` file (or your preferred secret management solution), and for production you should configure environment variables in your **Cloudflare Pages** project settings.
+
+Required variables for the contact email service:
 
 ```env
-# Add your environment variables here
-# CLOUDFLARE_API_TOKEN=your_api_token
-# CLOUDFLARE_ACCOUNT_ID=your_account_id
+# Resend API key used to send contact form emails
+RESEND_API_KEY=your_resend_api_key
+
+# Email address that will receive contact form submissions
+CONTACT_RECIPIENT_EMAIL=contact@yourdomain.com
 ```
+
+- In the Cloudflare Pages dashboard, add these as project environment variables (e.g. under “Production” and “Preview”).
+- The types for these bindings are defined in `worker-configuration.d.ts` and are accessed in Remix via `context.cloudflare.env`.
+
+The contact page (`app/routes/contact.tsx`) exposes a Remix `action` that:
+
+- Validates `name`, `email`, and `message` from the contact form
+- Calls the **Resend** API using `RESEND_API_KEY` to send an email to `CONTACT_RECIPIENT_EMAIL`
+- Returns a small JSON payload consumed by the `Contact` component (`GetInTouch.tsx`) to show success/error states
 
 ### Wrangler Configuration
 
@@ -177,7 +191,7 @@ The `wrangler.toml` file configures Cloudflare Workers settings:
 
 ```toml
 name = "cf-remix"
-compatibility_date = "2024-02-20"
+compatibility_date = "2025-02-14"
 
 [site]
 bucket = "./build/client"

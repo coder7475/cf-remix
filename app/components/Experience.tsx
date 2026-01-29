@@ -96,10 +96,9 @@ export const Experience = () => {
     <section
       id="experience"
       ref={sectionRef}
-      className="py-20 md:py-32 bg-secondary/30"
+      className="py-20 md:py-28"
     >
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
           <h2
             className={cn(
               "text-3xl md:text-4xl font-display font-bold mb-12 tracking-tight text-center",
@@ -111,21 +110,21 @@ export const Experience = () => {
 
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 top-0 h-full w-px bg-border"></div>
+            <div className="absolute left-3 md:left-1/2 transform md:-translate-x-1/2 top-0 h-full w-px bg-gradient-to-b from-emerald-400/40 via-emerald-400/10 to-transparent" />
 
             <div className="space-y-12">
               {experiences.map((item, index) => (
                 <div
                   key={index}
                   className={cn(
-                    "relative flex flex-col md:flex-row items-center", // <-- make one line middle
+                    "relative flex flex-col md:flex-row items-center",
                     isVisible ? "animate-slide-in" : "opacity-0"
                   )}
                   style={{ animationDelay: `${0.1 + index * 0.1}s` }}
                 >
-                  {/* Timeline dot */}
-                  <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-10 h-10 rounded-full bg-secondary border-2 border-primary flex items-center justify-center z-10">
-                    <item.icon className="w-5 h-5 text-primary" />
+                  {/* Timeline node */}
+                  <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-10 h-10 rounded-full bg-slate-950 border border-emerald-400/60 shadow-[0_0_0_6px_rgba(52,211,153,0.14)] flex items-center justify-center z-10">
+                    <item.icon className="w-5 h-5 text-emerald-300" />
                   </div>
 
                   {/* Content */}
@@ -133,15 +132,17 @@ export const Experience = () => {
                     {index % 2 === 0 ? (
                       <div className="hidden md:block"></div>
                     ) : (
-                      <div className="glass-morphism rounded-lg p-6 space-y-3">
-                        <h3 className="text-xl font-bold">{item.title}</h3>
-                        <p className="text-primary font-medium">
+                      <div className="glass-morphism rounded-2xl p-6 space-y-3 border-emerald-400/20 bg-slate-950/60">
+                        <h3 className="text-lg md:text-xl font-semibold text-slate-50">
+                          {item.title}
+                        </h3>
+                        <p className="text-emerald-300 font-medium text-sm">
                           {item.company}
                         </p>
-                        <p className="text-muted-foreground text-sm">
+                        <p className="text-muted-foreground text-xs sm:text-sm">
                           {item.date}
                         </p>
-                        <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                        <ul className="list-disc list-inside space-y-1 text-xs sm:text-sm text-muted-foreground">
                           {item.description.map((desc, i) => (
                             <li key={i}>{desc}</li>
                           ))}
@@ -152,15 +153,17 @@ export const Experience = () => {
 
                   <div className="md:w-1/2 md:pl-12 ml-16 md:ml-0 mt-4 md:mt-0 font-mono">
                     {index % 2 === 0 ? (
-                      <div className="glass-morphism rounded-lg p-6 space-y-3 text-left">
-                        <h3 className="text-xl font-bold">{item.title}</h3>
-                        <p className="text-primary font-medium">
+                      <div className="glass-morphism rounded-2xl p-6 space-y-3 text-left border-emerald-400/20 bg-slate-950/60">
+                        <h3 className="text-lg md:text-xl font-semibold text-slate-50">
+                          {item.title}
+                        </h3>
+                        <p className="text-emerald-300 font-medium text-sm">
                           {item.company}
                         </p>
-                        <p className="text-muted-foreground text-sm">
+                        <p className="text-muted-foreground text-xs sm:text-sm">
                           {item.date}
                         </p>
-                        <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground font-display">
+                        <ul className="list-disc list-inside space-y-1 text-xs sm:text-sm text-muted-foreground font-display">
                           {item.description.map((desc, i) => (
                             <li key={i}>{desc}</li>
                           ))}
@@ -175,7 +178,6 @@ export const Experience = () => {
             </div>
           </div>
         </div>
-      </div>
     </section>
   );
 };

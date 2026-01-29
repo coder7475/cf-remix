@@ -90,9 +90,8 @@ export const Blog = () => {
   };
 
   return (
-    <section id="blog" ref={sectionRef} className="py-20 md:py-32">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+    <section id="blog" ref={sectionRef} className="py-20 md:py-28">
+      <div className="max-w-5xl mx-auto">
           <h2
             className={cn(
               "text-3xl md:text-4xl font-display font-bold mb-6 tracking-tight text-center",
@@ -118,7 +117,7 @@ export const Blog = () => {
                 <div
                   key={index}
                   className={cn(
-                    "block glass-morphism rounded-lg p-6 h-40 animate-pulse",
+                    "block glass-morphism rounded-2xl p-6 h-40 animate-pulse bg-slate-950/70 border-emerald-400/10",
                     isVisible ? "animate-slide-in" : "opacity-0"
                   )}
                   style={{ animationDelay: `${0.2 + index * 0.1}s` }}
@@ -143,7 +142,7 @@ export const Blog = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cn(
-                    "flex flex-col md:flex-row glass-morphism rounded-lg overflow-hidden hover:border-primary/50 transition-colors",
+                    "flex flex-col md:flex-row glass-morphism rounded-2xl overflow-hidden hover:border-emerald-400/40 transition-colors bg-slate-950/70 border-emerald-400/15",
                     isVisible ? "animate-slide-in" : "opacity-0"
                   )}
                   style={{ animationDelay: `${0.2 + index * 0.1}s` }}
@@ -210,7 +209,6 @@ export const Blog = () => {
             </Link>
           </div>
         </div>
-      </div>
     </section>
   );
 };

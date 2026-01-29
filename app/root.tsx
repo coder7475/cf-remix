@@ -1,4 +1,5 @@
 import type { MetaFunction, LinksFunction } from "@remix-run/cloudflare";
+import { useEffect } from "react";
 
 import {
   Links,
@@ -12,9 +13,15 @@ import {
 import "./tailwind.css";
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
+import { BackToTopButton } from "./components/BackToTopButton";
 
 export const links: LinksFunction = () => [
   { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+  {
+    rel: "icon",
+    type: "image/svg+xml",
+    href: "/logo.svg",
+  },
   {
     rel: "icon",
     type: "image/png",
@@ -74,7 +81,9 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export function Layout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <head>
@@ -84,16 +93,30 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className="page-shell">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:rounded-md focus:bg-slate-900 focus:text-emerald-200 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+        >
+          Skip to main content
+        </a>
         <div className="absolute inset-x-0 top-0 h-64 pointer-events-none opacity-70">
           <div className="mx-auto h-full max-w-6xl relative">
-            <div className="absolute -left-40 top-8 w-80 h-80 rounded-full bg-cyan-400/20 blur-3xl" />
-            <div className="absolute right-0 top-0 w-80 h-80 rounded-full bg-cyan-400/10 blur-3xl" />
+            <div className="absolute -left-40 top-8 w-80 h-80 rounded-full bg-emerald-400/20 blur-3xl" />
+            <div className="absolute right-0 top-0 w-80 h-80 rounded-full bg-emerald-400/10 blur-3xl" />
           </div>
         </div>
 
         <Navbar />
-        <main className="page-inner pb-24 pt-6">{children}</main>
+        <main
+          id="main-content"
+          className="page-inner pb-24 pt-6"
+          tabIndex={-1}
+          role="main"
+        >
+          {children}
+        </main>
         <Footer />
+        <BackToTopButton />
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -102,6 +125,65 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 function App() {
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.defaultPrevented) return;
+
+      const target = event.target as HTMLElement | null;
+      const isTypingElement =
+        target &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.tagName === "SELECT" ||
+          target.isContentEditable);
+
+      if (isTypingElement) return;
+
+      const viewportHeight =
+        globalThis.innerHeight || document.documentElement?.clientHeight || 0;
+
+      let deltaY = 0;
+
+      switch (event.key) {
+        case "PageDown":
+          deltaY = viewportHeight * 0.9;
+          break;
+        case "PageUp":
+          deltaY = -viewportHeight * 0.9;
+          break;
+        case " ":
+          deltaY = event.shiftKey ? -viewportHeight * 0.9 : viewportHeight * 0.9;
+          break;
+        case "ArrowDown":
+          deltaY = 160;
+          break;
+        case "ArrowUp":
+          deltaY = -160;
+          break;
+        default:
+          return;
+      }
+
+      event.preventDefault();
+
+      globalThis.scrollBy?.({
+        top: deltaY,
+        behavior: "smooth",
+      });
+    };
+
+    globalThis.addEventListener("keydown", handleKeyDown as EventListener, {
+      passive: false,
+    });
+
+    return () => {
+      globalThis.removeEventListener(
+        "keydown",
+        handleKeyDown as EventListener,
+      );
+    };
+  }, []);
+
   return <Outlet />;
 }
 

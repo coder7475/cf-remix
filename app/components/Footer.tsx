@@ -5,8 +5,8 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-12 border-t border-border/50">
-      <div className="container mx-auto px-4">
+    <footer className="py-10 border-t border-emerald-400/20 mt-10">
+      <div className="max-w-6xl mx-auto px-4">
         <div className="flex flex-col items-center md:flex-row md:justify-between md:items-center gap-8">
           {/* Left: Logo and Title */}
           <div className="flex flex-col items-center md:items-start">
@@ -15,7 +15,7 @@ export const Footer = () => {
               className="font-display text-xl font-bold tracking-tight flex items-center"
             >
               <img
-                src="/favicon-32x32.png"
+                src="/logo.svg"
                 alt="Logo"
                 className="inline-block w-8 h-8 mr-2 align-middle"
               />

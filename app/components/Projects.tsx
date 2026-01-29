@@ -69,10 +69,9 @@ export const Projects = () => {
     <section
       id="projects"
       ref={sectionRef}
-      className="py-20 md:py-32 bg-secondary/30 font-display"
+      className="py-20 md:py-28 font-display"
     >
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto">
           <h2
             className={cn(
               "text-3xl md:text-4xl font-display font-bold mb-6 tracking-tight text-center",
@@ -95,10 +94,10 @@ export const Projects = () => {
           {/* Improved grid: responsive, min-h for card, flex col for card content */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
             {paginatedProjects.map((project, index) => (
-              <div
+            <div
                 key={project.title}
                 className={cn(
-                  "glass-morphism rounded-lg overflow-hidden group hover:border-primary/50 transition-colors flex flex-col h-full min-h-[370px]",
+                  "glass-morphism rounded-2xl overflow-hidden group hover:border-emerald-400/40 transition-colors flex flex-col h-full min-h-[370px] bg-slate-950/70 border-emerald-400/15",
                   isVisible ? "animate-slide-in" : "opacity-0"
                 )}
                 style={{ animationDelay: `${0.2 + index * 0.1}s` }}
@@ -134,11 +133,11 @@ export const Projects = () => {
                   {/* Push links to bottom */}
                   <div className="flex gap-4 mt-auto">
                     {project.githubUrl && (
-                      <Link
+                    <Link
                         to={project.githubUrl}
                         className={cn(
-                          "flex items-center gap-2 text-sm font-semibold px-3 py-2 rounded border border-muted-foreground/30 bg-muted/40 text-muted-foreground shadow-sm transition-all duration-200",
-                          "hover:bg-primary/10 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary/40"
+                          "flex items-center gap-2 text-sm font-semibold px-3 py-2 rounded-full border border-slate-600/80 bg-slate-900/80 text-slate-100 shadow-[0_10px_30px_rgba(15,23,42,0.9)] transition-all duration-200",
+                          "hover:border-emerald-400/60 hover:text-emerald-100 focus:outline-none focus:ring-2 focus:ring-emerald-300/60 focus:ring-offset-2 focus:ring-offset-slate-950"
                         )}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -151,11 +150,11 @@ export const Projects = () => {
                       </Link>
                     )}
                     {project.liveUrl && (
-                      <Link
+                    <Link
                         to={project.liveUrl}
                         className={cn(
-                          "flex items-center gap-2 text-sm font-semibold px-3 py-2 rounded border border-primary bg-primary/5 text-primary shadow-sm transition-all duration-200",
-                          "hover:bg-primary/10 hover:text-primary-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+                          "flex items-center gap-2 text-sm font-semibold px-3 py-2 rounded-full border border-emerald-400/70 bg-emerald-400/10 text-emerald-100 shadow-[0_16px_40px_rgba(52,211,153,0.4)] transition-all duration-200",
+                          "hover:bg-emerald-400 hover:text-slate-950 focus:outline-none focus:ring-2 focus:ring-emerald-300/80 focus:ring-offset-2 focus:ring-offset-slate-950"
                         )}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -214,7 +213,6 @@ export const Projects = () => {
             </div>
           )}
         </div>
-      </div>
     </section>
   );
 };

@@ -25,9 +25,8 @@ export const Skills = () => {
   }, []);
 
   return (
-    <section id="skills" ref={sectionRef} className="py-20 md:py-32">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+    <section id="skills" ref={sectionRef} className="py-20 md:py-28">
+      <div className="max-w-5xl mx-auto">
           <h2
             className={cn(
               "text-3xl md:text-4xl font-display font-bold mb-16 tracking-tight text-center",
@@ -42,7 +41,7 @@ export const Skills = () => {
               <div
                 key={category.name}
                 className={cn(
-                  "glass-morphism rounded-lg py-6",
+                  "glass-morphism rounded-2xl py-6 bg-slate-950/70 border-emerald-400/15",
                   isVisible ? "animate-slide-in" : "opacity-0"
                 )}
                 style={{ animationDelay: `${0.1 + categoryIndex * 0.1}s` }}
@@ -54,12 +53,12 @@ export const Skills = () => {
                   {category.skills.map((skill, skillIndex) => {
                     const IconComponent = skill.icon;
                     return (
-                      <div
-                        key={skill.name}
-                        className={cn(
-                          "flex flex-col items-center p-4 rounded-lg bg-secondary/20 hover:bg-secondary/30 transition-colors",
-                          isVisible ? "animate-slide-in" : "opacity-0"
-                        )}
+                        <div
+                          key={skill.name}
+                          className={cn(
+                            "flex flex-col items-center p-4 rounded-xl bg-slate-900/70 hover:bg-slate-900 transition-colors border border-slate-700/70 hover:border-emerald-400/50 shadow-[0_14px_40px_rgba(15,23,42,0.9)]",
+                            isVisible ? "animate-slide-in" : "opacity-0"
+                          )}
                         style={{
                           animationDelay: `${
                             0.2 + categoryIndex * 0.1 + skillIndex * 0.05
@@ -80,7 +79,7 @@ export const Skills = () => {
 
           <div
             className={cn(
-              "mt-16 glass-morphism rounded-lg p-8 font-display",
+              "mt-16 glass-morphism rounded-2xl p-8 font-display bg-slate-950/70 border-emerald-400/15",
               isVisible ? "animate-slide-in" : "opacity-0"
             )}
             style={{ animationDelay: "0.5s" }}
@@ -104,7 +103,6 @@ export const Skills = () => {
             </div>
           </div>
         </div>
-      </div>
     </section>
   );
 };

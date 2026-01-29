@@ -13,37 +13,37 @@
     --card-foreground: 0 0% 98%;
     --popover: 210 25% 6%;
     --popover-foreground: 0 0% 98%;
-    /* Cyan accent inspired by portfolio.svg (#06F9F9) */
-    --primary: 180 95% 50%;
+    /* Green accent inspired by emerald tones */
+    --primary: 140 77% 48%;
     --primary-foreground: 210 40% 8%;
     --secondary: 210 20% 10%;
     --secondary-foreground: 0 0% 98%;
     --muted: 210 20% 12%;
     --muted-foreground: 220 10% 70%;
-    --accent: 180 95% 50%;
+    --accent: 140 77% 48%;
     --accent-foreground: 210 40% 8%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 216 100% 65%;
+    --ring: 140 77% 48%;
     --radius: 0.75rem;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 216 100% 65%;
+    --sidebar-primary: 140 77% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 216 100% 65%;
+    --sidebar-ring: 140 77% 48%;
   }
 }
 
 @layer base {
   * {
-    @apply border-border selection:bg-accent/10 selection:text-accent;
+    @apply selection:bg-accent/10 selection:text-accent;
   }
-  
+
   body {
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
@@ -65,7 +65,7 @@
   }
 
   .glass-morphism {
-    @apply backdrop-blur-2xl bg-white/5 border border-cyan-400/10 shadow-[0_20px_80px_rgba(0,0,0,0.65)];
+    @apply backdrop-blur-2xl bg-white/5 border border-emerald-400/10 shadow-[0_20px_80px_rgba(0,0,0,0.65)];
   }
   
   .neo-blur {
@@ -83,9 +83,9 @@
   .page-shell {
     @apply min-h-screen bg-[#020617] text-foreground relative overflow-hidden;
     background-image:
-      radial-gradient(circle at 0% 16%, rgba(6, 249, 249, 0.18) 0, transparent 55%),
-      radial-gradient(circle at 100% 28%, rgba(6, 249, 249, 0.12) 0, transparent 55%),
-      radial-gradient(circle at 0% 60%, rgba(6, 249, 249, 0.09) 0, transparent 55%);
+      radial-gradient(circle at 0% 16%, rgba(52, 211, 153, 0.18) 0, transparent 55%),
+      radial-gradient(circle at 100% 28%, rgba(52, 211, 153, 0.12) 0, transparent 55%),
+      radial-gradient(circle at 0% 60%, rgba(52, 211, 153, 0.09) 0, transparent 55%);
   }
 
   .page-inner {
