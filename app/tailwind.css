@@ -7,20 +7,21 @@
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
+    --background: 210 25% 4%;
     --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
+    --card: 210 25% 6%;
     --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
+    --popover: 210 25% 6%;
     --popover-foreground: 0 0% 98%;
-    --primary: 216 100% 65%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 240 3.7% 15.9%;
+    /* Cyan accent inspired by portfolio.svg (#06F9F9) */
+    --primary: 180 95% 50%;
+    --primary-foreground: 210 40% 8%;
+    --secondary: 210 20% 10%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 216 100% 65%;
-    --accent-foreground: 0 0% 98%;
+    --muted: 210 20% 12%;
+    --muted-foreground: 220 10% 70%;
+    --accent: 180 95% 50%;
+    --accent-foreground: 210 40% 8%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 240 3.7% 15.9%;
@@ -64,7 +65,7 @@
   }
 
   .glass-morphism {
-    @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3)];
+    @apply backdrop-blur-2xl bg-white/5 border border-cyan-400/10 shadow-[0_20px_80px_rgba(0,0,0,0.65)];
   }
   
   .neo-blur {
@@ -77,5 +78,17 @@
   
   .text-gradient-primary {
     @apply bg-gradient-to-br from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent;
+  }
+
+  .page-shell {
+    @apply min-h-screen bg-[#020617] text-foreground relative overflow-hidden;
+    background-image:
+      radial-gradient(circle at 0% 16%, rgba(6, 249, 249, 0.18) 0, transparent 55%),
+      radial-gradient(circle at 100% 28%, rgba(6, 249, 249, 0.12) 0, transparent 55%),
+      radial-gradient(circle at 0% 60%, rgba(6, 249, 249, 0.09) 0, transparent 55%);
+  }
+
+  .page-inner {
+    @apply relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 }

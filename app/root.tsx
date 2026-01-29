@@ -83,9 +83,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="page-shell">
+        <div className="absolute inset-x-0 top-0 h-64 pointer-events-none opacity-70">
+          <div className="mx-auto h-full max-w-6xl relative">
+            <div className="absolute -left-40 top-8 w-80 h-80 rounded-full bg-cyan-400/20 blur-3xl" />
+            <div className="absolute right-0 top-0 w-80 h-80 rounded-full bg-cyan-400/10 blur-3xl" />
+          </div>
+        </div>
+
         <Navbar />
-        {children}
+        <main className="page-inner pb-24 pt-6">{children}</main>
         <Footer />
         <ScrollRestoration />
         <Scripts />
