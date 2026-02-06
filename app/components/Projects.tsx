@@ -1,17 +1,17 @@
-import { useState, useEffect, useRef } from "react";
+import { memo, useState, useCallback } from "react";
 import { ExternalLink, Github, CheckCircle } from "lucide-react";
 import { cn } from "~/libs/utils";
 import { Link } from "@remix-run/react";
 import { projects } from "~/constants";
+import { useIntersectionObserver } from "~/hooks/useIntersectionObserver";
 
 const PROJECTS_PER_PAGE = 4;
 
-// Status badge component
+// Status badge component - extracted for reusability
 const StatusBadge = ({ status }: { status: "in-progress" | "finished" }) => {
   if (status === "in-progress") {
     return (
       <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-yellow-100 text-yellow-800 text-xs font-semibold border border-yellow-300">
-        {/* <Loader2 className="w-3 h-3 animate-spin" /> */}
         Ongoing
       </span>
     );
@@ -24,46 +24,27 @@ const StatusBadge = ({ status }: { status: "in-progress" | "finished" }) => {
   );
 };
 
-export const Projects = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+export const Projects = memo(function Projects() {
+  const [isVisible, sectionRef] = useIntersectionObserver({ threshold: 0.1 });
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(projects.length / PROJECTS_PER_PAGE);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
+  const handlePrev = useCallback(() => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
   }, []);
+
+  const handleNext = useCallback(() => {
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  }, [totalPages]);
 
   // Get projects for current page
   const paginatedProjects = projects.slice(
     (currentPage - 1) * PROJECTS_PER_PAGE,
     currentPage * PROJECTS_PER_PAGE
   );
-
-  const handlePrev = () => {
-    setCurrentPage((prev) => Math.max(prev - 1, 1));
-  };
-
-  const handleNext = () => {
-    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
-  };
 
   return (
     <section
@@ -215,4 +196,4 @@ export const Projects = () => {
         </div>
     </section>
   );
-};
+});

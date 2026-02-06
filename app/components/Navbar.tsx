@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-
+import { useState, useEffect, useCallback } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "~/libs/utils";
 import { Link } from "@remix-run/react";
@@ -17,18 +16,19 @@ export const Navbar = () => {
     { name: "Contact", href: "/#contact" },
   ];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+  const handleScroll = useCallback(() => {
+    if (window.scrollY > 10) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
   }, []);
+
+  useEffect(() => {
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
 
   useEffect(() => {
     if (!isMobileMenuOpen) return;
@@ -65,6 +65,8 @@ export const Navbar = () => {
             src="/logo.svg"
             alt="Logo"
             className="inline-block w-8 h-8 align-middle"
+            width="32"
+            height="32"
           />
           <span className="ml-2">Robiul Hossain</span>
         </Link>

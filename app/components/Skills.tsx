@@ -1,28 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { memo } from "react";
 import { additionalSkills, categories } from "~/constants/skillsConstants";
+import { useIntersectionObserver } from "~/hooks/useIntersectionObserver";
 import { cn } from "~/libs/utils";
 
-export const Skills = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+export const Skills = memo(function Skills() {
+  const [isVisible, sectionRef] = useIntersectionObserver({ threshold: 0.1 });
 
   return (
     <section id="skills" ref={sectionRef} className="py-20 md:py-28">
@@ -105,4 +87,4 @@ export const Skills = () => {
         </div>
     </section>
   );
-};
+});

@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+import { memo } from "react";
 import { cn } from "~/libs/utils";
 import { Briefcase } from "lucide-react";
+import { useIntersectionObserver } from "~/hooks/useIntersectionObserver";
 
 interface ExperienceItem {
   title: string;
@@ -10,9 +11,8 @@ interface ExperienceItem {
   icon: typeof Briefcase;
 }
 
-export const Experience = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+export const Experience = memo(function Experience() {
+  const [isVisible, sectionRef] = useIntersectionObserver({ threshold: 0.1 });
 
   const experiences: ExperienceItem[] = [
     {
@@ -73,24 +73,6 @@ export const Experience = () => {
       icon: Briefcase,
     },
   ];
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <section
@@ -180,4 +162,4 @@ export const Experience = () => {
         </div>
     </section>
   );
-};
+});

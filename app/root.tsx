@@ -1,5 +1,5 @@
 import type { MetaFunction, LinksFunction } from "@remix-run/cloudflare";
-import { useEffect } from "react";
+import { lazy, Suspense } from "react";
 
 import {
   Links,
@@ -12,8 +12,10 @@ import {
 
 import "./tailwind.css";
 import { Footer } from "./components/Footer";
-import { Navbar } from "./components/Navbar";
 import { BackToTopButton } from "./components/BackToTopButton";
+import { useKeyboardScroll } from "./hooks/useScrollVisibility";
+
+const Navbar = lazy(() => import("~/components/Navbar").then((mod) => ({ default: mod.Navbar })));
 
 export const links: LinksFunction = () => [
   { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
@@ -55,29 +57,25 @@ export const meta: MetaFunction = () => {
       content:
         "Robiul Hossain's personal portfolio showcasing projects, blog posts, and skills in web development, DevOps, and system design.",
     },
-
-    // Open Graph (for Facebook, LinkedIn, etc.)
     { property: "og:title", content: "Robiul Hossain | Software Engineer" },
     {
       property: "og:description",
       content:
-        "Explore Robiul Hossain’s portfolio, featuring projects and experience in MERN stack, DevOps, and more.",
+        "Explore Robiul Hossain's portfolio, featuring projects and experience in MERN stack, DevOps, and more.",
     },
     { property: "og:type", content: "website" },
-    { property: "og:url", content: "https://robiulhossain.com" }, // update with actual domain
-    { property: "og:image", content: "https://robiulhossain.com/profile.png" }, // optional image
+    { property: "og:url", content: "https://robiulhossain.com" },
+    { property: "og:image", content: "https://robiulhossain.com/profile.png" },
     { property: "og:site_name", content: "Robiul Hossain Portfolio" },
     { property: "og:locale", content: "en_US" },
-
-    // Twitter Card
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: "Robiul Hossain | Software Engineer" },
     {
       name: "twitter:description",
       content:
-        "Visit Robiul Hossain’s portfolio to see projects, skills, and experience in modern web development.",
+        "Visit Robiul Hossain's portfolio to see projects, skills, and experience in modern web development.",
     },
-    { name: "twitter:image", content: "https://x.com/robiul7475/photo" }, // optional image
+    { name: "twitter:image", content: "https://x.com/robiul7475/photo" },
   ];
 };
 
@@ -106,7 +104,9 @@ export function Layout({
           </div>
         </div>
 
-        <Navbar />
+        <Suspense fallback={<div className="h-16" />}>
+          <Navbar />
+        </Suspense>
         <main
           id="main-content"
           className="page-inner pb-24 pt-6"
@@ -125,71 +125,15 @@ export function Layout({
 }
 
 function App() {
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.defaultPrevented) return;
-
-      const target = event.target as HTMLElement | null;
-      const isTypingElement =
-        target &&
-        (target.tagName === "INPUT" ||
-          target.tagName === "TEXTAREA" ||
-          target.tagName === "SELECT" ||
-          target.isContentEditable);
-
-      if (isTypingElement) return;
-
-      const viewportHeight =
-        globalThis.innerHeight || document.documentElement?.clientHeight || 0;
-
-      let deltaY = 0;
-
-      switch (event.key) {
-        case "PageDown":
-          deltaY = viewportHeight * 0.9;
-          break;
-        case "PageUp":
-          deltaY = -viewportHeight * 0.9;
-          break;
-        case " ":
-          deltaY = event.shiftKey ? -viewportHeight * 0.9 : viewportHeight * 0.9;
-          break;
-        case "ArrowDown":
-          deltaY = 160;
-          break;
-        case "ArrowUp":
-          deltaY = -160;
-          break;
-        default:
-          return;
-      }
-
-      event.preventDefault();
-
-      globalThis.scrollBy?.({
-        top: deltaY,
-        behavior: "smooth",
-      });
-    };
-
-    globalThis.addEventListener("keydown", handleKeyDown as EventListener, {
-      passive: false,
-    });
-
-    return () => {
-      globalThis.removeEventListener(
-        "keydown",
-        handleKeyDown as EventListener,
-      );
-    };
-  }, []);
+  // Optimized keyboard scroll with passive listeners
+  useKeyboardScroll();
 
   return <Outlet />;
 }
 
 export const ErrorBoundary = () => {
   const error = useRouteError();
-  captureRemixErrorBoundaryError(error); // keep/remove as needed
+  captureRemixErrorBoundaryError(error);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-950 px-4">

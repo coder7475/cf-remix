@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef } from "react";
+import { memo, useState, useEffect, useCallback } from "react";
 import { cn } from "~/libs/utils";
 import { Mail, Github, Linkedin, Twitter, Youtube, Users } from "lucide-react";
 import { Form, Link, useActionData, useNavigation } from "@remix-run/react";
+import { useIntersectionObserver } from "~/hooks/useIntersectionObserver";
 
-export const Contact = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+export const Contact = memo(function Contact() {
+  const [isVisible, sectionRef] = useIntersectionObserver({ threshold: 0.1 });
 
   const actionData = useActionData<{
     success?: boolean;
@@ -24,29 +24,12 @@ export const Contact = () => {
     null
   );
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setForm({ ...form, [e.target.name]: e.target.value });
+    },
+    [form]
+  );
 
   useEffect(() => {
     if (!actionData) return;
@@ -272,4 +255,4 @@ export const Contact = () => {
         </div>
     </section>
   );
-};
+});

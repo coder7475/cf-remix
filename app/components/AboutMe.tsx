@@ -1,27 +1,9 @@
-import { useState, useEffect, useRef } from "react";
+import { memo } from "react";
+import { useIntersectionObserver } from "~/hooks/useIntersectionObserver";
 import { cn } from "~/libs/utils";
 
-export const AboutMe = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+export const AboutMe = memo(function AboutMe() {
+  const [isVisible, sectionRef] = useIntersectionObserver({ threshold: 0.2 });
 
   return (
     <section id="about" ref={sectionRef} className="py-20 md:py-28">
@@ -46,24 +28,24 @@ export const AboutMe = () => {
                 style={{ animationDelay: "0.1s" }}
               >
                 <p>
-                  Assalamu Alaikum, I’m Robiul Hossain — a Software Engineer
+                  Assalamu Alaikum, I'm Robiul Hossain — a Software Engineer
                   with one and a half years of experience, specializing in
                   full-stack development.
                 </p>
 
                 <p>
-                  I’ve worked on SaaS products in the creator economy, including
+                  I've worked on SaaS products in the creator economy, including
                   a CMS powering 20+ free tools. My work spans implementing
                   secure authentication systems, RAG-based features, and
-                  scalable infrastructure across 10+ servers. I’ve also built
+                  scalable infrastructure across 10+ servers. I've also built
                   CI/CD pipelines, reverse proxies, monitoring setups, and
                   automated workflows to make development fast and reliable.
                 </p>
 
                 <p>
-                  Throughout my journey, I’ve worked with JavaScript,
+                  Throughout my journey, I've worked with JavaScript,
                   TypeScript, and Python — developing efficient, maintainable,
-                  and user-focused web applications. I’m passionate about system
+                  and user-focused web applications. I'm passionate about system
                   design, backend infrastructure, and building solutions that
                   scale gracefully.
                 </p>
@@ -103,6 +85,7 @@ export const AboutMe = () => {
                       alt="Robiul Hossain"
                       className="h-full w-full object-cover"
                       loading="lazy"
+                      decoding="async"
                     />
                   </div>
 
@@ -126,4 +109,4 @@ export const AboutMe = () => {
       </div>
     </section>
   );
-};
+});

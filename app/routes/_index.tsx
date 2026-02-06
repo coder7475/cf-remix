@@ -1,11 +1,24 @@
-import { AboutMe } from "~/components/AboutMe";
-import { Hero } from "~/components/Banner";
-
+import { lazy, Suspense, memo } from "react";
 import type { MetaFunction } from "@remix-run/cloudflare";
-import { Skills } from "~/components/Skills";
-import { Experience } from "~/components/Experience";
-import { Blog } from "~/components/Blog";
-import { Contact } from "~/components/GetInTouch";
+
+const Hero = lazy(() => import("~/components/Banner").then((mod) => ({ default: mod.Hero })));
+const AboutMe = lazy(() => import("~/components/AboutMe").then((mod) => ({ default: mod.AboutMe })));
+const Skills = lazy(() => import("~/components/Skills").then((mod) => ({ default: mod.Skills })));
+const Experience = lazy(() => import("~/components/Experience").then((mod) => ({ default: mod.Experience })));
+const Blog = lazy(() => import("~/components/Blog").then((mod) => ({ default: mod.Blog })));
+const Contact = lazy(() => import("~/components/GetInTouch").then((mod) => ({ default: mod.Contact })));
+
+// Loading skeleton for better perceived performance
+const SectionSkeleton = memo(function SectionSkeleton() {
+  return (
+    <div className="py-20 md:py-28 animate-pulse">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="h-12 bg-slate-800/50 rounded w-1/3 mx-auto mb-12" />
+        <div className="h-64 bg-slate-800/30 rounded-xl" />
+      </div>
+    </div>
+  );
+});
 
 export const meta: MetaFunction = () => {
   return [
@@ -15,16 +28,12 @@ export const meta: MetaFunction = () => {
       content:
         "Portfolio of Robiul Hossain, a software engineer and full-stack developer specializing in scalable, secure, and high-performance web applications with JavaScript, TypeScript and Python",
     },
-
-    // Basic SEO helpers
     { name: "author", content: "Robiul Hossain" },
     {
       name: "keywords",
       content:
         "Robiul Hossain, software engineer, full-stack developer, TypeScript, React, Node.js, NestJS, Next.js, AWS, PostgreSQL, portfolio",
     },
-
-    // Open Graph (for social previews)
     { property: "og:title", content: "Robiul Hossain | Software Engineer" },
     {
       property: "og:description",
@@ -34,8 +43,6 @@ export const meta: MetaFunction = () => {
     { property: "og:type", content: "website" },
     { property: "og:url", content: "https://robiulhossain.com" },
     { property: "og:image", content: "https://robiulhossain.com/og-image.jpg" },
-
-    // Twitter Card
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: "Robiul Hossain | Software Engineer" },
     {
@@ -56,12 +63,24 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <div className="flex flex-col">
-      <Hero />
-      <AboutMe />
-      <Skills />
-      <Experience />
-      <Blog />
-      <Contact />
+      <Suspense fallback={<SectionSkeleton />}>
+        <Hero />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <AboutMe />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <Skills />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <Experience />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <Blog />
+      </Suspense>
+      <Suspense fallback={<SectionSkeleton />}>
+        <Contact />
+      </Suspense>
     </div>
   );
 }

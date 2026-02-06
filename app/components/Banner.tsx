@@ -40,7 +40,7 @@ export const Hero = () => {
 
           <h2
             className={cn(
-              "mt-3 text-2xl sm:text-3xl md:text-4xl font-display font-medium text-gradient-primary",
+              "mt-3 text-2xl sm:text-3xl md:text-4xl font-display font-medium text-gradient-primary z-100 md:p-2",
               isVisible ? "animate-slide-in" : "opacity-0"
             )}
             style={{ animationDelay: "0.3s" }}
@@ -67,7 +67,7 @@ export const Hero = () => {
           >
             <Link
               to="projects"
-              className="inline-flex items-center gap-2 rounded-full bg-emerald-400 px-6 py-2.5 text-sm font-semibold text-slate-950 shadow-[0_18px_45px_rgba(52,211,153,0.45)] transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-[0_22px_60px_rgba(52,211,153,0.65)] focus:outline-none focus:ring-2 focus:ring-emerald-300 focus:ring-offset-2 focus:ring-offset-slate-950"
+              className="inline-flex items-center gap-2 rounded-full bg-emerald-400 px-6 py-2.5 text-sm font-semibold text-slate-950 shadow-[0_10px_35px_rgba(52,211,153,0.45)] transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_35px_rgba(52,211,153,0.65)] focus:outline-none focus:ring-2 focus:ring-emerald-300 focus:ring-offset-2 focus:ring-offset-slate-950"
               aria-label="View my projects"
             >
               <svg
@@ -125,15 +125,12 @@ export const Hero = () => {
                     <p className="text-xs font-mono text-emerald-200/80 uppercase tracking-[0.2em]">
                       Portfolio
                     </p>
-                    <p className="text-sm font-medium text-slate-50">
+                    <p className="text-sm font-display font-medium text-slate-50">
                       Software Engineer
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <span className="h-1.5 w-8 rounded-full bg-emerald-400/60" />
-                  <span className="h-1.5 w-4 rounded-full bg-emerald-400/25" />
-                </div>
+                
               </div>
 
               <div className="space-y-3">
@@ -145,7 +142,7 @@ export const Hero = () => {
                     <p className="text-[0.7rem] text-emerald-200/80 font-mono mb-1">
                       Architecture
                     </p>
-                    <p className="text-[0.74rem] leading-snug">
+                    <p className="text-[0.74rem] font-display leading-snug">
                       Scalable systems, clean abstractions and resilient
                       backends.
                     </p>
@@ -154,7 +151,7 @@ export const Hero = () => {
                     <p className="text-[0.7rem] text-emerald-200/80 font-mono mb-1">
                       Delivery
                     </p>
-                    <p className="text-[0.74rem] leading-snug">
+                    <p className="text-[0.74rem] leading-snug font-display">
                       CI/CD, observability and reliable engineering workflows.
                     </p>
                   </div>
@@ -179,13 +176,10 @@ export const Hero = () => {
                     <span className="text-[0.68rem] text-emerald-200/70">
                       Stack
                     </span>
-                    <span className="text-base font-semibold">TS / Python</span>
+                    <span className="text-base font-semibold">Node.js</span>
                   </div>
                 </div>
-                <div className="inline-flex items-center gap-1 rounded-full border border-emerald-400/30 bg-slate-950/80 px-3 py-1.5 text-[0.7rem] font-mono text-emerald-100/90">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.9)]" />
-                  Available for opportunities
-                </div>
+                
               </div>
             </div>
           </div>
