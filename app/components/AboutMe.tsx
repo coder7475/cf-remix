@@ -47,23 +47,27 @@ export const AboutMe = () => {
                 style={{ animationDelay: "0.1s" }}
               >
                 <p>
-                  Assalamu Alaikum, I’m Robiul Hossain — a Software Engineer
-                  with one and a half years of experience, specializing in
-                  full-stack development.
+                  Assalamu Alaikum, I'm Robiul Hossain — a Backend & Cloud
+                  Infrastructure Engineer with experience building scalable
+                  distributed systems, secure APIs, and automated infrastructure.
                 </p>
 
                 <p>
-                  I’ve worked on SaaS products in the creator economy, including
-                  a CMS powering 20+ free tools. My work spans implementing
-                  secure authentication systems, RAG-based features, and
-                  scalable infrastructure across 10+ servers. I’ve also built
-                  CI/CD pipelines, reverse proxies, monitoring setups, and
-                  automated workflows to make development fast and reliable.
+                  My focus is on backend development, cloud infrastructure
+                  (AWS, Docker, Terraform, Kubernetes), distributed systems,
+                  system design, and CI/CD automation. I'm also expanding into
+                  cybersecurity and learning Rust to deepen my systems
+                  programming skills.
                 </p>
 
                 <p>
-                  I would love to bring my experience in design, development,
-                  and automation to help build and scale your product.
+                  I'd love to bring my experience in backend engineering,
+                  infrastructure automation, and distributed systems to help
+                  build and scale your product.
+                </p>
+
+                <p className="text-primary font-semibold">
+                  Goal: Distinguished Software Engineer
                 </p>
               </div>
             </div>

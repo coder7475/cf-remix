@@ -49,7 +49,7 @@ export const Hero = () => {
           )}
           style={{ animationDelay: "0.3s" }}
         >
-          Full-Stack Developer
+          Backend & Cloud Infrastructure Engineer
         </h2>
 
         <p

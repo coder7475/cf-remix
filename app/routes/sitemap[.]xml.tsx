@@ -1,9 +1,10 @@
 import type { LoaderFunction } from "@remix-run/cloudflare";
 import { generateSitemapEntries, generateSitemapXML, sitemapConfig } from "~/utils/sitemap";
 
-/**
- * Loader function that generates and returns the XML sitemap
- */
+export default function Sitemap() {
+  return null;
+}
+
 export const loader: LoaderFunction = async ({ request }) => {
   // Get the host from the request to support different environments
   const host = request.headers.get("host") || "robiulhossain.com";

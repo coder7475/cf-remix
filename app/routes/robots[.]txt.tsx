@@ -1,8 +1,9 @@
 import type { LoaderFunction } from "@remix-run/cloudflare";
 
-/**
- * Loader function that generates and returns the robots.txt file
- */
+export default function Robots() {
+  return null;
+}
+
 export const loader: LoaderFunction = async ({ request }) => {
   // Get the host from the request to support different environments
   const host = request.headers.get("host") || "robiulhossain.com";
