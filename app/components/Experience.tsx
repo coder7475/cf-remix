@@ -38,8 +38,8 @@ export const Experience = () => {
       icon: Briefcase,
     },
     {
-      title: "Web Developer Intern",
-      company: "Monster Studio",
+      title: "Software Engineering Intern",
+      company: "OctopusX",
       date: "Jan 2024 - Mar 2024",
       description: [
         "Participated in requirements analysis and platform design for a creator-focused content-sharing system",

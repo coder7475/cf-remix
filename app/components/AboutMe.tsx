@@ -62,23 +62,6 @@ export const AboutMe = () => {
                 </p>
 
                 <p>
-                  Throughout my journey, I’ve worked with JavaScript,
-                  TypeScript, and Python — developing efficient, maintainable,
-                  and user-focused web applications. I’m passionate about system
-                  design, backend infrastructure, and building solutions that
-                  scale gracefully.
-                </p>
-
-                <p>
-                  I actively learn through online courses, coding challenges,
-                  and side projects to stay updated with evolving technologies.
-                  Over the next few years, I aspire to grow into a Software
-                  Architect, deepening my expertise in DevOps, platform
-                  reliability, and system scalability while improving leadership
-                  and communication skills to drive impactful projects.
-                </p>
-
-                <p>
                   I would love to bring my experience in design, development,
                   and automation to help build and scale your product.
                 </p>

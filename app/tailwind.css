@@ -7,35 +7,35 @@
 
 @layer base {
   :root {
-    --background: 210 25% 4%;
+    --background: 0 0% 0%;
     --foreground: 0 0% 98%;
-    --card: 210 25% 6%;
+    --card: 0 0% 5%;
     --card-foreground: 0 0% 98%;
-    --popover: 210 25% 6%;
+    --popover: 0 0% 5%;
     --popover-foreground: 0 0% 98%;
     /* Cyan accent inspired by portfolio.svg (#06F9F9) */
     --primary: 180 95% 50%;
-    --primary-foreground: 210 40% 8%;
-    --secondary: 210 20% 10%;
+    --primary-foreground: 0 0% 5%;
+    --secondary: 0 0% 8%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 210 20% 12%;
-    --muted-foreground: 220 10% 70%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 65%;
     --accent: 180 95% 50%;
-    --accent-foreground: 210 40% 8%;
+    --accent-foreground: 0 0% 5%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 216 100% 65%;
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 180 95% 50%;
     --radius: 0.75rem;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 216 100% 65%;
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 180 95% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 216 100% 65%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 14%;
+    --sidebar-ring: 180 95% 50%;
   }
 }
 
@@ -65,11 +65,11 @@
   }
 
   .glass-morphism {
-    @apply backdrop-blur-2xl bg-white/5 border border-cyan-400/10 shadow-[0_20px_80px_rgba(0,0,0,0.65)];
+    @apply backdrop-blur-2xl bg-white/[0.03] border border-white/[0.06] shadow-[0_20px_80px_rgba(0,0,0,0.8)];
   }
   
   .neo-blur {
-    @apply backdrop-blur-2xl bg-black/40 border border-white/10;
+    @apply backdrop-blur-2xl bg-black/60 border border-white/[0.08];
   }
   
   .text-gradient {
@@ -81,11 +81,11 @@
   }
 
   .page-shell {
-    @apply min-h-screen bg-[#020617] text-foreground relative;
+    @apply min-h-screen bg-black text-foreground relative;
     background-image:
-      radial-gradient(circle at 0% 16%, rgba(6, 249, 249, 0.18) 0, transparent 55%),
-      radial-gradient(circle at 100% 28%, rgba(6, 249, 249, 0.12) 0, transparent 55%),
-      radial-gradient(circle at 0% 60%, rgba(6, 249, 249, 0.09) 0, transparent 55%);
+      radial-gradient(circle at 0% 16%, rgba(6, 249, 249, 0.12) 0, transparent 55%),
+      radial-gradient(circle at 100% 28%, rgba(6, 249, 249, 0.08) 0, transparent 55%),
+      radial-gradient(circle at 0% 60%, rgba(6, 249, 249, 0.06) 0, transparent 55%);
   }
 
   .page-inner {
