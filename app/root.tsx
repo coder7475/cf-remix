@@ -14,6 +14,7 @@ import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
 
 export const links: LinksFunction = () => [
+  { rel: "canonical", href: BASE_URL },
   { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
   {
     rel: "icon",
@@ -40,43 +41,52 @@ export const links: LinksFunction = () => [
   },
 ];
 
+const BASE_URL = "https://robiulhossain.com";
+
 export const meta: MetaFunction = () => {
   return [
-    { title: "Robiul Hossain | Software Engineer" },
+    { title: "Robiul Hossain — Full-Stack Developer | Portfolio" },
     {
       name: "description",
       content:
-        "Robiul Hossain's personal portfolio showcasing projects, blog posts, and skills in web development, DevOps, and system design.",
+        "Full-stack developer specializing in React, TypeScript, Node.js, and Cloudflare. Building scalable, secure web applications.",
     },
-
-    // Open Graph (for Facebook, LinkedIn, etc.)
-    { property: "og:title", content: "Robiul Hossain | Software Engineer" },
+    { name: "robots", content: "index, follow" },
+    { property: "og:title", content: "Robiul Hossain — Full-Stack Developer | Portfolio" },
     {
       property: "og:description",
       content:
-        "Explore Robiul Hossain’s portfolio, featuring projects and experience in MERN stack, DevOps, and more.",
+        "Full-stack developer specializing in React, TypeScript, Node.js, and Cloudflare. Building scalable, secure web applications.",
     },
     { property: "og:type", content: "website" },
-    { property: "og:url", content: "https://robiulhossain.com" }, // update with actual domain
-    { property: "og:image", content: "https://robiulhossain.com/profile.png" }, // optional image
+    { property: "og:url", content: BASE_URL },
     { property: "og:site_name", content: "Robiul Hossain Portfolio" },
-    { property: "og:locale", content: "en_US" },
-
-    // Twitter Card
     { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:title", content: "Robiul Hossain | Software Engineer" },
+    { name: "twitter:title", content: "Robiul Hossain — Full-Stack Developer | Portfolio" },
     {
       name: "twitter:description",
       content:
-        "Visit Robiul Hossain’s portfolio to see projects, skills, and experience in modern web development.",
+        "Full-stack developer specializing in React, TypeScript, Node.js, and Cloudflare.",
     },
-    { name: "twitter:image", content: "https://x.com/robiul7475/photo" }, // optional image
   ];
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Robiul Hossain",
+    jobTitle: "Full-Stack Developer",
+    url: BASE_URL,
+    sameAs: [
+      "https://github.com/coder7475",
+      "https://www.linkedin.com/in/robiul7475",
+      "https://x.com/robiul7475",
+    ],
+  };
+
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -84,13 +94,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className="page-shell">
-        <div className="absolute inset-x-0 top-0 h-64 pointer-events-none opacity-70">
-          <div className="mx-auto h-full max-w-6xl relative">
-            <div className="absolute -left-40 top-8 w-80 h-80 rounded-full bg-cyan-400/20 blur-3xl" />
-            <div className="absolute right-0 top-0 w-80 h-80 rounded-full bg-cyan-400/10 blur-3xl" />
-          </div>
-        </div>
-
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Navbar />
         <main className="page-inner pb-24 pt-6">{children}</main>
         <Footer />

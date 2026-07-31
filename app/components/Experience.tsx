@@ -70,12 +70,11 @@ export const Experience = () => {
 
   return (
     <section
-      id="experience"
       ref={sectionRef}
-      className="py-20 md:py-32 bg-secondary/30"
+      className="py-16 md:py-24"
     >
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
           <h2
             className={cn(
               "text-3xl md:text-4xl font-display font-bold mb-12 tracking-tight text-center",

@@ -90,9 +90,9 @@ export const Blog = () => {
   };
 
   return (
-    <section id="blog" ref={sectionRef} className="py-20 md:py-32">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+    <section id="blog" ref={sectionRef}>
+      <div>
+        <div>
           <h2
             className={cn(
               "text-3xl md:text-4xl font-display font-bold mb-6 tracking-tight text-center",

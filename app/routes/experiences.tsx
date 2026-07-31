@@ -3,10 +3,11 @@ import type { MetaFunction } from "@remix-run/cloudflare";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Experiences | Robiul Hossain" },
+    { title: "Experience | Robiul Hossain Portfolio" },
     {
       name: "description",
-      content: "Learn more about Robiul Hossain's Experiences.",
+      content:
+        "Work experience and career history of Robiul Hossain — software engineering roles in full-stack development and DevOps.",
     },
   ];
 };

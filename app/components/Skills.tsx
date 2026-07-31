@@ -25,9 +25,9 @@ export const Skills = () => {
   }, []);
 
   return (
-    <section id="skills" ref={sectionRef} className="py-20 md:py-32">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+    <section ref={sectionRef} className="py-16 md:py-24 bg-muted/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
           <h2
             className={cn(
               "text-3xl md:text-4xl font-display font-bold mb-16 tracking-tight text-center",

@@ -81,7 +81,7 @@
   }
 
   .page-shell {
-    @apply min-h-screen bg-[#020617] text-foreground relative overflow-hidden;
+    @apply min-h-screen bg-[#020617] text-foreground relative;
     background-image:
       radial-gradient(circle at 0% 16%, rgba(6, 249, 249, 0.18) 0, transparent 55%),
       radial-gradient(circle at 100% 28%, rgba(6, 249, 249, 0.12) 0, transparent 55%),
@@ -89,6 +89,6 @@
   }
 
   .page-inner {
-    @apply relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 }
