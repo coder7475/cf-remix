@@ -7,7 +7,7 @@ export const meta: MetaFunction = () => {
     {
       name: "description",
       content:
-        "Explore projects built by Robiul Hossain — full-stack web applications, APIs, and cloud infrastructure solutions.",
+        "Explore projects built by Robiul Hossain — full-stack web applications, APIs, and modern software solutions.",
     },
   ];
 };

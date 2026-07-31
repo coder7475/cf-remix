@@ -7,7 +7,6 @@ interface ExperienceItem {
   company: string;
   date: string;
   description: string[];
-  icon: typeof Briefcase;
 }
 
 export const Experience = () => {
@@ -20,33 +19,32 @@ export const Experience = () => {
       company: "Elementix Software Ventures LLC",
       date: "Dec 2025 - Present",
       description: [
-        "Contributing to projects using JavaScript, TypeScript, Python, Next.js, Jest etc",
+        "Responsive UI/UX Development with Next.js",
+        "REST API Development with TypeScript, Express.js, NestJS, MongoDB and PostgreSQL",
+        "Automated Testing with Jest and Playwright",
+        "Cloud Deployment and Infrastructure Automation with AWS, Terraform, Terragrunt, Docker, and GitHub Actions",
       ],
-      icon: Briefcase,
-    }, 
+    },
     {
       title: "Junior Software Engineer",
       company: "OctopusX",
       date: "Apr 2024 - Apr 2025",
       description: [
-        "Improved React component rendering performance by 75% through lazy loading and code splitting, enhancing user experience and page load times.",
-        "Built scalable RESTful APIs using Node.js and Express for a creator services platform, supporting thousands of active users.",
-        "Debugged and improved JWT-based authentication mechanisms to ensure secure and persistent user sessions.",
-        "Developed and maintained robust test coverage using Vitest for unit testing and Cypress for end-to-end testing.",
-        "Deploying Web App to using nginx, docker etc"
+        "Frontend Development with React, Redux, and Next.js",
+        "Backend Development with TypeScript, Express.js, MongoDB, and PostgreSQL",
+        "Application Deployment on VPS Using Docker, Nginx, and Linux",
+        "CI/CD Pipeline Development with GitHub Actions",
+        "Cross-Functional Collaboration with Designers and Developers to Build Creator Economy Products",
       ],
-      icon: Briefcase,
     },
     {
       title: "Software Engineering Intern",
       company: "OctopusX",
       date: "Jan 2024 - Mar 2024",
       description: [
-        "Participated in requirements analysis and platform design for a creator-focused content-sharing system",
-        "Helped establish codebase architecture, branching strategy, and merge workflows on GitHub.",
-        "Developed and debugged reusable React components.",
+        "Full-Stack Development with the MERN Stack",
+        "Collaborative Development Using Git & GitHub",
       ],
-      icon: Briefcase,
     },
   ];
 
@@ -69,85 +67,66 @@ export const Experience = () => {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="py-16 md:py-24"
-    >
+    <section ref={sectionRef} className="py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <h2
-            className={cn(
-              "text-3xl md:text-4xl font-display font-bold mb-12 tracking-tight text-center",
-              isVisible ? "animate-slide-in" : "opacity-0"
-            )}
-          >
+        <div
+          className={cn(
+            "flex items-start gap-4 mb-16",
+            isVisible ? "animate-fade-in" : "opacity-0"
+          )}
+        >
+          <div className="w-1 h-12 bg-primary rounded-full shrink-0 mt-1" />
+          <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tight">
             <span className="text-gradient">Experiences</span>
           </h2>
+        </div>
 
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 top-0 h-full w-px bg-border"></div>
+        {/* Left-rail timeline */}
+        <div className="relative">
+          {/* Timeline line */}
+          <div className="absolute left-5 top-0 h-full w-px bg-border" />
 
-            <div className="space-y-12">
-              {experiences.map((item, index) => (
-                <div
-                  key={index}
-                  className={cn(
-                    "relative flex flex-col md:flex-row items-center", // <-- make one line middle
-                    isVisible ? "animate-slide-in" : "opacity-0"
-                  )}
-                  style={{ animationDelay: `${0.1 + index * 0.1}s` }}
-                >
-                  {/* Timeline dot */}
-                  <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-10 h-10 rounded-full bg-secondary border-2 border-primary flex items-center justify-center z-10">
-                    <item.icon className="w-5 h-5 text-primary" />
-                  </div>
-
-                  {/* Content */}
-                  <div className="md:w-1/2 md:pr-12 md:text-left ml-16 md:ml-0 font-display">
-                    {index % 2 === 0 ? (
-                      <div className="hidden md:block"></div>
-                    ) : (
-                      <div className="glass-morphism rounded-lg p-6 space-y-3">
-                        <h3 className="text-xl font-bold">{item.title}</h3>
-                        <p className="text-primary font-medium">
-                          {item.company}
-                        </p>
-                        <p className="text-muted-foreground text-sm">
-                          {item.date}
-                        </p>
-                        <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                          {item.description.map((desc, i) => (
-                            <li key={i}>{desc}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="md:w-1/2 md:pl-12 ml-16 md:ml-0 mt-4 md:mt-0 font-mono">
-                    {index % 2 === 0 ? (
-                      <div className="glass-morphism rounded-lg p-6 space-y-3 text-left">
-                        <h3 className="text-xl font-bold">{item.title}</h3>
-                        <p className="text-primary font-medium">
-                          {item.company}
-                        </p>
-                        <p className="text-muted-foreground text-sm">
-                          {item.date}
-                        </p>
-                        <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground font-display">
-                          {item.description.map((desc, i) => (
-                            <li key={i}>{desc}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : (
-                      <div className="hidden md:block"></div>
-                    )}
+          <div className="space-y-10">
+            {experiences.map((item, index) => (
+              <div
+                key={index}
+                className={cn(
+                  "relative flex gap-6 md:gap-10",
+                  isVisible ? "animate-fade-in" : "opacity-0"
+                )}
+                style={{ animationDelay: `${0.1 + index * 0.1}s` }}
+              >
+                {/* Timeline dot */}
+                <div className="relative z-10 shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-secondary border-2 border-primary flex items-center justify-center">
+                    <Briefcase className="w-4 h-4 text-primary" />
                   </div>
                 </div>
-              ))}
-            </div>
+
+                {/* Content card */}
+                <div className="glass-morphism rounded-lg p-6 flex-1">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+                    <h3 className="text-xl font-display font-bold text-foreground">
+                      {item.title}
+                    </h3>
+                    <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
+                      {item.date}
+                    </span>
+                  </div>
+                  <p className="text-primary font-medium mb-3 font-display">
+                    {item.company}
+                  </p>
+                  <ul className="space-y-1.5 text-sm text-muted-foreground">
+                    {item.description.map((desc, i) => (
+                      <li key={i} className="flex gap-2">
+                        <span className="text-primary mt-1.5 shrink-0">-</span>
+                        <span>{desc}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

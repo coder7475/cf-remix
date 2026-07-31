@@ -36,7 +36,7 @@ export const links: LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@203..800&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@300..700&display=swap",
   },
 ];
 
@@ -44,28 +44,28 @@ const BASE_URL = "https://robiulhossain.com";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Robiul Hossain — Backend & Cloud Engineer | Portfolio" },
+    { title: "Robiul Hossain — Software Engineer | Portfolio" },
     {
       name: "description",
       content:
-        "Backend & cloud infrastructure engineer specializing in React, TypeScript, Node.js, AWS, Docker, Terraform, and Kubernetes. Building scalable distributed systems.",
+        "Software engineer specializing in React, TypeScript, Node.js, and full-stack web development. Building scalable, performant applications.",
     },
     { name: "robots", content: "index, follow" },
-    { property: "og:title", content: "Robiul Hossain — Backend & Cloud Engineer | Portfolio" },
+    { property: "og:title", content: "Robiul Hossain — Software Engineer | Portfolio" },
     {
       property: "og:description",
       content:
-        "Backend & cloud infrastructure engineer specializing in React, TypeScript, Node.js, AWS, Docker, Terraform, and Kubernetes. Building scalable distributed systems.",
+        "Software engineer specializing in React, TypeScript, Node.js, and full-stack web development. Building scalable, performant applications.",
     },
     { property: "og:type", content: "website" },
     { property: "og:url", content: BASE_URL },
     { property: "og:site_name", content: "Robiul Hossain Portfolio" },
     { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:title", content: "Robiul Hossain — Backend & Cloud Engineer | Portfolio" },
+    { name: "twitter:title", content: "Robiul Hossain — Software Engineer | Portfolio" },
     {
       name: "twitter:description",
       content:
-        "Backend & cloud infrastructure engineer specializing in React, TypeScript, Node.js, AWS, Docker, Terraform, and Kubernetes.",
+        "Software engineer specializing in React, TypeScript, Node.js, and full-stack web development.",
     },
   ];
 };
@@ -75,7 +75,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Robiul Hossain",
-    jobTitle: "Backend & Cloud Infrastructure Engineer",
+    jobTitle: "Software Engineer",
     url: BASE_URL,
     sameAs: [
       "https://github.com/coder7475",

@@ -7,7 +7,7 @@ export const meta: MetaFunction = () => {
     {
       name: "description",
       content:
-        "Learn about Robiul Hossain — a full-stack developer with experience in React, TypeScript, Node.js, and cloud infrastructure.",
+        "Learn about Robiul Hossain — a software engineer with experience in React, TypeScript, Node.js, and full-stack web development.",
     },
   ];
 };

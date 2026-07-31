@@ -27,81 +27,74 @@ export const Skills = () => {
   return (
     <section ref={sectionRef} className="py-16 md:py-24 bg-muted/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <h2
-            className={cn(
-              "text-3xl md:text-4xl font-display font-bold mb-16 tracking-tight text-center",
-              isVisible ? "animate-slide-in" : "opacity-0"
-            )}
-          >
+        <div
+          className={cn(
+            "flex items-start gap-4 mb-16",
+            isVisible ? "animate-fade-in" : "opacity-0"
+          )}
+        >
+          <div className="w-1 h-12 bg-primary rounded-full shrink-0 mt-1" />
+          <h2 className="text-3xl md:text-4xl font-display font-bold tracking-tight">
             <span className="text-gradient">Technical Skills</span>
           </h2>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 font-mono">
-            {categories.map((category, categoryIndex) => (
-              <div
-                key={category.name}
-                className={cn(
-                  "glass-morphism rounded-lg py-6",
-                  isVisible ? "animate-slide-in" : "opacity-0"
-                )}
-                style={{ animationDelay: `${0.1 + categoryIndex * 0.1}s` }}
-              >
-                <h3 className="md:text-lg lg:text-xl font-bold mb-6 text-center">
-                  {category.name}
-                </h3>
-                <div className="grid grid-cols-2 gap-4">
-                  {category.skills.map((skill, skillIndex) => {
-                    const IconComponent = skill.icon;
-                    return (
-                      <div
-                        key={skill.name}
-                        className={cn(
-                          "flex flex-col items-center p-4 rounded-lg bg-secondary/20 hover:bg-secondary/30 transition-colors",
-                          isVisible ? "animate-slide-in" : "opacity-0"
-                        )}
-                        style={{
-                          animationDelay: `${
-                            0.2 + categoryIndex * 0.1 + skillIndex * 0.05
-                          }s`,
-                        }}
-                      >
-                        <IconComponent className="w-8 h-8 mb-2 text-primary" />
-                        <span className="font-medium text-sm text-center">
-                          {skill.name}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div
-            className={cn(
-              "mt-16 glass-morphism rounded-lg p-8 font-display",
-              isVisible ? "animate-slide-in" : "opacity-0"
-            )}
-            style={{ animationDelay: "0.5s" }}
-          >
-            <h3 className="text-xl font-bold mb-6 text-center">
-              Additional Tools & Expertise
-            </h3>
-            <div className="flex flex-wrap justify-center gap-3">
-              {additionalSkills.map((skill, index) => (
-                <span
-                  key={skill}
-                  className={cn(
-                    "bg-secondary/50 text-foreground px-4 py-2 rounded-full text-sm",
-                    isVisible ? "animate-slide-in" : "opacity-0"
-                  )}
-                  style={{ animationDelay: `${0.6 + index * 0.02}s` }}
-                >
-                  {skill}
+        {/* Category sections */}
+        <div className="space-y-12">
+          {categories.map((category, categoryIndex) => (
+            <div
+              key={category.name}
+              className={cn(
+                isVisible ? "animate-fade-in" : "opacity-0"
+              )}
+              style={{ animationDelay: `${0.1 + categoryIndex * 0.1}s` }}
+            >
+              <h3 className="font-display font-semibold text-lg mb-6 text-foreground flex items-center gap-3">
+                <span className="text-primary font-mono text-sm">
+                  {String(categoryIndex + 1).padStart(2, "0")}
                 </span>
-              ))}
+                {category.name}
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                {category.skills.map((skill) => {
+                  const IconComponent = skill.icon;
+                  return (
+                    <div
+                      key={skill.name}
+                      className="flex items-center gap-3 p-3 rounded-lg bg-secondary/30 hover:bg-secondary/50 transition-colors border border-transparent hover:border-primary/20"
+                    >
+                      <IconComponent className="w-4 h-4 text-primary shrink-0" />
+                      <span className="text-sm text-foreground truncate">
+                        {skill.name}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
+          ))}
+        </div>
+
+        {/* Additional Tools */}
+        <div
+          className={cn(
+            "mt-16 pt-12 border-t border-border",
+            isVisible ? "animate-fade-in" : "opacity-0"
+          )}
+          style={{ animationDelay: "0.5s" }}
+        >
+          <h3 className="font-display font-semibold text-lg mb-6 text-foreground">
+            Additional Tools &amp; Expertise
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {additionalSkills.map((skill) => (
+              <span
+                key={skill}
+                className="bg-secondary/50 text-muted-foreground px-3 py-1.5 rounded-full text-xs font-mono hover:text-foreground hover:bg-secondary transition-colors"
+              >
+                {skill}
+              </span>
+            ))}
           </div>
         </div>
       </div>
