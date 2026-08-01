@@ -145,8 +145,7 @@ export const ErrorBoundary = () => {
 };
 
 function captureRemixErrorBoundaryError(error: unknown) {
-  console.log(error);
-  throw new Error("Function not implemented.");
+  console.error(error);
 }
 
 export default App;

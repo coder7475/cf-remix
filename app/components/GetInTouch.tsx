@@ -1,15 +1,19 @@
 import { useState, useEffect, useRef } from "react";
 import { cn } from "~/libs/utils";
 import { Mail, Github, Linkedin, Twitter, Youtube, Users } from "lucide-react";
-import { Link } from "@remix-run/react";
+import { Link, useFetcher } from "@remix-run/react";
+
+interface ActionResponse {
+  success: boolean;
+  errors?: Record<string, string>;
+}
 
 export const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const fetcher = useFetcher<ActionResponse>();
 
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [formStatus, setFormStatus] = useState<null | "success" | "error">(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -33,29 +37,15 @@ export const Contact = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormStatus(null);
+  const isSubmitting = fetcher.state !== "idle";
+  const isSuccess = fetcher.data?.success === true;
+  const errors = fetcher.data?.errors;
 
-    if (!form.name || !form.email || !form.message) {
-      setFormStatus("error");
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    const subject = `Contact from ${form.name}`;
-    const body = `Name: ${form.name}\r\nEmail: ${form.email}\r\n\r\n${form.message}`;
-    const mailto = `mailto:contact@robiulhossain.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    window.location.href = mailto;
-
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setFormStatus("success");
+  useEffect(() => {
+    if (isSuccess) {
       setForm({ name: "", email: "", message: "" });
-    }, 500);
-  };
+    }
+  }, [isSuccess]);
 
   return (
     <section ref={sectionRef} className="py-16 md:py-24">
@@ -84,8 +74,8 @@ export const Contact = () => {
 
         <div className="flex flex-col lg:flex-row gap-10">
           {/* Contact form - full width on mobile, main content on desktop */}
-          <form
-            onSubmit={handleSubmit}
+          <fetcher.Form
+            method="post"
             className={cn(
               "flex-1 glass-morphism rounded-lg p-8 space-y-6",
               isVisible ? "animate-fade-in" : "opacity-0"
@@ -109,6 +99,9 @@ export const Contact = () => {
                   required
                   disabled={isSubmitting}
                 />
+                {errors?.name && (
+                  <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+                )}
               </div>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-muted-foreground mb-1">
@@ -124,6 +117,9 @@ export const Contact = () => {
                   required
                   disabled={isSubmitting}
                 />
+                {errors?.email && (
+                  <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                )}
               </div>
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-muted-foreground mb-1">
@@ -139,6 +135,9 @@ export const Contact = () => {
                   required
                   disabled={isSubmitting}
                 />
+                {errors?.message && (
+                  <p className="text-red-500 text-xs mt-1">{errors.message}</p>
+                )}
               </div>
             </div>
             <button
@@ -151,17 +150,17 @@ export const Contact = () => {
             >
               {isSubmitting ? "Sending..." : "Send Message"}
             </button>
-            {formStatus === "success" && (
+            {isSuccess && (
               <p className="text-emerald-500 text-sm font-mono text-center mt-2">
-                Your email client should have opened. If not, please email me directly!
+                Message sent successfully! {"I'll"} get back to you soon.
               </p>
             )}
-            {formStatus === "error" && (
+            {errors?.server && (
               <p className="text-red-500 text-sm font-mono text-center mt-2">
-                Please fill in all fields.
+                {errors.server}
               </p>
             )}
-          </form>
+          </fetcher.Form>
 
           {/* Contact info sidebar */}
           <div
