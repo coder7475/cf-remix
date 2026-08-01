@@ -37,6 +37,36 @@
     --sidebar-ring: 217 91% 60%;
     --amber: 38 92% 50%;
   }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 240 6% 3%;
+    --card: 0 0% 98%;
+    --card-foreground: 240 6% 3%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 6% 3%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 92%;
+    --secondary-foreground: 240 6% 3%;
+    --muted: 240 5% 92%;
+    --muted-foreground: 240 4% 40%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 5% 85%;
+    --input: 240 5% 85%;
+    --ring: 217 91% 60%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 6% 3%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 5% 92%;
+    --sidebar-accent-foreground: 240 6% 3%;
+    --sidebar-border: 240 5% 85%;
+    --sidebar-ring: 217 91% 60%;
+  }
 }
 
 @layer base {
@@ -67,9 +97,17 @@
   .glass-morphism {
     @apply backdrop-blur-2xl bg-white/[0.03] border border-white/[0.06] shadow-[0_20px_80px_rgba(0,0,0,0.8)];
   }
+
+  .light .glass-morphism {
+    @apply bg-black/[0.03] border-black/[0.06] shadow-[0_20px_80px_rgba(0,0,0,0.1)];
+  }
   
   .text-gradient {
     @apply bg-gradient-to-br from-white via-white/90 to-white/70 bg-clip-text text-transparent;
+  }
+
+  .light .text-gradient {
+    @apply bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent;
   }
   
   .text-gradient-primary {
@@ -82,6 +120,13 @@
       radial-gradient(circle at 0% 16%, rgba(59, 130, 246, 0.08) 0, transparent 55%),
       radial-gradient(circle at 100% 28%, rgba(59, 130, 246, 0.05) 0, transparent 55%),
       radial-gradient(circle at 50% 60%, rgba(245, 158, 11, 0.03) 0, transparent 55%);
+  }
+
+  .light .page-shell {
+    background-image:
+      radial-gradient(circle at 0% 16%, rgba(59, 130, 246, 0.05) 0, transparent 55%),
+      radial-gradient(circle at 100% 28%, rgba(59, 130, 246, 0.03) 0, transparent 55%),
+      radial-gradient(circle at 50% 60%, rgba(245, 158, 11, 0.02) 0, transparent 55%);
   }
 
   .page-inner {

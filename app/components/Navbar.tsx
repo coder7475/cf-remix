@@ -3,6 +3,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "~/libs/utils";
 import { Link } from "@remix-run/react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const SECTION_IDS = ["hero", "about", "skills", "experience", "projects", "contact"];
 
@@ -249,6 +250,10 @@ export const Navbar = () => {
           })}
         </nav>
 
+        <div className="hidden md:flex items-center space-x-2">
+          <ThemeToggle />
+        </div>
+
         {/* Mobile Menu Toggle */}
         <button
           ref={hamburgerButtonRef}
@@ -326,6 +331,7 @@ export const Navbar = () => {
                 </Link>
               );
             })}
+            <ThemeToggle />
             <button
               ref={closeButtonRef}
               onClick={closeMobileMenu}
