@@ -78,8 +78,7 @@ export const Hero = () => {
             )}
             style={{ animationDelay: "0.4s" }}
           >
-            Building scalable, performant web applications with React,
-            TypeScript, Node.js, and modern engineering practices.
+            I design and build reliable, secure software systems
           </p>
 
           <div
@@ -118,7 +117,7 @@ export const Hero = () => {
         {/* Right column - Code visual element (40%) */}
         <div
           className={cn(
-            "md:col-span-2 h-64 md:h-96",
+            "hidden md:flex md:col-span-2 h-64 md:h-96",
             isVisible ? "animate-fade-in" : "opacity-0"
           )}
           style={{ animationDelay: "0.6s" }}
