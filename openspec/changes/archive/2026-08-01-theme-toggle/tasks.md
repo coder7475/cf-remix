@@ -27,12 +27,12 @@
 
 - [x] 5.1 Add inline script in `app/root.tsx` `<head>` to read localStorage
 - [x] 5.2 Apply `.light` class before React hydration if preference is light
-- [ ] 5.3 Test SSR behavior with light theme preference saved
+- [x] 5.3 Test SSR behavior with light theme preference saved
 
 ## 6. Testing
 
-- [ ] 6.1 Verify theme toggle works on desktop viewport
-- [ ] 6.2 Verify theme toggle works on mobile viewport
-- [ ] 6.3 Verify theme persists across page reloads
-- [ ] 6.4 Verify no flash of wrong theme on initial load
-- [ ] 6.5 Verify all components render correctly in both themes
+- [x] 6.1 Verify theme toggle works on desktop viewport
+- [x] 6.2 Verify theme toggle works on mobile viewport
+- [x] 6.3 Verify theme persists across page reloads
+- [x] 6.4 Verify no flash of wrong theme on initial load
+- [x] 6.5 Verify all components render correctly in both themes
