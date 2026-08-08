@@ -12,10 +12,12 @@ A modern portfolio website built with **Remix** and deployed on **Cloudflare Pag
 - 🎯 **TypeScript**: Full type safety throughout the application
 - 🎭 **Interactive Components**: Toast notifications and smooth animations
 - 📊 **Portfolio Sections**: About, Experience, Projects, Skills, Blog, and Contact pages
+RESEND
 
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - **[Remix](https://remix.run/)** - Full-stack web framework
 - **[React 18](https://react.dev/)** - UI library with latest features
 - **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
@@ -25,6 +27,7 @@ A modern portfolio website built with **Remix** and deployed on **Cloudflare Pag
 - **[Class Variance Authority](https://cva.style/)** - Class utility library
 
 ### Infrastructure & Tooling
+
 - **[Cloudflare Pages](https://pages.cloudflare.com/)** - Edge deployment platform
 - **[Wrangler](https://developers.cloudflare.com/workers/wrangler/)** - Cloudflare developer platform CLI
 - **[Vite](https://vitejs.dev/)** - Next generation frontend build tool
@@ -69,7 +72,7 @@ The application will be available at `http://localhost:5173`
 ### Available Scripts
 
 | Command | Description |
-|---------|-------------|
+| --------- | ------------- |
 | `pnpm run dev` | Start development server with hot reload |
 | `pnpm run build` | Build the application for production |
 | `pnpm run start` | Preview the built application locally |
@@ -303,6 +306,7 @@ The GitHub Actions workflow ensures:
 ### Common Issues
 
 **Development server not starting:**
+
 ```bash
 # Clear node_modules and reinstall
 rm -rf node_modules pnpm-lock.yaml
@@ -311,6 +315,7 @@ pnpm run dev
 ```
 
 **Type errors after updating dependencies:**
+
 ```bash
 # Regenerate types
 pnpm run typegen
@@ -318,6 +323,7 @@ pnpm run typecheck
 ```
 
 **Build failures:**
+
 ```bash
 # Check for TypeScript errors
 pnpm run typecheck
@@ -327,6 +333,7 @@ pnpm run lint
 ```
 
 **Deployment issues:**
+
 ```bash
 # Login to Wrangler
 wrangler login
