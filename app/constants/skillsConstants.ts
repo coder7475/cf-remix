@@ -35,6 +35,7 @@ export const categories: SkillCategory[] = [
     name: "Frontend",
     skills: [
       { name: "React", icon: Code, category: "Frontend" },
+      { name: "React Native", icon: Code, category: "Frontend" },
       { name: "Next.js", icon: Code, category: "Frontend" },
       { name: "Remix", icon: Code, category: "Frontend" },
       { name: "Tailwind CSS", icon: Layout, category: "Frontend" },
