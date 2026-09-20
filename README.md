@@ -1,6 +1,8 @@
-# cf-remix [![CI/CD](https://github.com/coder7475/cf-remix/actions/workflows/ci_cd.yml/badge.svg)](https://github.com/coder7475/cf-remix/actions/workflows/ci_cd.yml)
+# cf-remix
 
-A modern portfolio website built with **Remix** and deployed on **Cloudflare Pages** with automated CI/CD using GitHub Actions. This project showcases a full-stack web application with server-side rendering, edge computing capabilities, and modern development practices.
+A modern portfolio website built with **Remix** and deployed on **Cloudflare Pages**. This project showcases a full-stack web application with server-side rendering, edge computing capabilities, and modern development practices.
+
+See [AUDIT.md](./AUDIT.md) for a comprehensive code quality and architecture review.
 
 ## ✨ Features
 
@@ -8,7 +10,6 @@ A modern portfolio website built with **Remix** and deployed on **Cloudflare Pag
 - 🎨 **Modern UI Components**: Crafted with Tailwind CSS, Radix UI primitives, and Lucide React icons
 - 📱 **Fully Responsive**: Mobile-first design that works seamlessly across all devices
 - ⚡ **Server-Side Rendering**: Remix-powered SSR for optimal SEO and performance
-- 🔄 **Automated Deployment**: CI/CD pipeline with GitHub Actions for seamless updates
 - 🎯 **TypeScript**: Full type safety throughout the application
 - 🎭 **Interactive Components**: Toast notifications and smooth animations
 - 📊 **Portfolio Sections**: About, Experience, Projects, Skills, Blog, and Contact pages
@@ -130,9 +131,8 @@ cf-remix/
 │   └── tailwind.css          # Global styles and Tailwind imports
 ├── build/                     # Built application (generated)
 ├── public/                    # Static assets
-├── .github/                   # GitHub Actions workflows
-│   └── workflows/
-│       └── ci_cd.yml         # CI/CD pipeline configuration
+├── AUDIT.md                   # Code quality and architecture audit
+├── AGENTS.md                  # Agent instructions for codebase
 ├── package.json              # Project dependencies and scripts
 ├── wrangler.toml            # Cloudflare Workers configuration
 ├── vite.config.ts           # Vite build configuration
@@ -154,8 +154,8 @@ The project uses a custom Tailwind CSS setup with:
 
 ### Component Architecture
 
-- **Atomic Design**: Components are organized in a scalable hierarchy
-- **Accessibility First**: All components follow WCAG guidelines
+- **Section-Level Components**: Each page section is a self-contained component
+- **Accessibility**: Basic ARIA attributes and screen reader support (see AUDIT.md for gaps)
 - **Reusability**: Shared components with flexible prop interfaces
 - **Type Safety**: Full TypeScript integration for component props
 
@@ -211,14 +211,9 @@ This command:
 
 ## 🚢 Deployment
 
-### Automatic Deployment (Recommended)
+### Automatic Deployment
 
-The project includes a GitHub Actions workflow that automatically:
-
-1. **Builds** the application on every push to main
-2. **Tests** code quality with linting and type checking
-3. **Deploys** to Cloudflare Pages
-4. **Notifies** of deployment status
+> **Note**: GitHub Actions workflow is not yet configured. For manual deployments, use the commands below.
 
 ### Manual Deployment
 
@@ -259,20 +254,13 @@ pnpm run deploy
 
 ### Code Quality
 
-- **ESLint**: Comprehensive linting rules for JavaScript/TypeScript
-- **TypeScript**: Compile-time error checking and IntelliSense
-- **Prettier Integration**: Consistent code formatting
-- **Import Sorting**: Organized import statements
+- **ESLint**: Linting rules for JavaScript/TypeScript
+- **TypeScript**: Compile-time error checking with strict mode
+- **No test runner**: Testing is not yet configured (see AUDIT.md recommendations)
 
 ### CI/CD Pipeline
 
-The GitHub Actions workflow ensures:
-
-- **Dependency Installation**: Cached for faster builds
-- **Type Checking**: Validates TypeScript across the project
-- **Linting**: Enforces code quality standards
-- **Build Verification**: Ensures successful production builds
-- **Automated Deployment**: Seamless deployment on success
+> **Note**: GitHub Actions workflows are not yet configured. See AUDIT.md for recommendations.
 
 ## 🤝 Contributing
 
@@ -284,10 +272,10 @@ The GitHub Actions workflow ensures:
 
 ### Development Guidelines
 
-- Follow the existing code style and conventions
+- Follow the existing code style and conventions (no comments in code)
 - Write meaningful commit messages
 - Add appropriate TypeScript types for new features
-- Test your changes locally before submitting
+- Run `pnpm run typecheck` and `pnpm run lint` before submitting
 - Update documentation for significant changes
 
 ## 📚 Learning Resources

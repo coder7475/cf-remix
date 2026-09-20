@@ -1,10 +1,18 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { ExternalLink, Github, CheckCircle } from "lucide-react";
 import { cn } from "~/libs/utils";
 import { Link } from "@remix-run/react";
 import { projects } from "~/constants";
+import { ProjectCategory } from "~/types";
 
 const PROJECTS_PER_PAGE = 4;
+
+const tabs: { id: ProjectCategory; label: string }[] = [
+  { id: "backend", label: "Backend" },
+  { id: "fullstack", label: "Fullstack" },
+  { id: "ai-ml", label: "AI/ML" },
+  { id: "mobile", label: "Mobile" },
+];
 
 const StatusBadge = ({ status }: { status: "in-progress" | "finished" }) => {
   if (status === "in-progress") {
@@ -26,8 +34,27 @@ export const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [activeTab, setActiveTab] = useState<ProjectCategory>("backend");
 
-  const totalPages = Math.ceil(projects.length / PROJECTS_PER_PAGE);
+  const filteredProjects = useMemo(
+    () => projects.filter((p) => p.category === activeTab),
+    [activeTab]
+  );
+
+  const totalPages = Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE);
+
+  const tabCounts = useMemo(() => {
+    const counts: Record<ProjectCategory, number> = {
+      backend: 0,
+      fullstack: 0,
+      "ai-ml": 0,
+      mobile: 0,
+    };
+    projects.forEach((p) => {
+      counts[p.category]++;
+    });
+    return counts;
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -47,7 +74,12 @@ export const Projects = () => {
     return () => observer.disconnect();
   }, []);
 
-  const paginatedProjects = projects.slice(
+  const handleTabChange = (tab: ProjectCategory) => {
+    setActiveTab(tab);
+    setCurrentPage(1);
+  };
+
+  const paginatedProjects = filteredProjects.slice(
     (currentPage - 1) * PROJECTS_PER_PAGE,
     currentPage * PROJECTS_PER_PAGE
   );
@@ -71,7 +103,7 @@ export const Projects = () => {
         </div>
         <p
           className={cn(
-            "text-muted-foreground max-w-2xl mb-16 ml-5",
+            "text-muted-foreground max-w-2xl mb-8 ml-5",
             isVisible ? "animate-fade-in" : "opacity-0"
           )}
           style={{ animationDelay: "0.1s" }}
@@ -79,6 +111,40 @@ export const Projects = () => {
           A selection of my most significant projects showcasing my technical
           expertise and problem-solving capabilities.
         </p>
+
+        {/* Tab navigation */}
+        <div
+          className={cn(
+            "flex gap-1 mb-10 overflow-x-auto pb-2 ml-5",
+            isVisible ? "animate-fade-in" : "opacity-0"
+          )}
+          style={{ animationDelay: "0.15s" }}
+        >
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => handleTabChange(tab.id)}
+              className={cn(
+                "px-4 py-2 rounded-lg font-mono text-sm whitespace-nowrap transition-all duration-200",
+                activeTab === tab.id
+                  ? "bg-primary text-primary-foreground"
+                  : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+              )}
+            >
+              {tab.label}
+              <span
+                className={cn(
+                  "ml-2 text-xs",
+                  activeTab === tab.id
+                    ? "text-primary-foreground/70"
+                    : "text-muted-foreground/70"
+                )}
+              >
+                ({tabCounts[tab.id]})
+              </span>
+            </button>
+          ))}
+        </div>
 
         {/* Staggered grid */}
         <div className="columns-1 sm:columns-2 gap-6 space-y-6">

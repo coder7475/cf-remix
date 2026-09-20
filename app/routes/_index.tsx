@@ -1,5 +1,6 @@
 import { AboutMe } from "~/components/AboutMe";
 import { Hero } from "~/components/Banner";
+import { WhatIDo } from "~/components/WhatIDo";
 
 import type { MetaFunction } from "@remix-run/cloudflare";
 import { Skills } from "~/components/Skills";
@@ -39,6 +40,9 @@ export default function Index() {
     <div className="flex flex-col">
       <div id="hero">
         <Hero />
+      </div>
+      <div id="what-i-do">
+        <WhatIDo />
       </div>
       <div id="about">
         <AboutMe />

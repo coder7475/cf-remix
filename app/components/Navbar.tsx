@@ -5,7 +5,7 @@ import { cn } from "~/libs/utils";
 import { Link } from "@remix-run/react";
 import { ThemeToggle } from "./ThemeToggle";
 
-const SECTION_IDS = ["hero", "about", "skills", "experience", "projects", "contact"];
+const SECTION_IDS = ["hero", "what-i-do", "about", "skills", "experience", "projects", "contact"];
 
 const usePrefersReducedMotion = () => {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -44,6 +44,7 @@ export const Navbar = () => {
 
   const navLinks = [
     { name: "Home", href: "#hero" },
+    { name: "What I Do", href: "#what-i-do" },
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
     { name: "Experience", href: "#experience" },

@@ -5,6 +5,7 @@ export const projects: Project[] = [
     status: ProjectStatus.InProgress,
     title: "E-commerce Microservice",
     description: "Building Microservices for an e-commerce project",
+    category: "backend",
     technologies: [
       "Node.js",
       "TypeScript",
@@ -27,6 +28,7 @@ export const projects: Project[] = [
     title: "Smart-todo-app",
     description:
       "AI-assisted to‑do list that prioritizes and categorizes your tasks. Monorepo with a Vite/React frontend and an Express/TypeScript backend powered by Google Gemini for task prioritization.",
+    category: "fullstack",
     technologies: [
       "Express.js",
       "React",
@@ -43,6 +45,7 @@ export const projects: Project[] = [
     title: "Nextjs-auth",
     description:
       "Lightweight Next.js (App Router) authentication example with a protected dashboard, cookie-based login, and a minimal UI.",
+    category: "fullstack",
     technologies: ["Next.js", "React", "TypeScript", "TailwindCSS", "Vercel"],
     image: "", // Placeholder
     liveUrl: "https://nextjs-auth-mu-two.vercel.app/",
@@ -53,6 +56,7 @@ export const projects: Project[] = [
     title: "Text2SQL",
     description:
       "A system to convert natural language questions into SQL queries using large language models. Offers a streamlined workflow for data analysts and business users to query databases without writing SQL. Features model serving, prompt engineering",
+    category: "ai-ml",
     technologies: [
       "Python",
       "FastAPI",
@@ -71,6 +75,7 @@ export const projects: Project[] = [
     title: "GraphQL POC",
     description:
       "A proof-of-concept GraphQL server built using TypeScript and Apollo Server. Demonstrates schema design, resolvers, and CRUD operations for interconnected entities like games, reviews, and authors. Includes a legacy JavaScript version for comparison and learning purposes.",
+    category: "backend",
     technologies: [
       "TypeScript",
       "GraphQL",
@@ -88,6 +93,7 @@ export const projects: Project[] = [
     title: "Ride Booking System",
     description:
       "A scalable and secure ride booking platform designed for reliability and performance. Implements robust role-based access control, comprehensive RESTful APIs, and efficient data management with Express.js and Mongoose. The frontend is built with React and Redux for a seamless user experience.",
+    category: "fullstack",
     technologies: [
       "Node.js",
       "TypeScript",
@@ -116,6 +122,7 @@ export const projects: Project[] = [
     title: "School Management APIs",
     description:
       "A mini school management apis, built with Node.js, NestJs, TypeScript, Drizzle and PostgreSQL. Features include user authentication, role-based access, student and teacher management, class scheduling, and more. Designed for scalability and maintainability.",
+    category: "backend",
     technologies: [
       "Drizzle",
       "PostgreSQL",
@@ -138,6 +145,7 @@ export const projects: Project[] = [
     title: "YouTube Video Title Generator",
     description:
       "A Retrieval-Augmented Generation (RAG) system implemented in Python. Generates engaging, click-worthy YouTube video titles (with optional emojis and hashtags) powered by FastAPI, MongoDB Atlas Vector Search, and LLMs. Integrates LLMs with external data sources for enhanced question answering and information retrieval. Designed for modularity and extensibility.",
+    category: "ai-ml",
     technologies: [
       "Python",
       "RAG",
@@ -157,6 +165,7 @@ export const projects: Project[] = [
     title: "Library Management System",
     description:
       "A full-stack library management application featuring an Express backend with MongoDB and Mongoose, and a modern React frontend using Redux Toolkit and Shadcn UI. Includes robust CRUD operations, book borrowing workflows, genre-based filtering, pagination, interactive modals, and type-safe forms for a seamless user experience.",
+    category: "fullstack",
     technologies: [
       "Node.js",
       "React",
@@ -175,6 +184,7 @@ export const projects: Project[] = [
     title: "Socket Programming",
     description:
       "A collection of practical socket programming examples in JavaScript.",
+    category: "backend",
     technologies: [
       "JavaScript",
       "Node.js",
@@ -193,6 +203,7 @@ export const projects: Project[] = [
     title: "Churn Prediction Pipeline",
     description:
       "Aim of this project is to develop a ml system to predict the behavior of customers as to retain customer.",
+    category: "ai-ml",
     technologies: [
       "Python",
       "Modular Architecture",
@@ -212,6 +223,7 @@ export const projects: Project[] = [
     title: "Custom WC Tool",
     description:
       "A custom implementation of the Unix wc (word count) command-line utility, developed for a coding challenge. Supports counting lines, words, and characters efficiently.",
+    category: "backend",
     technologies: ["C++", "Make"],
     image: "", // Placeholder
     githubUrl:
@@ -222,6 +234,7 @@ export const projects: Project[] = [
     title: "Scripts",
     description:
       "A collection of automation scripts for various tasks, including system management, data processing, and development workflows using Bash, Python, and Docker.",
+    category: "backend",
     technologies: ["Bash", "Python", "Docker", "JavaScript"],
     image: "", // Placeholder
     githubUrl: "https://github.com/coder7475/scripts",
@@ -231,6 +244,7 @@ export const projects: Project[] = [
     title: "Sentiment Analysis Bangla",
     description:
       "A machine learning project for Bangla sentiment analysis. Uses NLP techniques and models to classify sentences as positive, negative, or neutral, with full data processing and evaluation.",
+    category: "ai-ml",
     technologies: [
       "Python",
       "scikit-learn",
@@ -242,5 +256,23 @@ export const projects: Project[] = [
     ],
     image: "", // Placeholder
     githubUrl: "https://github.com/coder7475/sentiment_analysis_bangla",
+  },
+  {
+    status: ProjectStatus.Finished,
+    title: "GlucoseTracker",
+    description:
+      "A nutrition and macro-tracking mobile app built with Expo and React Native. Log meals, track daily calories and macronutrients (protein, carbs, fat), and get meal reminders via push notifications.",
+    category: "mobile",
+    technologies: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "AsyncStorage",
+      "expo-notifications",
+      "expo-router",
+    ],
+    image: "", // Placeholder
+    liveUrl: "",
+    githubUrl: "https://github.com/coder7475/GlocoseTracker",
   },
 ];
