@@ -12,6 +12,7 @@ import {
 import "./tailwind.css";
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
+import { ScrollToTop } from "./components/ScrollToTop";
 
 export const links: LinksFunction = () => [
   { rel: "canonical", href: BASE_URL },
@@ -91,7 +92,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem("theme");if(t==="light"){document.documentElement.classList.add("light")}}catch(e){}`,
+            __html: `try{var t=localStorage.getItem("theme");if(t==="light"){document.documentElement.classList.add("light")}else if(t==="system"||!t){var m=window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches;if(m){document.documentElement.classList.add("light")}}}catch(e){}`,
           }}
         />
         <Meta />
@@ -105,6 +106,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Navbar />
         <main className="page-inner pb-24 pt-6">{children}</main>
         <Footer />
+        <ScrollToTop />
         <ScrollRestoration />
         <Scripts />
       </body>

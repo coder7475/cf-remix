@@ -1,10 +1,4 @@
-# Theme Switching
-
-## Purpose
-
-Define the theme toggle mechanism allowing users to switch between system, dark, and light themes, with persistence and SSR-safe hydration.
-
-## Requirements
+## MODIFIED Requirements
 
 ### Requirement: Theme toggle button
 The navbar SHALL include a visible theme toggle button that allows users to switch between system, dark, and light themes.
