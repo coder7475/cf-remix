@@ -82,6 +82,8 @@ export const AboutMe = () => {
                     <img
                       src="/profile.png"
                       alt="Robiul Hossain"
+                      width={300}
+                      height={300}
                       className="w-full h-full object-cover"
                       loading="lazy"
                     />

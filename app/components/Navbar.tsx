@@ -233,6 +233,7 @@ export const Navbar = () => {
                   "relative font-medium transition-colors duration-200 font-mono",
                   isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
                 )}
+                aria-current={isActive ? "page" : undefined}
               >
                 {link.name}
                 {isActive && (
@@ -314,6 +315,7 @@ export const Navbar = () => {
                     "relative text-xl font-medium transition-colors w-full text-center py-3",
                     isActive ? "text-primary" : "text-foreground hover:text-primary"
                   )}
+                  aria-current={isActive ? "page" : undefined}
                 >
                   {link.name}
                   {isActive && (

@@ -108,6 +108,8 @@ export const Contact = () => {
                   onChange={handleChange}
                   required
                   disabled={isSubmitting}
+                  autoComplete="name"
+                  aria-describedby={formStatus === "error" ? "form-error" : undefined}
                 />
               </div>
               <div>
@@ -123,6 +125,8 @@ export const Contact = () => {
                   onChange={handleChange}
                   required
                   disabled={isSubmitting}
+                  autoComplete="email"
+                  aria-describedby={formStatus === "error" ? "form-error" : undefined}
                 />
               </div>
               <div>
@@ -138,6 +142,8 @@ export const Contact = () => {
                   onChange={handleChange}
                   required
                   disabled={isSubmitting}
+                  autoComplete="off"
+                  aria-describedby={formStatus === "error" ? "form-error" : undefined}
                 />
               </div>
             </div>
@@ -157,7 +163,7 @@ export const Contact = () => {
               </p>
             )}
             {formStatus === "error" && (
-              <p className="text-red-500 text-sm font-mono text-center mt-2">
+              <p id="form-error" className="text-red-500 text-sm font-mono text-center mt-2" role="alert">
                 Please fill in all fields.
               </p>
             )}
