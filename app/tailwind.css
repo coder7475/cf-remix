@@ -36,9 +36,7 @@
     --sidebar-border: 240 4% 16%;
     --sidebar-ring: 217 91% 60%;
     --amber: 38 92% 50%;
-    --scroll-top-bg: #fff;
-    --scroll-top-hover: #e5e5e5;
-    --scroll-top-border: #525252;
+
   }
 
   .light {
@@ -69,9 +67,7 @@
     --sidebar-accent-foreground: 240 6% 3%;
     --sidebar-border: 240 5% 85%;
     --sidebar-ring: 217 91% 60%;
-    --scroll-top-bg: #171717;
-    --scroll-top-hover: #262626;
-    --scroll-top-border: #a3a3a3;
+
   }
 
 }
