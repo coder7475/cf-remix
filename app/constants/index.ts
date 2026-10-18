@@ -275,4 +275,24 @@ export const projects: Project[] = [
     liveUrl: "",
     githubUrl: "https://github.com/coder7475/GlocoseTracker",
   },
+  {
+    status: ProjectStatus.Finished,
+    title: "FocusGuard",
+    description:
+      "A privacy-first, uncompromising Android focus lock that eliminates digital distractions. Features tactile rotary timers, recurring schedules with midnight-crossing, an un-dismissible accessibility overlay, and deep Doze and reboot resilience.",
+    category: "mobile",
+    technologies: [
+      "Android",
+      "Kotlin",
+      "Jetpack Compose",
+      "Material 3",
+      "Clean Architecture",
+      "Room Database",
+      "Coroutines",
+      "StateFlow",
+    ],
+    image: "",
+    liveUrl: "",
+    githubUrl: "https://github.com/coder7475/focusGuard",
+  },
 ];
