@@ -1,11 +1,10 @@
-import { useState, useEffect, useRef } from "react";
-import { CalendarIcon, Clock, ArrowRight } from "lucide-react";
-import axios from "axios";
-import { useToast } from "~/hooks/use-toast";
+import { useState, useEffect } from "react";
+import { CalendarIcon, Clock, ArrowRight, AlertCircle, RefreshCw } from "lucide-react";
+import { useInView } from "~/hooks/use-in-view";
 import { cn } from "~/libs/utils";
 import { Link } from "@remix-run/react";
 
-interface BlogPost {
+export interface BlogPost {
   id: number;
   title: string;
   description: string;
@@ -16,59 +15,56 @@ interface BlogPost {
   cover_image: string;
 }
 
+interface BlogProps {
+  initialPosts?: BlogPost[];
+  error?: string;
+}
+
 const placeholderImages = [
   "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80",
   "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
   "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
 ];
 
-export const Blog = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const sectionRef = useRef<HTMLElement>(null);
-  const { toast } = useToast();
+export const Blog = ({ initialPosts, error: initialError }: BlogProps) => {
+  const [sectionRef, isVisible] = useInView<HTMLElement>({ threshold: 0.1 });
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(initialPosts ?? []);
+  const [isLoading, setIsLoading] = useState(!initialPosts);
+  const [error, setError] = useState<string | undefined>(initialError);
 
   useEffect(() => {
+    if (initialPosts) {
+      setBlogPosts(initialPosts);
+      setIsLoading(false);
+      return;
+    }
+
+    const controller = new AbortController();
     const fetchBlogPosts = async () => {
       setIsLoading(true);
+      setError(undefined);
       try {
-        const response = await axios.get("https://dev.to/api/articles", {
-          params: { per_page: 4, username: "coder7475" },
-        });
-        setBlogPosts(response.data);
-      } catch (error) {
-        console.error("Error fetching blog posts:", (error as Error).message);
-        toast({
-          title: "Error fetching articles",
-          description: "Could not load blog posts from dev.to. Please try again later.",
-          variant: "destructive",
-        });
+        const res = await fetch(
+          "https://dev.to/api/articles?username=coder7475&per_page=4",
+          { signal: controller.signal }
+        );
+        if (!res.ok) {
+          throw new Error(`Failed to load articles (${res.status})`);
+        }
+        const data = (await res.json()) as BlogPost[];
+        setBlogPosts(data);
+      } catch (err) {
+        if ((err as Error).name !== "AbortError") {
+          setError((err as Error).message);
+        }
       } finally {
         setIsLoading(false);
       }
     };
 
     fetchBlogPosts();
-  }, [toast]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+    return () => controller.abort();
+  }, [initialPosts]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -124,13 +120,26 @@ export const Blog = () => {
             ))}
           </div>
         </div>
+      ) : error ? (
+        <div className="glass-morphism rounded-lg p-8 text-center max-w-lg mx-auto">
+          <AlertCircle className="w-10 h-10 text-destructive mx-auto mb-3" />
+          <h3 className="text-lg font-display font-bold mb-2">Unable to Load Articles</h3>
+          <p className="text-sm text-muted-foreground mb-4">{error}</p>
+          <button
+            type="button"
+            onClick={() => window.location.reload()}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
+          >
+            <RefreshCw className="w-4 h-4" />
+            Retry
+          </button>
+        </div>
       ) : (
         <div className="space-y-8">
           {blogPosts.length === 0 && (
-            <p className="text-center text-red-500">No blog posts found.</p>
+            <p className="text-center text-muted-foreground">No blog posts found.</p>
           )}
 
-          {/* Featured article - full width */}
           {featuredPost && (
             <Link
               to={featuredPost.url}
@@ -184,7 +193,6 @@ export const Blog = () => {
             </Link>
           )}
 
-          {/* Remaining articles - 2 column grid */}
           {remainingPosts.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {remainingPosts.map((post, index) => (

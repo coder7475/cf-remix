@@ -1,11 +1,19 @@
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useMemo, useRef } from "react";
 import { ExternalLink, Github, CheckCircle } from "lucide-react";
 import { cn } from "~/libs/utils";
-import { Link } from "@remix-run/react";
+import { Link, useSearchParams } from "@remix-run/react";
 import { projects } from "~/constants";
 import { ProjectCategory } from "~/types";
+import { useInView } from "~/hooks/use-in-view";
 
 const PROJECTS_PER_PAGE = 4;
+
+const VALID_CATEGORIES: ProjectCategory[] = [
+  "backend",
+  "fullstack",
+  "ai-ml",
+  "mobile",
+];
 
 const tabs: { id: ProjectCategory; label: string }[] = [
   { id: "backend", label: "Backend" },
@@ -31,10 +39,14 @@ const StatusBadge = ({ status }: { status: "in-progress" | "finished" }) => {
 };
 
 export const Projects = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [activeTab, setActiveTab] = useState<ProjectCategory>("backend");
+  const [sectionRef, isVisible] = useInView<HTMLElement>({ threshold: 0.1 });
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const categoryParam = searchParams.get("category");
+  const activeTab: ProjectCategory =
+    categoryParam && VALID_CATEGORIES.includes(categoryParam as ProjectCategory)
+      ? (categoryParam as ProjectCategory)
+      : "backend";
 
   const filteredProjects = useMemo(
     () => projects.filter((p) => p.category === activeTab),
@@ -42,6 +54,13 @@ export const Projects = () => {
   );
 
   const totalPages = Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE);
+
+  const pageParam = searchParams.get("page");
+  const parsedPage = pageParam ? parseInt(pageParam, 10) : 1;
+  const currentPage =
+    Number.isInteger(parsedPage) && parsedPage >= 1
+      ? Math.min(parsedPage, Math.max(totalPages, 1))
+      : 1;
 
   const tabCounts = useMemo(() => {
     const counts: Record<ProjectCategory, number> = {
@@ -56,27 +75,11 @@ export const Projects = () => {
     return counts;
   }, []);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   const handleTabChange = (tab: ProjectCategory) => {
-    setActiveTab(tab);
-    setCurrentPage(1);
+    const nextParams = new URLSearchParams(searchParams);
+    nextParams.set("category", tab);
+    nextParams.set("page", "1");
+    setSearchParams(nextParams, { preventScrollReset: true });
   };
 
   const paginatedProjects = filteredProjects.slice(
@@ -84,8 +87,46 @@ export const Projects = () => {
     currentPage * PROJECTS_PER_PAGE
   );
 
-  const handlePrev = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
-  const handleNext = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  const handlePrev = () => {
+    const prevPage = Math.max(currentPage - 1, 1);
+    const nextParams = new URLSearchParams(searchParams);
+    nextParams.set("category", activeTab);
+    nextParams.set("page", prevPage.toString());
+    setSearchParams(nextParams, { preventScrollReset: true });
+  };
+
+  const handleNext = () => {
+    const nextPage = Math.min(currentPage + 1, totalPages);
+    const nextParams = new URLSearchParams(searchParams);
+    nextParams.set("category", activeTab);
+    nextParams.set("page", nextPage.toString());
+    setSearchParams(nextParams, { preventScrollReset: true });
+  };
+
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLButtonElement>,
+    index: number
+  ) => {
+    let nextIndex: number | null = null;
+    if (e.key === "ArrowRight") {
+      nextIndex = (index + 1) % tabs.length;
+    } else if (e.key === "ArrowLeft") {
+      nextIndex = (index - 1 + tabs.length) % tabs.length;
+    } else if (e.key === "Home") {
+      nextIndex = 0;
+    } else if (e.key === "End") {
+      nextIndex = tabs.length - 1;
+    }
+
+    if (nextIndex !== null) {
+      e.preventDefault();
+      const nextTab = tabs[nextIndex];
+      handleTabChange(nextTab.id);
+      tabRefs.current[nextIndex]?.focus();
+    }
+  };
 
   return (
     <section ref={sectionRef} className="py-16 md:py-24 bg-muted/30">
@@ -114,40 +155,60 @@ export const Projects = () => {
 
         {/* Tab navigation */}
         <div
+          role="tablist"
+          aria-label="Project categories"
           className={cn(
             "flex gap-1 mb-10 overflow-x-auto pb-2 ml-5",
             isVisible ? "animate-fade-in" : "opacity-0"
           )}
           style={{ animationDelay: "0.15s" }}
         >
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => handleTabChange(tab.id)}
-              className={cn(
-                "px-4 py-2 rounded-lg font-mono text-sm whitespace-nowrap transition-all duration-200",
-                activeTab === tab.id
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
-              )}
-            >
-              {tab.label}
-              <span
+          {tabs.map((tab, index) => {
+            const isSelected = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                ref={(el) => {
+                  tabRefs.current[index] = el;
+                }}
+                role="tab"
+                id={`tab-${tab.id}`}
+                aria-selected={isSelected}
+                aria-controls={`tabpanel-${tab.id}`}
+                tabIndex={isSelected ? 0 : -1}
+                onClick={() => handleTabChange(tab.id)}
+                onKeyDown={(e) => handleKeyDown(e, index)}
                 className={cn(
-                  "ml-2 text-xs",
-                  activeTab === tab.id
-                    ? "text-primary-foreground/70"
-                    : "text-muted-foreground/70"
+                  "px-4 py-2 rounded-lg font-mono text-sm whitespace-nowrap transition-all duration-200",
+                  isSelected
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
                 )}
               >
-                ({tabCounts[tab.id]})
-              </span>
-            </button>
-          ))}
+                {tab.label}
+                <span
+                  className={cn(
+                    "ml-2 text-xs",
+                    isSelected
+                      ? "text-primary-foreground/70"
+                      : "text-muted-foreground/70"
+                  )}
+                >
+                  ({tabCounts[tab.id]})
+                </span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Staggered grid */}
-        <div className="columns-1 sm:columns-2 gap-6 space-y-6">
+        <div
+          role="tabpanel"
+          id={`tabpanel-${activeTab}`}
+          aria-labelledby={`tab-${activeTab}`}
+          tabIndex={0}
+          className="columns-1 sm:columns-2 gap-6 space-y-6 focus:outline-none"
+        >
           {paginatedProjects.map((project, index) => (
             <div
               key={project.title}

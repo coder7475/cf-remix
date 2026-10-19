@@ -1,20 +1,12 @@
-import { useEffect, useState } from "react";
+import { useInView } from "~/hooks/use-in-view";
 import { cn } from "~/libs/utils";
 import { whatIDoCards } from "~/constants/whatIDoConstants";
 
 export const WhatIDo = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, []);
+  const [sectionRef, isVisible] = useInView<HTMLElement>({ threshold: 0.1 });
 
   return (
-    <section className="py-16 md:py-24">
+    <section ref={sectionRef} className="py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
           className={cn(

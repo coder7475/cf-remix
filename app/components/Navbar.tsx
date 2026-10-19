@@ -1,9 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-
 import { Menu, X } from "lucide-react";
 import { cn } from "~/libs/utils";
-import { Link } from "@remix-run/react";
-import { ThemeToggle } from "./ThemeToggle";
+import { Link, useLocation, useNavigate } from "@remix-run/react";
+import { ThemeToggle } from "~/components/ThemeToggle";
 
 const SECTION_IDS = ["hero", "what-i-do", "about", "skills", "experience", "projects", "contact"];
 
@@ -26,6 +25,10 @@ const usePrefersReducedMotion = () => {
 };
 
 export const Navbar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHomePage = location.pathname === "/";
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMenuAnimating, setIsMenuAnimating] = useState(false);
@@ -63,6 +66,8 @@ export const Navbar = () => {
   }, []);
 
   useEffect(() => {
+    if (!isHomePage) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -80,15 +85,19 @@ export const Navbar = () => {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [isHomePage]);
 
   const handleNavClick = (href: string) => {
-    const id = href.replace("#", "");
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
     closeMobileMenu();
+    if (isHomePage) {
+      const id = href.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      navigate(`/${href}`);
+    }
   };
 
   const openMobileMenu = useCallback(() => {
@@ -219,12 +228,13 @@ export const Navbar = () => {
           Robiul Hossain
         </Link>
 
-        {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-6">
           {navLinks.map((link) => {
             const isAnchor = link.href.startsWith("#");
             const sectionId = isAnchor ? link.href.replace("#", "") : null;
-            const isActive = isAnchor && activeSection === sectionId;
+            const isActive = isAnchor
+              ? isHomePage && activeSection === sectionId
+              : location.pathname === link.href;
             return isAnchor ? (
               <button
                 key={link.name}
@@ -244,9 +254,16 @@ export const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className="relative font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 font-mono"
+                className={cn(
+                  "relative font-medium transition-colors duration-200 font-mono",
+                  isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                )}
+                aria-current={isActive ? "page" : undefined}
               >
                 {link.name}
+                {isActive && (
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary" />
+                )}
               </Link>
             );
           })}
@@ -256,7 +273,6 @@ export const Navbar = () => {
           <ThemeToggle />
         </div>
 
-        {/* Mobile Menu Toggle */}
         <button
           ref={hamburgerButtonRef}
           onClick={toggleMobileMenu}
@@ -273,7 +289,6 @@ export const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu Backdrop */}
       {menuVisible && (
         <div
           className={cn(
@@ -285,7 +300,6 @@ export const Navbar = () => {
         />
       )}
 
-      {/* Mobile Menu */}
       {menuVisible && (
         <div
           ref={menuRef}
@@ -305,7 +319,9 @@ export const Navbar = () => {
             {navLinks.map((link, index) => {
               const isAnchor = link.href.startsWith("#");
               const sectionId = isAnchor ? link.href.replace("#", "") : null;
-              const isActive = isAnchor && activeSection === sectionId;
+              const isActive = isAnchor
+                ? isHomePage && activeSection === sectionId
+                : location.pathname === link.href;
               return isAnchor ? (
                 <button
                   key={link.name}
@@ -327,10 +343,17 @@ export const Navbar = () => {
                   key={link.name}
                   ref={(el) => { menuItemsRef.current[index] = el!; }}
                   to={link.href}
-                  className="relative text-xl font-medium text-foreground hover:text-primary transition-colors w-full text-center py-3"
+                  className={cn(
+                    "relative text-xl font-medium transition-colors w-full text-center py-3",
+                    isActive ? "text-primary" : "text-foreground hover:text-primary"
+                  )}
+                  aria-current={isActive ? "page" : undefined}
                   onClick={closeMobileMenu}
                 >
                   {link.name}
+                  {isActive && (
+                    <span className="absolute bottom-2 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-primary animate-in slide-in-from-left-1/2 fade-in duration-300" />
+                  )}
                 </Link>
               );
             })}

@@ -9,3 +9,7 @@ node_modules
 
 # Sentry Config File
 .env.sentry-build-plugin
+
+# Windows WSL metadata
+*:Zone.Identifier
+*Zone.Identifier*

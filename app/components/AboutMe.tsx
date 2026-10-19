@@ -1,33 +1,13 @@
-import { useState, useEffect, useRef } from "react";
+import { useInView } from "~/hooks/use-in-view";
 import { cn } from "~/libs/utils";
 
 export const AboutMe = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const [sectionRef, isVisible] = useInView<HTMLElement>({ threshold: 0.2 });
 
   return (
     <section ref={sectionRef} className="py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row gap-12 md:gap-16">
-          {/* Left column - Heading with accent line */}
           <div className="md:w-1/4">
             <div
               className={cn(
@@ -42,9 +22,7 @@ export const AboutMe = () => {
             </div>
           </div>
 
-          {/* Right column - Text and image */}
           <div className="md:w-3/4 flex flex-col md:flex-row gap-10 md:gap-12 items-start">
-            {/* Bio text */}
             <div
               className={cn(
                 "md:w-3/5 space-y-4 text-muted-foreground",
@@ -65,10 +43,8 @@ export const AboutMe = () => {
                 infrastructure. I&apos;m passionate about writing clean,
                 maintainable code and continuously improving my craft.
               </p>
-
             </div>
 
-            {/* Profile image */}
             <div
               className={cn(
                 "md:w-2/5 flex justify-center md:justify-end",

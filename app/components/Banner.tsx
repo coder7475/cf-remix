@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { Link } from "@remix-run/react";
+import { useInView } from "~/hooks/use-in-view";
 import { cn } from "~/libs/utils";
 
 const ServerTopology = () => (
@@ -26,20 +27,11 @@ const ServerTopology = () => (
 );
 
 export const Hero = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, []);
+  const [sectionRef, isVisible] = useInView<HTMLElement>({ threshold: 0.1 });
 
   return (
-    <section className="relative min-h-[90vh] flex items-center px-4 overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-[90vh] flex items-center px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 items-center">
-        {/* Left column - Typographic content (60%) */}
         <div className="md:col-span-3 z-10">
           <span
             className={cn(
@@ -111,10 +103,8 @@ export const Hero = () => {
                 Get In Touch
               </span>
             </button>
-            <a
-              href="/schedule"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/schedule"
               className="border-2 border-primary text-primary hover:bg-primary/10 font-semibold py-3 px-8 rounded-md transition-all duration-200 transform hover:-translate-y-1 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/50"
             >
               <span className="inline-flex items-center gap-2">
@@ -132,11 +122,10 @@ export const Hero = () => {
                 </svg>
                 Schedule a Meeting
               </span>
-            </a>
+            </Link>
           </div>
         </div>
 
-        {/* Right column - Code visual element (40%) */}
         <div
           className={cn(
             "hidden md:flex md:col-span-2 h-64 md:h-96",

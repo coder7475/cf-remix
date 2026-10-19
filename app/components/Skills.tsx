@@ -1,28 +1,9 @@
-import { useState, useEffect, useRef } from "react";
 import { additionalSkills, categories } from "~/constants/skillsConstants";
+import { useInView } from "~/hooks/use-in-view";
 import { cn } from "~/libs/utils";
 
 export const Skills = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  const [sectionRef, isVisible] = useInView<HTMLElement>({ threshold: 0.1 });
 
   return (
     <section ref={sectionRef} className="py-16 md:py-24 bg-muted/30">
@@ -39,7 +20,6 @@ export const Skills = () => {
           </h2>
         </div>
 
-        {/* Category sections */}
         <div className="space-y-12">
           {categories.map((category, categoryIndex) => (
             <div
@@ -75,7 +55,6 @@ export const Skills = () => {
           ))}
         </div>
 
-        {/* Additional Tools */}
         <div
           className={cn(
             "mt-16 pt-12 border-t border-border",

@@ -6,16 +6,18 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
   useRouteError,
 } from "@remix-run/react";
 
 import "./tailwind.css";
-import { Footer } from "./components/Footer";
-import { Navbar } from "./components/Navbar";
-import { ScrollToTop } from "./components/ScrollToTop";
+import { Footer } from "~/components/Footer";
+import { Navbar } from "~/components/Navbar";
+import { ScrollToTop } from "~/components/ScrollToTop";
+import { Toaster } from "~/components/ui/toaster";
+import { ThemeProvider } from "~/hooks/use-theme";
 
 export const links: LinksFunction = () => [
-  { rel: "canonical", href: BASE_URL },
   { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
   {
     rel: "icon",
@@ -72,6 +74,9 @@ export const meta: MetaFunction = () => {
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+  const canonicalUrl = `${BASE_URL}${location.pathname === "/" ? "" : location.pathname}`;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -90,6 +95,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="canonical" href={canonicalUrl} />
         <script
           dangerouslySetInnerHTML={{
             __html: `try{var t=localStorage.getItem("theme");if(t==="light"){document.documentElement.classList.add("light")}else if(t==="system"||!t){var m=window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches;if(m){document.documentElement.classList.add("light")}}}catch(e){}`,
@@ -103,10 +109,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <Navbar />
-        <main className="page-inner pb-24 pt-6">{children}</main>
-        <Footer />
-        <ScrollToTop />
+        <ThemeProvider>
+          <Navbar />
+          <main className="page-inner pb-24 pt-6">{children}</main>
+          <Footer />
+          <ScrollToTop />
+          <Toaster />
+        </ThemeProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -120,7 +129,7 @@ function App() {
 
 export const ErrorBoundary = () => {
   const error = useRouteError();
-  captureRemixErrorBoundaryError(error); // keep/remove as needed
+  captureRemixErrorBoundaryError(error);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-950 px-4">

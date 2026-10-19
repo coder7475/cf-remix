@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useInView } from "~/hooks/use-in-view";
 import { cn } from "~/libs/utils";
 import { Briefcase } from "lucide-react";
 
@@ -10,8 +10,7 @@ interface ExperienceItem {
 }
 
 export const Experience = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+  const [sectionRef, isVisible] = useInView<HTMLElement>({ threshold: 0.1 });
 
   const experiences: ExperienceItem[] = [
     {
@@ -48,24 +47,6 @@ export const Experience = () => {
     },
   ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section ref={sectionRef} className="py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -81,9 +62,7 @@ export const Experience = () => {
           </h2>
         </div>
 
-        {/* Left-rail timeline */}
         <div className="relative">
-          {/* Timeline line */}
           <div className="absolute left-5 top-0 h-full w-px bg-border" />
 
           <div className="space-y-10">
@@ -96,14 +75,12 @@ export const Experience = () => {
                 )}
                 style={{ animationDelay: `${0.1 + index * 0.1}s` }}
               >
-                {/* Timeline dot */}
                 <div className="relative z-10 shrink-0">
                   <div className="w-10 h-10 rounded-full bg-secondary border-2 border-primary flex items-center justify-center">
                     <Briefcase className="w-4 h-4 text-primary" />
                   </div>
                 </div>
 
-                {/* Content card */}
                 <div className="glass-morphism rounded-lg p-6 flex-1">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
                     <h3 className="text-xl font-display font-bold text-foreground">
