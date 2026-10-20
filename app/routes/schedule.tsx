@@ -4,12 +4,31 @@ import { Link } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Schedule a Meeting | Robiul Hossain Portfolio" },
+    { title: "Schedule a 30-Minute Consultation | Robiul Hossain" },
     {
       name: "description",
       content:
-        "Schedule a meeting with Robiul Hossain for consultations, collaborations, or discussions.",
+        "Book a direct 30-minute consultation with Robiul Hossain to discuss full-stack engineering roles, architectural advisory, or client project scopes.",
     },
+    { property: "og:site_name", content: "Robiul Hossain Portfolio" },
+    { property: "og:type", content: "website" },
+    { property: "og:title", content: "Schedule a 30-Minute Consultation | Robiul Hossain" },
+    {
+      property: "og:description",
+      content:
+        "Book a direct 30-minute consultation with Robiul Hossain via Calendly.",
+    },
+    { property: "og:url", content: "https://robiulhossain.com/schedule" },
+    { property: "og:image", content: "https://robiulhossain.com/open-graph-image.jpeg" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:site", content: "@robiul7475" },
+    { name: "twitter:title", content: "Schedule a 30-Minute Consultation | Robiul Hossain" },
+    {
+      name: "twitter:description",
+      content:
+        "Book a direct 30-minute consultation with Robiul Hossain via Calendly.",
+    },
+    { name: "twitter:image", content: "https://robiulhossain.com/open-graph-image.jpeg" },
   ];
 };
 

@@ -10,28 +10,32 @@ interface BlogLoaderData {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Blog | Robiul Hossain Portfolio" },
+    { title: "Engineering Blog & Tech Articles | Robiul Hossain" },
     {
       name: "description",
       content:
-        "Technical articles, tutorials, and insights on software engineering, web development, and system design by Robiul Hossain.",
+        "Technical articles, tutorials, and architectural insights on TypeScript, React, Node.js, and distributed software engineering by Robiul Hossain.",
     },
     { name: "robots", content: "index, follow" },
-    { property: "og:title", content: "Blog | Robiul Hossain Portfolio" },
+    { property: "og:site_name", content: "Robiul Hossain Portfolio" },
+    { property: "og:title", content: "Engineering Blog & Tech Articles | Robiul Hossain" },
     {
       property: "og:description",
       content:
-        "Technical articles, tutorials, and insights on software engineering, web development, and system design by Robiul Hossain.",
+        "Technical articles, tutorials, and architectural insights on TypeScript, React, Node.js, and distributed software engineering by Robiul Hossain.",
     },
     { property: "og:type", content: "website" },
     { property: "og:url", content: "https://robiulhossain.com/blog" },
+    { property: "og:image", content: "https://robiulhossain.com/open-graph-image.jpeg" },
     { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:title", content: "Blog | Robiul Hossain Portfolio" },
+    { name: "twitter:site", content: "@robiul7475" },
+    { name: "twitter:title", content: "Engineering Blog & Tech Articles | Robiul Hossain" },
     {
       name: "twitter:description",
       content:
-        "Technical articles, tutorials, and insights on software engineering by Robiul Hossain.",
+        "Technical articles, tutorials, and architectural insights on software engineering by Robiul Hossain.",
     },
+    { name: "twitter:image", content: "https://robiulhossain.com/open-graph-image.jpeg" },
   ];
 };
 
