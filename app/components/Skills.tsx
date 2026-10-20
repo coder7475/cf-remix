@@ -51,7 +51,7 @@ export const Skills = () => {
                       <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                         <IconComponent className="w-4 h-4 text-primary" />
                       </div>
-                      <span className="text-sm font-medium text-foreground truncate">
+                      <span className="text-sm font-medium text-foreground break-words min-w-0 leading-tight">
                         {skill.name}
                       </span>
                     </div>

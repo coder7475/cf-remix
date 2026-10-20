@@ -25,14 +25,14 @@ const tabs: { id: ProjectCategory; label: string }[] = [
 const StatusBadge = ({ status }: { status: "in-progress" | "finished" }) => {
   if (status === "in-progress") {
     return (
-      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-500 text-xs font-mono font-medium border border-amber-500/20">
+      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full badge-in-progress text-xs font-mono font-medium">
         <Clock className="w-3 h-3" />
         In Active Development
       </span>
     );
   }
   return (
-    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-mono font-medium border border-emerald-500/20">
+    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full badge-finished text-xs font-mono font-medium">
       <CheckCircle2 className="w-3 h-3" />
       Shipped &amp; Tested
     </span>
@@ -275,7 +275,7 @@ export const Projects = () => {
                       )}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={`Open live demonstration for ${project.title}`}
+                      aria-label={project.client ? `Visit Live Site for ${project.title}` : `Live Demo for ${project.title}`}
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
                       <span>{project.client ? "Visit Live Site" : "Live Demo"}</span>

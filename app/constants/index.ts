@@ -104,7 +104,7 @@ export const projects: Project[] = [
     status: ProjectStatus.Finished,
     title: "GRE Quant School LMS",
     description:
-      "Comprehensive Learning Management System (LMS) and official GRE preparation portal developed under Elementix for client. Engineered with Next.js and React, featuring targeted quantitative drills, timed practice modes, student analytics dashboards, and step-by-step mathematical explanations.",
+      "Comprehensive Learning Management System (LMS) and official GRE preparation portal developed under Elementix for a client. Engineered with Next.js and React, featuring targeted quantitative drills, timed practice modes, student analytics dashboards, and step-by-step mathematical explanations.",
     category: "fullstack",
     technologies: [
       "Next.js",
@@ -123,7 +123,7 @@ export const projects: Project[] = [
     status: ProjectStatus.Finished,
     title: "Naza Noor DTC Fashion Storefront",
     description:
-      "Direct-to-consumer (DTC) fashion e-commerce storefront developed under Elementix for client. Features optimized mobile-first catalog browsing, product filtering, dynamic cart drawers, international currency support, and sub-second CDN page delivery.",
+      "Direct-to-consumer (DTC) fashion e-commerce storefront developed under Elementix for a client. Features optimized mobile-first catalog browsing, product filtering, dynamic cart drawers, international currency support, and sub-second CDN page delivery.",
     category: "fullstack",
     technologies: [
       "E-Commerce",

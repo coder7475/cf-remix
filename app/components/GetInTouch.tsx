@@ -209,7 +209,7 @@ export const Contact = () => {
             </button>
 
             {formStatus === "success" && (
-              <div role="status" className="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-mono text-center">
+              <div role="status" className="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-success-contrast text-sm font-mono text-center">
                 Your email client has been launched! If it did not open, click the Copy Email button to send directly.
               </div>
             )}
@@ -247,12 +247,12 @@ export const Contact = () => {
                     type="button"
                     onClick={handleCopyEmail}
                     className="w-full mt-2 py-2 px-3 rounded-lg border border-border/70 bg-secondary/50 hover:bg-secondary text-foreground text-xs font-mono transition-colors flex items-center justify-center gap-2"
-                    aria-label="Copy email address to clipboard"
+                    aria-label={copiedEmail ? "Email address copied to clipboard" : "Copy email address to clipboard"}
                   >
                     {copiedEmail ? (
                       <>
-                        <Check className="w-3.5 h-3.5 text-emerald-400" />
-                        <span className="text-emerald-400 font-semibold">Email Copied to Clipboard</span>
+                        <Check className="w-3.5 h-3.5 text-emerald-400 text-success-contrast" />
+                        <span className="text-emerald-400 text-success-contrast font-semibold">Email Copied to Clipboard</span>
                       </>
                     ) : (
                       <>
@@ -261,6 +261,9 @@ export const Contact = () => {
                       </>
                     )}
                   </button>
+                  <span className="sr-only" aria-live="polite">
+                    {copiedEmail ? "Email address copied to clipboard" : ""}
+                  </span>
                 </div>
               </div>
 
