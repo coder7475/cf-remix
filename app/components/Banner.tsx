@@ -21,27 +21,27 @@ const SystemArchitectureCard = () => (
       </div>
     </div>
 
-    <div className="p-5 sm:p-6 space-y-3.5 bg-slate-950 text-slate-200">
+    <div className="p-5 sm:p-6 space-y-3.5 bg-slate-950 text-slate-200 overflow-hidden">
       <div className="flex items-center gap-2 text-primary">
         <Terminal className="w-4 h-4 shrink-0" />
         <span className="text-slate-100 font-semibold">$ cat engineer.json</span>
       </div>
 
-      <pre className="text-slate-300 overflow-x-auto text-xs leading-relaxed select-text">
+      <pre className="text-slate-300 overflow-hidden whitespace-pre-wrap break-words text-[11px] sm:text-xs leading-relaxed select-text font-mono">
 {`{
   "name": "Robiul Hossain",
   "role": "Full-Stack Software Engineer",
-  "focus": ["Fullstack Web", "Scalable APIs", "Cloud Infrastructure"],
+  "focus": ["Web Apps", "APIs", "Cloud"],
   "core_stack": {
-    "languages": ["TypeScript", "JavaScript", "Python", "SQL"],
-    "frontend": ["React", "Next.js", "Remix", "Tailwind CSS"],
-    "backend": ["Node.js", "Express", "NestJS", "FastAPI"],
+    "languages": ["TypeScript", "Python", "SQL"],
+    "frontend": ["React", "Next.js", "Tailwind"],
+    "backend": ["Node.js", "Express", "FastAPI"],
     "databases": ["PostgreSQL", "MongoDB", "Redis"]
   },
-  "deployment": ["AWS", "Cloudflare Workers", "Docker", "CI/CD"],
+  "deployment": ["AWS", "Cloudflare", "Docker", "CI/CD"],
   "availability": {
     "status": "Available",
-    "roles": ["Full-Time Software Engineer", "Contract / Freelance"],
+    "roles": ["Full-Time", "Contract"],
     "location": "Remote / Worldwide"
   }
 }`}
