@@ -226,7 +226,14 @@ export const Projects = () => {
                   <h3 className="text-xl font-display font-bold text-foreground group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
-                  <StatusBadge status={project.status} />
+                  <div className="flex flex-wrap items-center gap-2 shrink-0">
+                    {project.client && (
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-mono font-medium border border-primary/20">
+                        {project.client}
+                      </span>
+                    )}
+                    <StatusBadge status={project.status} />
+                  </div>
                 </div>
                 <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
                   {project.description}
@@ -260,13 +267,18 @@ export const Projects = () => {
                   {project.liveUrl && (
                     <Link
                       to={project.liveUrl}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-primary/10 hover:bg-primary/20 text-primary text-xs font-mono transition-colors border border-primary/30"
+                      className={cn(
+                        "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono transition-colors",
+                        project.client
+                          ? "bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-xs"
+                          : "bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30"
+                      )}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`Open live demonstration for ${project.title}`}
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
-                      <span>Live Demo</span>
+                      <span>{project.client ? "Visit Live Site" : "Live Demo"}</span>
                     </Link>
                   )}
                 </div>

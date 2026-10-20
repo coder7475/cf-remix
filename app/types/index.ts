@@ -9,6 +9,7 @@ export interface Project {
   image?: string;
   liveUrl?: string;
   githubUrl?: string;
+  client?: string;
 }
 
 export enum ProjectStatus {

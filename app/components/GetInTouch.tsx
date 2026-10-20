@@ -1,7 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import { cn } from "~/libs/utils";
-import { Mail, Github, Linkedin, Twitter, Youtube, Users, Calendar, Copy, Check, Clock } from "lucide-react";
+import { Mail, Github, Linkedin, Youtube, Users, Calendar, Copy, Check, Clock } from "lucide-react";
 import { Link } from "@remix-run/react";
+
+const XIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    aria-hidden="true"
+    className={className}
+    fill="currentColor"
+  >
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
 
 export const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -297,20 +308,43 @@ export const Contact = () => {
                 </h4>
                 <div className="grid grid-cols-4 gap-2">
                   {[
-                    { icon: Github, href: "https://github.com/coder7475", label: "GitHub" },
-                    { icon: Linkedin, href: "https://www.linkedin.com/in/robiul7475", label: "LinkedIn" },
-                    { icon: Twitter, href: "https://x.com/robiul7475", label: "Twitter" },
-                    { icon: Youtube, href: "https://www.youtube.com/@RobiulHossain-f2k", label: "YouTube" },
-                  ].map(({ icon: Icon, href, label }) => (
+                    {
+                      icon: Github,
+                      href: "https://github.com/coder7475",
+                      label: "GitHub",
+                      colorClass: "bg-slate-500/10 text-foreground border-border/60 hover:bg-[#24292e] hover:text-white hover:border-[#24292e]",
+                    },
+                    {
+                      icon: Linkedin,
+                      href: "https://www.linkedin.com/in/robiul7475",
+                      label: "LinkedIn",
+                      colorClass: "bg-[#0A66C2]/10 text-[#0A66C2] border-[#0A66C2]/30 hover:bg-[#0A66C2] hover:text-white hover:border-[#0A66C2]",
+                    },
+                    {
+                      icon: XIcon,
+                      href: "https://x.com/robiul7475",
+                      label: "X",
+                      colorClass: "bg-black/10 dark:bg-white/10 text-foreground border-border/60 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black hover:border-black dark:hover:border-white",
+                    },
+                    {
+                      icon: Youtube,
+                      href: "https://www.youtube.com/@RobiulHossain-f2k",
+                      label: "YouTube",
+                      colorClass: "bg-[#FF0000]/10 text-[#FF0000] border-[#FF0000]/30 hover:bg-[#FF0000] hover:text-white hover:border-[#FF0000]",
+                    },
+                  ].map(({ icon: Icon, href, label, colorClass }) => (
                     <a
                       key={label}
                       target="_blank"
                       rel="noopener noreferrer"
                       href={href}
                       aria-label={`Visit Robiul's ${label} profile`}
-                      className="w-11 h-11 rounded-lg bg-secondary/60 border border-border/60 flex items-center justify-center hover:bg-primary/10 hover:border-primary/40 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/40"
+                      className={cn(
+                        "w-11 h-11 rounded-lg border flex items-center justify-center transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/40",
+                        colorClass
+                      )}
                     >
-                      <Icon className="w-4 h-4 text-muted-foreground hover:text-foreground transition-colors" />
+                      <Icon className="w-4 h-4 transition-transform group-hover:scale-110" />
                     </a>
                   ))}
                 </div>

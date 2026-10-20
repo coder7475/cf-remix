@@ -37,34 +37,33 @@
   }
 
   .light {
-    --background: 0 0% 100%;
-    --foreground: 240 6% 3%;
-    --card: 0 0% 98%;
-    --card-foreground: 240 6% 3%;
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 6% 3%;
-    --primary: 217 91% 60%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 221 83% 53%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 5% 92%;
-    --secondary-foreground: 240 6% 3%;
-    --muted: 240 5% 92%;
-    --muted-foreground: 240 4% 40%;
-    --accent: 217 91% 60%;
+    --secondary: 215 25% 93%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 215 25% 93%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 221 83% 53%;
     --accent-foreground: 0 0% 100%;
-    --destructive: 0 62.8% 50%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
-    --border: 240 5% 85%;
-    --input: 240 5% 85%;
-    --ring: 217 91% 60%;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 6% 3%;
-    --sidebar-primary: 217 91% 60%;
+    --border: 215 20% 88%;
+    --input: 215 20% 88%;
+    --ring: 221 83% 53%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 221 83% 53%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 5% 92%;
-    --sidebar-accent-foreground: 240 6% 3%;
-    --sidebar-border: 240 5% 85%;
-    --sidebar-ring: 217 91% 60%;
-
+    --sidebar-accent: 215 25% 93%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 215 20% 88%;
+    --sidebar-ring: 221 83% 53%;
   }
 
 }
@@ -99,7 +98,23 @@
   }
 
   .light .glass-morphism {
-    @apply bg-black/[0.03] border-black/[0.06] shadow-[0_20px_80px_rgba(0,0,0,0.1)];
+    @apply backdrop-blur-xl bg-white/85 border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.06)];
+  }
+
+  .dark-logo {
+    display: inline-block;
+  }
+
+  .light .dark-logo {
+    display: none !important;
+  }
+
+  .light-logo {
+    display: none !important;
+  }
+
+  .light .light-logo {
+    display: inline-block !important;
   }
   
   .text-gradient {

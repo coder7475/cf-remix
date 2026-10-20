@@ -8,12 +8,12 @@ const SystemArchitectureCard = () => (
     className="relative w-full rounded-xl glass-morphism border border-primary/20 overflow-hidden shadow-2xl font-mono text-xs sm:text-sm"
     aria-label="Software engineer system status and stack overview"
   >
-    <div className="flex items-center justify-between px-4 py-2.5 bg-secondary/80 border-b border-border/60">
+    <div className="flex items-center justify-between px-4 py-2.5 bg-slate-900 border-b border-slate-800">
       <div className="flex items-center gap-2">
         <div className="w-3 h-3 rounded-full bg-red-500/80" />
         <div className="w-3 h-3 rounded-full bg-amber-500/80" />
         <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
-        <span className="text-xs text-muted-foreground ml-2 hidden sm:inline">robiul@arch-node: ~</span>
+        <span className="text-xs text-slate-400 ml-2 hidden sm:inline">robiul@arch-node: ~</span>
       </div>
       <div className="flex items-center gap-1.5 text-xs text-emerald-400">
         <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -21,13 +21,13 @@ const SystemArchitectureCard = () => (
       </div>
     </div>
 
-    <div className="p-5 sm:p-6 space-y-3.5 bg-secondary/30">
+    <div className="p-5 sm:p-6 space-y-3.5 bg-slate-950 text-slate-200">
       <div className="flex items-center gap-2 text-primary">
         <Terminal className="w-4 h-4 shrink-0" />
-        <span className="text-foreground/90 font-semibold">$ cat engineer.json</span>
+        <span className="text-slate-100 font-semibold">$ cat engineer.json</span>
       </div>
 
-      <pre className="text-muted-foreground overflow-x-auto text-xs leading-relaxed select-text">
+      <pre className="text-slate-300 overflow-x-auto text-xs leading-relaxed select-text">
 {`{
   "name": "Robiul Hossain",
   "role": "Full-Stack Software Engineer",
@@ -47,8 +47,8 @@ const SystemArchitectureCard = () => (
 }`}
       </pre>
 
-      <div className="pt-2 border-t border-border/50 flex items-center justify-between text-xs">
-        <span className="text-muted-foreground flex items-center gap-1.5">
+      <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-xs">
+        <span className="text-slate-400 flex items-center gap-1.5">
           <Sparkles className="w-3.5 h-3.5 text-primary" /> Ready for production impact
         </span>
         <span className="text-primary font-bold">2+ YOE</span>

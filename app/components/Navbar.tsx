@@ -218,14 +218,23 @@ export const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         <Link
           to="/"
-          className="font-display text-xl font-bold tracking-tight text-foreground hover:text-primary transition-colors"
+          className="flex items-center hover:opacity-90 transition-opacity"
+          aria-label="Robiul Hossain"
         >
           <img
-            src="/favicon-32x32.png"
-            alt="Logo"
-            className="inline-block w-8 h-8 mr-2 align-middle"
+            src="/logo.svg"
+            alt="Robiul Hossain"
+            className="h-8 sm:h-9 w-auto dark-logo object-contain"
+            width={184}
+            height={36}
           />
-          Robiul Hossain
+          <img
+            src="/logo_white.jpeg"
+            alt="Robiul Hossain"
+            className="h-8 sm:h-9 w-auto light-logo object-contain rounded-md"
+            width={184}
+            height={36}
+          />
         </Link>
 
         <nav className="hidden md:flex space-x-6">

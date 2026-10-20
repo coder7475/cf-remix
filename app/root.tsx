@@ -18,6 +18,7 @@ import { Toaster } from "~/components/ui/toaster";
 import { ThemeProvider } from "~/hooks/use-theme";
 
 export const links: LinksFunction = () => [
+  { rel: "icon", href: "/favicon.ico" },
   { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
   {
     rel: "icon",
