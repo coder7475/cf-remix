@@ -16,6 +16,8 @@ export const meta: MetaFunction = () => {
         "Full-Stack Software Engineer specializing in TypeScript, React, Next.js, Node.js, and cloud architectures. Available for full-time engineering roles and high-impact client projects.",
     },
     { name: "robots", content: "index, follow" },
+    { property: "og:site_name", content: "Robiul Hossain Portfolio" },
+    { property: "og:locale", content: "en_US" },
     { property: "og:title", content: "Robiul Hossain — Full-Stack Software Engineer & API Architect" },
     {
       property: "og:description",
@@ -24,13 +26,23 @@ export const meta: MetaFunction = () => {
     },
     { property: "og:type", content: "website" },
     { property: "og:url", content: "https://robiulhossain.com" },
+    { property: "og:image", content: "https://robiulhossain.com/open-graph-image.jpeg" },
+    { property: "og:image:secure_url", content: "https://robiulhossain.com/open-graph-image.jpeg" },
+    { property: "og:image:type", content: "image/jpeg" },
+    { property: "og:image:width", content: "2848" },
+    { property: "og:image:height", content: "1504" },
+    { property: "og:image:alt", content: "Robiul Hossain — Full-Stack Software Engineer Portfolio" },
     { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:site", content: "@robiul7475" },
+    { name: "twitter:creator", content: "@robiul7475" },
     { name: "twitter:title", content: "Robiul Hossain — Full-Stack Software Engineer & API Architect" },
     {
       name: "twitter:description",
       content:
         "Full-Stack Software Engineer specializing in TypeScript, React, Next.js, Node.js, and cloud architectures.",
     },
+    { name: "twitter:image", content: "https://robiulhossain.com/open-graph-image.jpeg" },
+    { name: "twitter:image:alt", content: "Robiul Hossain — Full-Stack Software Engineer Portfolio" },
   ];
 };
 

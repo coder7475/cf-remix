@@ -4,12 +4,31 @@ import { isRouteErrorResponse, useRouteError } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Projects | Robiul Hossain Portfolio" },
+    { title: "Featured Projects & Architecture | Robiul Hossain" },
     {
       name: "description",
       content:
-        "Explore projects built by Robiul Hossain — full-stack web applications, APIs, and modern software solutions.",
+        "Explore full-stack web applications, distributed microservices, and AI integrations built by Robiul Hossain using TypeScript, Next.js, Node.js, and cloud platforms.",
     },
+    { property: "og:site_name", content: "Robiul Hossain Portfolio" },
+    { property: "og:type", content: "website" },
+    { property: "og:title", content: "Featured Projects & Architecture | Robiul Hossain" },
+    {
+      property: "og:description",
+      content:
+        "Explore full-stack web applications, distributed microservices, and AI integrations built by Robiul Hossain.",
+    },
+    { property: "og:url", content: "https://robiulhossain.com/projects" },
+    { property: "og:image", content: "https://robiulhossain.com/open-graph-image.jpeg" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:site", content: "@robiul7475" },
+    { name: "twitter:title", content: "Featured Projects & Architecture | Robiul Hossain" },
+    {
+      name: "twitter:description",
+      content:
+        "Explore full-stack web applications, distributed microservices, and AI integrations built by Robiul Hossain.",
+    },
+    { name: "twitter:image", content: "https://robiulhossain.com/open-graph-image.jpeg" },
   ];
 };
 

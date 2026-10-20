@@ -48,29 +48,46 @@ const BASE_URL = "https://robiulhossain.com";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Robiul Hossain — Software Engineer | Portfolio" },
+    { title: "Robiul Hossain — Full-Stack Software Engineer & API Architect" },
     {
       name: "description",
       content:
-        "Software engineer specializing in React, TypeScript, Node.js, and full-stack web development. Building scalable, performant applications.",
+        "Full-Stack Software Engineer specializing in TypeScript, React, Next.js, Node.js, and cloud systems. Building scalable, high-performance web applications and distributed APIs.",
+    },
+    { name: "author", content: "Robiul Hossain" },
+    {
+      name: "keywords",
+      content:
+        "Robiul Hossain, Software Engineer, Full-Stack Developer, TypeScript, React, Next.js, Remix, Node.js, NestJS, PostgreSQL, Cloudflare, AWS, Microservices, API Architect",
     },
     { name: "robots", content: "index, follow" },
-    { property: "og:title", content: "Robiul Hossain — Software Engineer | Portfolio" },
+    { property: "og:site_name", content: "Robiul Hossain Portfolio" },
+    { property: "og:locale", content: "en_US" },
+    { property: "og:type", content: "website" },
+    { property: "og:title", content: "Robiul Hossain — Full-Stack Software Engineer & API Architect" },
     {
       property: "og:description",
       content:
-        "Software engineer specializing in React, TypeScript, Node.js, and full-stack web development. Building scalable, performant applications.",
+        "Full-Stack Software Engineer specializing in TypeScript, React, Next.js, Node.js, and cloud architectures. Available for engineering roles and client projects.",
     },
-    { property: "og:type", content: "website" },
     { property: "og:url", content: BASE_URL },
-    { property: "og:site_name", content: "Robiul Hossain Portfolio" },
+    { property: "og:image", content: `${BASE_URL}/open-graph-image.jpeg` },
+    { property: "og:image:secure_url", content: `${BASE_URL}/open-graph-image.jpeg` },
+    { property: "og:image:type", content: "image/jpeg" },
+    { property: "og:image:width", content: "2848" },
+    { property: "og:image:height", content: "1504" },
+    { property: "og:image:alt", content: "Robiul Hossain — Full-Stack Software Engineer Portfolio" },
     { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:title", content: "Robiul Hossain — Software Engineer | Portfolio" },
+    { name: "twitter:site", content: "@robiul7475" },
+    { name: "twitter:creator", content: "@robiul7475" },
+    { name: "twitter:title", content: "Robiul Hossain — Full-Stack Software Engineer & API Architect" },
     {
       name: "twitter:description",
       content:
-        "Software engineer specializing in React, TypeScript, Node.js, and full-stack web development.",
+        "Full-Stack Software Engineer specializing in TypeScript, React, Next.js, Node.js, and cloud architectures.",
     },
+    { name: "twitter:image", content: `${BASE_URL}/open-graph-image.jpeg` },
+    { name: "twitter:image:alt", content: "Robiul Hossain — Full-Stack Software Engineer Portfolio" },
   ];
 };
 
@@ -80,14 +97,59 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Robiul Hossain",
-    jobTitle: "Software Engineer",
-    url: BASE_URL,
-    sameAs: [
-      "https://github.com/coder7475",
-      "https://www.linkedin.com/in/robiul7475",
-      "https://x.com/robiul7475",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": `${BASE_URL}/#person`,
+        name: "Robiul Hossain",
+        alternateName: "coder7475",
+        jobTitle: "Full-Stack Software Engineer & API Architect",
+        description:
+          "Full-Stack Software Engineer specializing in TypeScript, React, Next.js, Node.js, and cloud architectures.",
+        image: `${BASE_URL}/open-graph-image.jpeg`,
+        url: BASE_URL,
+        worksFor: {
+          "@type": "Organization",
+          name: "Elementix Software Ventures LLC",
+        },
+        knowsAbout: [
+          "TypeScript",
+          "JavaScript",
+          "React",
+          "Next.js",
+          "Remix",
+          "Node.js",
+          "Express.js",
+          "NestJS",
+          "PostgreSQL",
+          "MongoDB",
+          "Redis",
+          "Docker",
+          "AWS",
+          "Cloudflare Workers",
+          "Microservices",
+          "RESTful APIs",
+          "GraphQL",
+          "Python",
+          "FastAPI",
+        ],
+        sameAs: [
+          "https://github.com/coder7475",
+          "https://www.linkedin.com/in/robiul7475",
+          "https://x.com/robiul7475",
+          "https://www.youtube.com/@RobiulHossain-f2k",
+        ],
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${BASE_URL}/#website`,
+        url: BASE_URL,
+        name: "Robiul Hossain — Software Engineer Portfolio",
+        description: "Portfolio of Robiul Hossain, Full-Stack Software Engineer and API Architect.",
+        publisher: {
+          "@id": `${BASE_URL}/#person`,
+        },
+      },
     ],
   };
 
