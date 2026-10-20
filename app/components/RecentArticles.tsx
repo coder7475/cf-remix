@@ -55,7 +55,7 @@ export const RecentArticles = ({ posts }: RecentArticlesProps) => {
   };
 
   return (
-    <section id="articles" ref={sectionRef} aria-labelledby="articles-heading" className="py-20 border-b border-border/50">
+    <section id="blog" ref={sectionRef} aria-labelledby="blog-heading" className="py-20 border-b border-border/50">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div
           className={cn(
@@ -66,13 +66,13 @@ export const RecentArticles = ({ posts }: RecentArticlesProps) => {
           <div className="w-1 h-12 bg-primary rounded-full shrink-0 mt-1" />
           <div>
             <span className="font-mono text-xs uppercase tracking-widest text-primary block mb-1">
-              Technical Writing &amp; Architecture Notes
+              Articles &amp; Architecture Notes
             </span>
-            <h2 id="articles-heading" className="text-3xl md:text-4xl font-display font-bold text-foreground">
-              Recent Articles
+            <h2 id="blog-heading" className="text-3xl md:text-4xl font-display font-bold text-foreground">
+              Engineering Blog
             </h2>
             <p className="text-muted-foreground text-sm max-w-xl mt-2">
-              Engineering deep dives, server automation, and system administration patterns published on DEV.to.
+              Practical guides, system design patterns, and engineering notes published on DEV.to.
             </p>
           </div>
         </div>
@@ -88,7 +88,7 @@ export const RecentArticles = ({ posts }: RecentArticlesProps) => {
             to="/blog"
             className="inline-flex items-center gap-2 font-display text-sm font-semibold text-primary hover:text-primary/80 transition-colors group"
           >
-            <span>Explore all articles</span>
+            <span>See more articles</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -150,6 +150,22 @@ export const RecentArticles = ({ posts }: RecentArticlesProps) => {
             </div>
           </a>
         ))}
+      </div>
+
+      <div
+        className={cn(
+          "mt-12 text-center",
+          isVisible ? "animate-fade-in" : "opacity-0"
+        )}
+        style={{ animationDelay: "0.4s" }}
+      >
+        <Link
+          to="/blog"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-primary/30 bg-primary/10 hover:bg-primary/20 text-primary font-semibold text-sm transition-all duration-200 group hover:shadow-md"
+        >
+          <span>See More Articles</span>
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </Link>
       </div>
     </section>
   );

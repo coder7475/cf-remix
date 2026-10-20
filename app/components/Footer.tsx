@@ -33,9 +33,9 @@ export const Footer = () => {
                 height={36}
               />
               <img
-                src="/logo_white.jpeg"
+                src="/logo_white-removebg-preview.png"
                 alt="Robiul Hossain"
-                className="h-8 sm:h-9 w-auto light-logo object-contain rounded-md"
+                className="h-8 sm:h-9 w-auto light-logo object-contain"
                 width={184}
                 height={36}
               />

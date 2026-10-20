@@ -161,7 +161,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <link rel="canonical" href={canonicalUrl} />
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem("theme");if(t==="light"){document.documentElement.classList.add("light")}else if(t==="system"||!t){var m=window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches;if(m){document.documentElement.classList.add("light")}}}catch(e){}`,
+            __html: `try{var t=localStorage.getItem("theme");if(t==="dark"){document.documentElement.classList.remove("light")}else if(t==="light"){document.documentElement.classList.add("light")}else{var d=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(d){document.documentElement.classList.remove("light")}else{document.documentElement.classList.add("light")}}}catch(e){}`,
           }}
         />
         <Meta />
