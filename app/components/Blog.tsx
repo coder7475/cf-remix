@@ -33,7 +33,7 @@ export const Blog = ({ initialPosts, error: initialError }: BlogProps) => {
   const [error, setError] = useState<string | undefined>(initialError);
 
   useEffect(() => {
-    if (initialPosts) {
+    if (initialPosts && !initialError) {
       setBlogPosts(initialPosts);
       setIsLoading(false);
       return;
@@ -46,7 +46,12 @@ export const Blog = ({ initialPosts, error: initialError }: BlogProps) => {
       try {
         const res = await fetch(
           "https://dev.to/api/articles?username=coder7475&per_page=4",
-          { signal: controller.signal }
+          {
+            signal: controller.signal,
+            headers: {
+              Accept: "application/vnd.forem.api-v1+json",
+            },
+          }
         );
         if (!res.ok) {
           throw new Error(`Failed to load articles (${res.status})`);
@@ -64,7 +69,7 @@ export const Blog = ({ initialPosts, error: initialError }: BlogProps) => {
 
     fetchBlogPosts();
     return () => controller.abort();
-  }, [initialPosts]);
+  }, [initialPosts, initialError]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
