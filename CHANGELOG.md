@@ -7,9 +7,65 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+---
+
+## [2.0.0] - 2026-10-20
+
+### Added
+
+- **Architecture Modernization**:
+  - Reusable `useInView` hook in `app/hooks/use-in-view.ts` replacing duplicate `IntersectionObserver` boilerplate across components, with built-in `prefers-reduced-motion` support.
+  - Global `ThemeProvider` context in `app/hooks/use-theme.tsx` supporting cross-tab theme synchronization via `storage` event listeners.
+  - Mounted `<Toaster />` in `app/root.tsx` to restore full operation of the Radix UI toast notification subsystem.
+  - Isolated `ErrorBoundary` in `app/root.tsx` to handle uncaught client/server errors gracefully without crashing the shell.
+  - Catch-all 404 page in `app/routes/$.tsx` providing guided recovery navigation.
+- **Content & Features**:
+  - Standalone Schedule page (`app/routes/schedule.tsx`) and inline scheduler component (`CalendlyInline.tsx`).
+  - "What I Do" section (`WhatIDo.tsx`) detailing core engineering competencies.
+  - Curated "Recent Articles" section (`RecentArticles.tsx`) on the homepage.
+  - Floating `ScrollToTop` button with theme-aware styling and smooth scrolling.
+  - FocusGuard project added to the portfolio showcase.
+  - URL-synchronized project filtering tabs (`?category=...&page=...`) with WAI-ARIA tab semantics.
+
+### Changed
+
+- **Performance & Data Fetching**:
+  - Migrated Dev.to article fetching from client-side `axios` in `useEffect` to Remix server `loader` in `app/routes/blog.tsx` with edge cache headers (`stale-while-revalidate`), eliminating hydration delays and empty skeletons for social crawlers.
+  - Completely removed `axios` dependency from `package.json`.
+- **Navigation & SEO**:
+  - Upgraded global `Navbar.tsx` with cross-route awareness: correctly detects non-root paths and navigates to `/#section` instead of failing silently on missing DOM anchors.
+  - Replaced hardcoded site-wide canonical URLs with dynamic, per-route canonical tags in `app/root.tsx`.
+  - Replaced dynamic sitemap/robots routes with high-performance static files in `public/robots.txt` and `public/sitemap.xml`.
+- **Visuals & Design System**:
+  - Refined light theme tokens and contrast ratios for improved accessibility.
+  - Updated transparent logo styling and refined card border highlights.
+  - Upgraded build tooling to `pnpm@10` and Node `>= 20`.
+
 ### Fixed
 
-- Update caniuse-lite version to 1.0.30001806 and adjust related dependencies
+- Eliminated Cumulative Layout Shift (CLS) on the hero profile image with explicit dimensions and aspect ratios.
+- Resolved accessibility gaps in `GetInTouch.tsx` by linking input fields with error text via `aria-describedby` and adding standard `autocomplete` attributes.
+- Added `aria-current="page"` to active navigation links in `Navbar.tsx`.
+- Corrected contrast and metadata issues identified in CodeRabbit reviews.
+
+---
+
+## [1.3.0] - 2026-09-20
+
+### Added
+
+- Theme toggle functionality with persistent light and dark modes.
+- Meeting scheduler integration with Calendly support.
+- Static SEO assets (`robots.txt`, `sitemap.xml`).
+
+### Changed
+
+- Enhanced mobile navigation drawer styling and smooth scroll behavior.
+- Refactored `Banner` and `AboutMe` presentations for clarity and recruiter focus.
+
+### Fixed
+
+- Updated `caniuse-lite` database version and adjusted related dependencies.
 
 ---
 
@@ -100,7 +156,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - GitHub Actions CI/CD pipeline
 - TypeScript, Tailwind CSS, Radix UI, Lucide React
 
-[Unreleased]: https://github.com/coder7475/cf-remix/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/coder7475/cf-remix/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/coder7475/cf-remix/compare/v1.3.0...v2.0.0
+[1.3.0]: https://github.com/coder7475/cf-remix/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/coder7475/cf-remix/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/coder7475/cf-remix/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/coder7475/cf-remix/compare/v1.0.0...v1.0.1

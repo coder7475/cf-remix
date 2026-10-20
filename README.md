@@ -1,336 +1,262 @@
 # cf-remix
 
-A modern portfolio website built with **Remix** and deployed on **Cloudflare Pages**. This project showcases a full-stack web application with server-side rendering, edge computing capabilities, and modern development practices.
+> Personal portfolio and developer showcase for Robiul Hossain, built with Remix v2, Tailwind CSS, and Cloudflare Pages.
 
-See [AUDIT.md](./AUDIT.md) for a comprehensive code quality and architecture review.
+[![CI/CD Pipeline](https://github.com/coder7475/cf-remix/actions/workflows/ci_cd.yml/badge.svg)](https://github.com/coder7475/cf-remix/actions/workflows/ci_cd.yml)
+[![Node Version](https://img.shields.io/badge/node-%3E%3D20.0.0-brightgreen.svg)](https://nodejs.org/)
+[![pnpm Version](https://img.shields.io/badge/pnpm-10.x-orange.svg)](https://pnpm.io/)
+[![Cloudflare Pages](https://img.shields.io/badge/deployed%20on-Cloudflare%20Pages-F38020.svg)](https://pages.cloudflare.com/)
 
-## ✨ Features
+See [AUDIT.md](./AUDIT.md) for a comprehensive architecture and code quality audit.
 
-- 🚀 **Edge-First Architecture**: Built for Cloudflare's edge network for lightning-fast global performance
-- 🎨 **Modern UI Components**: Crafted with Tailwind CSS, Radix UI primitives, and Lucide React icons
-- 📱 **Fully Responsive**: Mobile-first design that works seamlessly across all devices
-- ⚡ **Server-Side Rendering**: Remix-powered SSR for optimal SEO and performance
-- 🎯 **TypeScript**: Full type safety throughout the application
-- 🎭 **Interactive Components**: Toast notifications and smooth animations
-- 📊 **Portfolio Sections**: About, Experience, Projects, Skills, Blog, and Contact pages
+---
 
-## 🛠️ Tech Stack
+## Overview
 
-### Frontend
-- **[Remix](https://remix.run/)** - Full-stack web framework
-- **[React 18](https://react.dev/)** - UI library with latest features
-- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
-- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
-- **[Radix UI](https://www.radix-ui.com/)** - Unstyled, accessible UI primitives
-- **[Lucide React](https://lucide.dev/)** - Beautiful & consistent icon pack
-- **[Class Variance Authority](https://cva.style/)** - Class utility library
+`cf-remix` is an edge-rendered developer portfolio engineered for speed, responsiveness, and accessibility. It runs on Cloudflare's global edge network using Cloudflare Pages with the Remix Vite runtime.
 
-### Infrastructure & Tooling
-- **[Cloudflare Pages](https://pages.cloudflare.com/)** - Edge deployment platform
-- **[Wrangler](https://developers.cloudflare.com/workers/wrangler/)** - Cloudflare developer platform CLI
-- **[Vite](https://vitejs.dev/)** - Next generation frontend build tool
-- **[pnpm](https://pnpm.io/)** - Fast, disk space efficient package manager
-- **[ESLint](https://eslint.org/)** - Code linting and formatting
-- **[GitHub Actions](https://github.com/features/actions)** - CI/CD automation
+### Key Highlights
 
-## 📋 Prerequisites
+- **Edge-First SSR**: Rendered on Cloudflare Pages Workers with near-zero latency worldwide.
+- **Hybrid Page Architecture**: Offers both a seamless single-page scroll layout (`/`) and standalone deep-link routes (`/about`, `/projects`, `/skills`, `/experiences`, `/blog`, `/contact`, `/schedule`).
+- **Dynamic Theming**: Dark theme by default, toggleable to light theme via client-side state persisted in `localStorage`.
+- **Live Article Integration**: Fetches published technical articles directly from the Dev.to REST API.
+- **Accessible UI & Feedback**: Built on Radix UI toast primitives, Lucide icons, and Tailwind CSS utility tokens.
+- **Strict TypeScript**: 100% type-checked codebase across server loaders, client components, and Cloudflare runtime bindings.
 
-Before you begin, ensure you have the following installed:
+---
 
-- **Node.js** ≥ 20.0.0
-- **pnpm** ≥ 9.0.0 (recommended) or npm/yarn
-- **Git** for version control
-- **Cloudflare Account** for deployment
+## Tech Stack
 
-## 🚀 Quick Start
+| Layer | Technologies |
+|---|---|
+| **Framework** | [Remix v2](https://remix.run/) (Vite compiler) |
+| **Runtime & Hosting** | [Cloudflare Pages](https://pages.cloudflare.com/) via `@remix-run/cloudflare-pages` |
+| **Language** | [TypeScript 5](https://www.typescriptlang.org/) (Strict Mode) |
+| **Styling** | [Tailwind CSS v3](https://tailwindcss.com/), `tailwindcss-animate`, `tailwind-merge`, `clsx` |
+| **UI Primitives & Icons** | [Radix UI](https://www.radix-ui.com/) (`@radix-ui/react-toast`), [Lucide React](https://lucide.dev/) |
+| **Package Manager** | [pnpm](https://pnpm.io/) (v10+) |
+| **CI / CD** | GitHub Actions (`.github/workflows/ci_cd.yml`) |
 
-### 1. Clone the Repository
+---
+
+## Prerequisites
+
+Before setting up the project locally, ensure you have:
+
+- **Node.js**: `v20.0.0` or higher (v22 recommended)
+- **pnpm**: `v10.0.0` or higher (installed via Corepack: `corepack enable && corepack prepare pnpm@latest --activate`)
+- **Cloudflare Wrangler CLI**: bundled via devDependencies (or `npm i -g wrangler`)
+- **Git**
+
+---
+
+## Quick Start
+
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/coder7475/cf-remix.git
 cd cf-remix
 ```
 
-### 2. Install Dependencies
+### 2. Install dependencies
 
 ```bash
 pnpm install
 ```
 
-### 3. Start Development Server
+### 3. Launch local development server
 
 ```bash
 pnpm run dev
 ```
 
-The application will be available at `http://localhost:5173`
+Visit [http://localhost:5173](http://localhost:5173) in your browser.
 
-## 🔧 Development
+---
 
-### Available Scripts
+## Development Scripts
 
-| Command | Description |
-|---------|-------------|
-| `pnpm run dev` | Start development server with hot reload |
-| `pnpm run build` | Build the application for production |
-| `pnpm run start` | Preview the built application locally |
-| `pnpm run preview` | Build and preview the application |
-| `pnpm run deploy` | Build and deploy to Cloudflare Pages |
-| `pnpm run typecheck` | Run TypeScript type checking |
-| `pnpm run typegen` | Generate Cloudflare Workers types |
-| `pnpm run lint` | Run ESLint for code quality |
-| `pnpm run cf-typegen` | Alternative command for type generation |
+The project includes preconfigured scripts in [`package.json`](file:///home/fahad/Projects/cf-remix/package.json):
 
-### Development Workflow
+| Command | Action |
+|---|---|
+| `pnpm run dev` | Starts the Remix Vite development server with hot module replacement (HMR) at `http://localhost:5173`. |
+| `pnpm run build` | Compiles the client bundles and server build into `./build`. |
+| `pnpm run start` | Serves the production build using Wrangler Pages local emulator (`wrangler pages dev ./build/client`). |
+| `pnpm run preview` | Runs a fresh production build, then starts the Wrangler local Pages preview. |
+| `pnpm run typecheck` | Runs `tsc` to validate TypeScript types without emitting output. |
+| `pnpm run lint` | Runs ESLint across the codebase using cached results. |
+| `pnpm run typegen` | Generates Cloudflare runtime environment typings from `wrangler.jsonc`. |
+| `pnpm run deploy` | Runs production build and deploys to Cloudflare Pages via Wrangler CLI. |
 
-1. **Local Development**: Use `pnpm run dev` for development with hot module replacement
-2. **Type Checking**: Run `pnpm run typecheck` to ensure type safety
-3. **Linting**: Use `pnpm run lint` to maintain code quality
-4. **Testing Locally**: Use `pnpm run start` to test the built application
+---
 
-### Working with Wrangler
-
-To run the application using Wrangler (Cloudflare's development environment):
-
-```bash
-pnpm run build
-pnpm run start
-```
-
-This simulates the Cloudflare Pages environment locally, including edge runtime features.
-
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 cf-remix/
-├── app/                        # Remix application code
-│   ├── components/            # Reusable React components
-│   │   ├── ui/               # UI primitives and shared components
-│   │   ├── AboutMe.tsx       # About section component
-│   │   ├── Banner.tsx        # Hero banner component
-│   │   ├── Blog.tsx          # Blog section component
-│   │   ├── Experience.tsx    # Experience timeline component
-│   │   ├── Footer.tsx        # Site footer component
-│   │   ├── GetInTouch.tsx    # Contact form component
-│   │   ├── Navbar.tsx        # Navigation component
-│   │   ├── Projects.tsx      # Projects showcase component
-│   │   └── Skills.tsx        # Skills display component
-│   ├── hooks/                # Custom React hooks
-│   ├── libs/                 # Utility functions and helpers
-│   ├── routes/               # Remix route components
-│   │   ├── _index.tsx        # Home page route
-│   │   ├── about.tsx         # About page route
-│   │   ├── blog.tsx          # Blog page route
-│   │   ├── contact.tsx       # Contact page route
-│   │   ├── experiences.tsx   # Experience page route
-│   │   ├── projects.tsx      # Projects page route
-│   │   └── skills.tsx        # Skills page route
-│   ├── entry.client.tsx      # Client-side entry point
-│   ├── entry.server.tsx      # Server-side entry point
-│   ├── root.tsx              # Root application component
-│   └── tailwind.css          # Global styles and Tailwind imports
-├── build/                     # Built application (generated)
-├── public/                    # Static assets
-├── AUDIT.md                   # Code quality and architecture audit
-├── AGENTS.md                  # Agent instructions for codebase
-├── package.json              # Project dependencies and scripts
-├── wrangler.toml            # Cloudflare Workers configuration
-├── vite.config.ts           # Vite build configuration
-├── tailwind.config.ts       # Tailwind CSS configuration
-└── tsconfig.json            # TypeScript configuration
+├── .github/
+│   └── workflows/
+│       └── ci_cd.yml            # Automated CI/CD pipeline for GitHub Actions
+├── app/
+│   ├── components/              # Section and UI components
+│   │   ├── ui/                  # Primitives (Radix Toast notifications)
+│   │   ├── AboutMe.tsx          # About section presentation
+│   │   ├── Banner.tsx           # Hero banner with profile details and CTAs
+│   │   ├── Blog.tsx             # Blog listing with Dev.to API integration
+│   │   ├── CalendlyInline.tsx   # Calendly meeting scheduler embed
+│   │   ├── Experience.tsx       # Career timeline component
+│   │   ├── Footer.tsx           # Global footer with social links
+│   │   ├── GetInTouch.tsx       # Contact form component
+│   │   ├── Navbar.tsx           # Sticky navigation with mobile menu
+│   │   ├── Projects.tsx         # Portfolio projects showcase
+│   │   ├── RecentArticles.tsx   # Curated recent article cards
+│   │   ├── ScrollToTop.tsx      # Floating back-to-top button
+│   │   ├── Skills.tsx           # Interactive categorized skill tags
+│   │   ├── ThemeToggle.tsx      # Dark / light mode switcher
+│   │   └── WhatIDo.tsx          # Service offerings and specializations
+│   ├── constants/               # Static project and skill metadata
+│   ├── hooks/                   # Custom hooks (`use-theme`, `use-toast`, `use-in-view`)
+│   ├── libs/                    # Core helpers (`utils.ts` for Tailwind merge)
+│   ├── routes/                  # Remix file-based routes
+│   │   ├── _index.tsx           # Home route (assembles full portfolio page)
+│   │   ├── about.tsx            # Standalone About page
+│   │   ├── blog.tsx             # Standalone Blog page
+│   │   ├── contact.tsx          # Standalone Contact page
+│   │   ├── experiences.tsx      # Standalone Experience page
+│   │   ├── projects.tsx         # Standalone Projects page
+│   │   ├── schedule.tsx         # Meeting booking page
+│   │   ├── skills.tsx           # Standalone Skills page
+│   │   └── $.tsx                # 404 catch-all route
+│   ├── types/                   # Shared TypeScript definitions
+│   ├── entry.client.tsx         # Client hydration entry point
+│   ├── entry.server.tsx         # Edge SSR stream entry point
+│   ├── root.tsx                 # Root HTML shell with providers and metadata
+│   └── tailwind.css             # Tailwind layers, CSS variables, custom utilities
+├── functions/
+│   └── [[path]].ts              # Cloudflare Pages Functions Remix handler
+├── public/                      # Static assets (favicons, images, resume PDF)
+├── AGENTS.md                    # Guidelines and rules for autonomous AI agents
+├── AUDIT.md                     # Codebase health and architecture audit
+├── package.json                 # Dependencies and npm scripts
+├── tailwind.config.ts           # Tailwind CSS design system tokens
+├── tsconfig.json                # Strict TypeScript configuration
+├── vite.config.ts               # Vite & Remix Cloudflare plugin configuration
+└── wrangler.jsonc               # Cloudflare Pages and Workers configuration
 ```
 
-## 🎨 Styling & UI
+---
 
-### Tailwind CSS Configuration
+## Architecture & Conventions
 
-The project uses a custom Tailwind CSS setup with:
+### Dual Routing Pattern
+- **Homepage (`/`)**: Combines all section components (`Banner`, `WhatIDo`, `AboutMe`, `Experience`, `Projects`, `Skills`, `RecentArticles`, `GetInTouch`) into an interconnected single-page view.
+- **Dedicated Subpages**: Individual routes under `app/routes/` allow direct linking to specific sections with dedicated title metadata and layout wrappers.
+- **Catch-All 404 (`$.tsx`)**: Gracefully handles undefined paths and provides navigational recovery options.
 
-- **Custom Design System**: Consistent spacing, colors, and typography
-- **Component Variants**: Using Class Variance Authority for component styling
-- **Responsive Design**: Mobile-first approach with responsive utilities
-- **Animations**: Smooth transitions and micro-interactions
-- **Dark Mode Support**: Built-in dark mode capabilities
+### Theming System
+- Themes are driven by CSS variables in `app/tailwind.css` using HSL token definitions.
+- Dark theme is default. Light theme is toggled by applying the `.light` class to the root `<html>` element.
+- Theme preferences are synchronized across reloads via `localStorage("theme")` using `app/hooks/use-theme.tsx`.
 
-### Component Architecture
+### Code Style Conventions
+- **No Code Comments**: The codebase style strictly omits inline code comments.
+- **Path Aliases**: Always use the `~/` path alias mapping to `./app/` (e.g., `~/components/Navbar`).
+- **Strict Typing**: All components, props, and server loaders must maintain complete TypeScript coverage.
 
-- **Section-Level Components**: Each page section is a self-contained component
-- **Accessibility**: Basic ARIA attributes and screen reader support (see AUDIT.md for gaps)
-- **Reusability**: Shared components with flexible prop interfaces
-- **Type Safety**: Full TypeScript integration for component props
+---
 
-## ⚙️ Configuration
+## Configuration
+
+### Cloudflare Pages (`wrangler.jsonc`)
+
+Cloudflare runtime settings are managed in [`wrangler.jsonc`](file:///home/fahad/Projects/cf-remix/wrangler.jsonc):
+
+```jsonc
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cf-remix",
+  "compatibility_date": "2025-02-14",
+  "pages_build_output_dir": "./build/client",
+  "observability": {
+    "enabled": true
+  }
+}
+```
+
+Whenever you add environment bindings, KV namespaces, or D1 databases to `wrangler.jsonc`, regenerate worker type definitions:
+
+```bash
+pnpm run typegen
+```
 
 ### Environment Variables
 
-Create a `.env` file in the root directory for local development:
+For local development with Cloudflare secrets, create a `.dev.vars` file in the root directory:
 
-```env
-# Add your environment variables here
-# CLOUDFLARE_API_TOKEN=your_api_token
-# CLOUDFLARE_ACCOUNT_ID=your_account_id
+```ini
+# .dev.vars (ignored by git)
+# CLOUDFLARE_API_TOKEN=your_token_here
 ```
 
-### Wrangler Configuration
+---
 
-The `wrangler.toml` file configures Cloudflare Workers settings:
+## CI/CD & Deployment
 
-```toml
-name = "cf-remix"
-compatibility_date = "2024-02-20"
+### Automated Deployment (GitHub Actions)
 
-[site]
-bucket = "./build/client"
-```
+Every push to `main` triggers `.github/workflows/ci_cd.yml`:
 
-### Vite Configuration
+1. Installs dependencies with `pnpm install`.
+2. Validates types with `pnpm run typecheck`.
+3. Lints codebase with `pnpm run lint`.
+4. Builds the application with `pnpm run build`.
+5. Deploys to Cloudflare Pages via `cloudflare/pages-action@v1`.
 
-Custom Vite setup with:
+#### Required GitHub Secrets:
+- `CLOUDFLARE_API_TOKEN`: Cloudflare API token with Pages edit permissions.
+- `CLOUDFLARE_ACCOUNT_ID`: Your Cloudflare account ID.
 
-- **Remix Integration**: Full-stack development with file-based routing
-- **TypeScript Paths**: Absolute imports configuration
-- **Cloudflare Dev Proxy**: Local development with edge runtime
-- **Future Flags**: Latest Remix features enabled
+### Manual Deployment via Wrangler
 
-## 📦 Type Generation
-
-Generate TypeScript types for your Cloudflare bindings:
+You can also deploy directly from your local terminal:
 
 ```bash
-pnpm run typegen
-```
+# 1. Authenticate with Cloudflare
+npx wrangler login
 
-This command:
-
-- Reads your `wrangler.toml` configuration
-- Generates TypeScript definitions for Workers APIs
-- Updates type definitions for environment bindings
-- Ensures type safety across your application
-
-**Note**: Rerun typegen whenever you modify `wrangler.toml` or add new Cloudflare bindings.
-
-## 🚢 Deployment
-
-### Automatic Deployment
-
-> **Note**: GitHub Actions workflow is not yet configured. For manual deployments, use the commands below.
-
-### Manual Deployment
-
-For manual deployments:
-
-```bash
-# Build the application
-pnpm run build
-
-# Deploy to Cloudflare Pages
+# 2. Build and publish
 pnpm run deploy
 ```
 
-### Deployment Prerequisites
+---
 
-1. **Cloudflare Account**: Set up a Cloudflare account
-2. **Wrangler Authentication**: Login with `wrangler login`
-3. **GitHub Secrets**: Configure deployment secrets in GitHub repository
-4. **Domain Configuration**: Set up custom domain (optional)
+## Troubleshooting
 
-## 🔍 Performance & Optimization
-
-### Edge Computing Benefits
-
-- **Global CDN**: Content delivered from 200+ edge locations
-- **Zero Cold Starts**: Instant response times worldwide
-- **Automatic Scaling**: Handles traffic spikes seamlessly
-- **Built-in Caching**: Intelligent edge caching strategies
-
-### Bundle Optimization
-
-- **Tree Shaking**: Eliminates unused code automatically
-- **Code Splitting**: Lazy loading for optimal performance
-- **Asset Optimization**: Automatic image and asset optimization
-- **Compression**: Gzip and Brotli compression enabled
-
-## 🧪 Testing & Quality Assurance
-
-### Code Quality
-
-- **ESLint**: Linting rules for JavaScript/TypeScript
-- **TypeScript**: Compile-time error checking with strict mode
-- **No test runner**: Testing is not yet configured (see AUDIT.md recommendations)
-
-### CI/CD Pipeline
-
-> **Note**: GitHub Actions workflows are not yet configured. See AUDIT.md for recommendations.
-
-## 🤝 Contributing
-
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'Add some amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. **Open** a Pull Request
-
-### Development Guidelines
-
-- Follow the existing code style and conventions (no comments in code)
-- Write meaningful commit messages
-- Add appropriate TypeScript types for new features
-- Run `pnpm run typecheck` and `pnpm run lint` before submitting
-- Update documentation for significant changes
-
-## 📚 Learning Resources
-
-- **[Remix Documentation](https://remix.run/docs)** - Learn Remix framework
-- **[Cloudflare Pages Docs](https://developers.cloudflare.com/pages/)** - Deployment platform guide
-- **[Tailwind CSS Guide](https://tailwindcss.com/docs)** - Styling documentation
-- **[Vite Documentation](https://vitejs.dev/guide/)** - Build tool configuration
-- **[TypeScript Handbook](https://www.typescriptlang.org/docs/)** - Type system guide
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**Development server not starting:**
+### Port Conflicts or Stale Dev Server
+If port 5173 is occupied, specify an alternative port:
 ```bash
-# Clear node_modules and reinstall
-rm -rf node_modules pnpm-lock.yaml
-pnpm install
-pnpm run dev
+pnpm run dev -- --port 3000
 ```
 
-**Type errors after updating dependencies:**
+### Type Errors on Cloudflare Bindings
+If `Env` bindings appear out of date or missing:
 ```bash
-# Regenerate types
 pnpm run typegen
 pnpm run typecheck
 ```
 
-**Build failures:**
+### Clean Reinstall
+If dependency resolution issues occur:
 ```bash
-# Check for TypeScript errors
-pnpm run typecheck
-
-# Check for linting issues
-pnpm run lint
+rm -rf node_modules pnpm-lock.yaml
+pnpm install
 ```
 
-**Deployment issues:**
-```bash
-# Login to Wrangler
-wrangler login
+---
 
-# Verify configuration
-wrangler pages project list
-```
+## License
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **[Remix Team](https://remix.run/)** for the amazing full-stack framework
-- **[Cloudflare](https://cloudflare.com/)** for the edge computing platform
-- **[Tailwind CSS](https://tailwindcss.com/)** for the utility-first CSS framework
-- **[Radix UI](https://www.radix-ui.com/)** for accessible UI primitives
-- **Open Source Community** for the excellent tools and libraries
+Private repository. Copyright © Robiul Hossain. All rights reserved.

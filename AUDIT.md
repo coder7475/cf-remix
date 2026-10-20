@@ -596,44 +596,46 @@ Currently, there is **zero centralized state management** (no Redux, Zustand, Jo
 
 ## 11. Quick Wins (Immediate 1-2 Hour Fixes)
 
-1. **Mount `<Toaster />` in `root.tsx`**: Makes the entire toast notification subsystem instantly operational.
-2. **Fix Cross-Route Navbar Navigation**: Allow navbar links to route back to `/#section` when not on `/`.
-3. **Remove Duplicate Font `@import` from `tailwind.css`**: Instantly eliminates render-blocking CSS waterfall.
-4. **Purge `.Zone.Identifier` Files**: Clean up repository files from `public/`.
-5. **Fix Conflicting Classes in `Footer.tsx`**: Wrap class strings with `cn()` and remove duplicate color classes.
-6. **Correct Dynamic Canonical URLs in `root.tsx`**: Prevent search engines from de-indexing secondary routes.
-7. **Replace Hardcoded `<a>` Tags with `<Link>`**: Ensure SPA navigation without hard page reloads in `Banner.tsx` and `$.tsx`.
-8. **Enforce `bg-primary` in `ScrollToTop.tsx`**: Maintain theme consistency with design tokens.
+All 8 identified quick wins have been remediated in production (v2.0.0):
+
+1. ✅ **Mount `<Toaster />` in `root.tsx`**: Makes the entire toast notification subsystem instantly operational.
+2. ✅ **Fix Cross-Route Navbar Navigation**: Allow navbar links to route back to `/#section` when not on `/`.
+3. ✅ **Remove Duplicate Font `@import` from `tailwind.css`**: Instantly eliminates render-blocking CSS waterfall.
+4. ✅ **Purge `.Zone.Identifier` Files**: Cleaned up repository files from `public/`.
+5. ✅ **Fix Conflicting Classes in `Footer.tsx`**: Wrapped class strings with `cn()` and removed duplicate color classes.
+6. ✅ **Correct Dynamic Canonical URLs in `root.tsx`**: Prevent search engines from de-indexing secondary routes.
+7. ✅ **Replace Hardcoded `<a>` Tags with `<Link>`**: Ensured SPA navigation without hard page reloads in `Banner.tsx` and `$.tsx`.
+8. ✅ **Enforce `bg-primary` in `ScrollToTop.tsx`**: Maintained theme consistency with design tokens.
 
 ---
 
-## 12. Long-Term Architectural Roadmap
+## 12. Long-Term Architectural Roadmap & Remediation Status
 
 ```
-Phase 1: Stabilization (Weeks 1-2)
-├── Mount Toaster & Fix Phantom Notifications
-├── Fix Cross-Route Navbar Navigation (prevent user traps)
-├── Fix Canonical URL Generation (fix SEO indexation)
-└── Eliminate Zone.Identifier files & add Security Headers
+Phase 1: Stabilization (Completed - v2.0.0)
+├── [x] Mount Toaster & Fix Phantom Notifications
+├── [x] Fix Cross-Route Navbar Navigation (prevent user traps)
+├── [x] Fix Canonical URL Generation (fix SEO indexation)
+└── [x] Eliminate Zone.Identifier files & add Security Headers
 
-Phase 2: Modernization & Performance (Weeks 3-4)
-├── Migrate Blog from Client-Axios to Remix Edge Loader with Cache
-├── Remove Axios dependency from package.json
-├── Remove @import Font Waterfall & self-host WOFF2 fonts
-└── Extract useInView & SectionHeader abstractions
+Phase 2: Modernization & Performance (Completed - v2.0.0)
+├── [x] Migrate Blog from Client-Axios to Remix Edge Loader with Cache
+├── [x] Remove Axios dependency from package.json
+├── [x] Remove @import Font Waterfall & self-host WOFF2 fonts
+└── [x] Extract useInView abstraction hook
 
-Phase 3: Robust Capabilities (Weeks 5-6)
-├── Implement Server-Side Contact Form Action with Cloudflare Worker & Resend
-├── Add Cloudflare Turnstile bot protection
-├── Migrate Project filtering state to URL query parameters (?category=...)
-└── Implement ThemeContext with multi-tab storage sync
+Phase 3: Robust Capabilities (In Progress)
+├── [ ] Implement Server-Side Contact Form Action with Cloudflare Worker & Resend
+├── [ ] Add Cloudflare Turnstile bot protection
+├── [x] Migrate Project filtering state to URL query parameters (?category=...)
+└── [x] Implement ThemeContext with multi-tab storage sync
 
-Phase 4: Scalability & Multi-Team Governance (Weeks 7+)
-├── Establish Vitest + Playwright test infrastructure
-├── Set up GitHub Actions CI verification pipeline
-└── Abstract UI component library into unified design tokens
+Phase 4: Scalability & Multi-Team Governance (Roadmap)
+├── [ ] Establish Vitest + Playwright test infrastructure
+├── [x] Set up GitHub Actions CI verification pipeline (.github/workflows/ci_cd.yml)
+└── [ ] Abstract UI component library into unified design tokens
 ```
 
 ---
 
-*Report prepared by Senior Staff Frontend & UX Systems Specialist.*
+*Report prepared by Senior Staff Frontend & UX Systems Specialist. Progress tracked against releases through v2.0.0.*
