@@ -158,6 +158,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="Robiul Hossain" />
+        <meta
+          name="keywords"
+          content="Robiul Hossain, Software Engineer, Full-Stack Developer, TypeScript, React, Next.js, Remix, Node.js, NestJS, PostgreSQL, Cloudflare, AWS, Microservices, API Architect"
+        />
+        <meta property="og:site_name" content="Robiul Hossain Portfolio" />
+        <meta property="og:locale" content="en_US" />
         <link rel="canonical" href={canonicalUrl} />
         <script
           dangerouslySetInnerHTML={{

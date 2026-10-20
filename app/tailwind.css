@@ -144,6 +144,30 @@
       radial-gradient(circle at 50% 60%, rgba(245, 158, 11, 0.02) 0, transparent 55%);
   }
 
+  .badge-in-progress {
+    @apply bg-amber-500/10 text-amber-400 border border-amber-500/20;
+  }
+
+  .light .badge-in-progress {
+    color: hsl(35 92% 33%) !important;
+    background-color: hsl(38 92% 50% / 0.14) !important;
+    border-color: hsl(35 92% 40% / 0.35) !important;
+  }
+
+  .badge-finished {
+    @apply bg-emerald-500/10 text-emerald-400 border border-emerald-500/20;
+  }
+
+  .light .badge-finished {
+    color: hsl(158 84% 28%) !important;
+    background-color: hsl(158 84% 40% / 0.14) !important;
+    border-color: hsl(158 84% 35% / 0.35) !important;
+  }
+
+  .light .text-success-contrast {
+    color: hsl(158 84% 28%) !important;
+  }
+
   .page-inner {
     @apply relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
