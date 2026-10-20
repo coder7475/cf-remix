@@ -1,4 +1,4 @@
-import { Server, Code, Cloud } from "lucide-react";
+import { Server, Code, Cloud, Sparkles } from "lucide-react";
 
 export interface WhatIDoCard {
   id: string;
@@ -10,27 +10,35 @@ export interface WhatIDoCard {
 
 export const whatIDoCards: WhatIDoCard[] = [
   {
-    id: "backend",
-    title: "Backend Development",
+    id: "fullstack",
+    title: "Full-Stack Web Apps",
     description:
-      "Building scalable APIs and microservices with Node.js, Express, and NestJS. Designing robust database architectures with PostgreSQL and MongoDB.",
-    icon: Server,
-    skills: ["Node.js", "Express", "NestJS", "PostgreSQL", "MongoDB", "REST APIs"],
-  },
-  {
-    id: "frontend",
-    title: "Frontend Development",
-    description:
-      "Creating responsive, performant web applications with React, Next.js, and Remix. Crafting modern UIs with TypeScript and Tailwind CSS.",
+      "Crafting performant, accessible web applications from discovery to production. Expert in React, Next.js, and Remix with responsive, pixel-perfect Tailwind CSS design.",
     icon: Code,
     skills: ["React", "Next.js", "Remix", "TypeScript", "Tailwind CSS"],
   },
   {
-    id: "deployment",
-    title: "Deployment & DevOps",
+    id: "backend",
+    title: "Scalable APIs & Architecture",
     description:
-      "Deploying and managing cloud infrastructure with AWS, Docker, and CI/CD pipelines. Ensuring reliability and scalability.",
+      "Designing type-safe REST & GraphQL APIs, event-driven microservices, and database models with PostgreSQL, Redis, and MongoDB engineered for high concurrency and uptime.",
+    icon: Server,
+    skills: ["Node.js", "Express", "NestJS", "PostgreSQL", "Redis", "Docker"],
+  },
+  {
+    id: "devops",
+    title: "Cloud & DevOps Engineering",
+    description:
+      "Automating infrastructure, zero-downtime deployment pipelines, and serverless hosting across AWS and Cloudflare using Docker, Terraform, and GitHub Actions.",
     icon: Cloud,
-    skills: ["AWS", "Docker", "CI/CD", "GitHub Actions", "Cloudflare"],
+    skills: ["AWS", "Cloudflare", "Docker", "CI/CD", "Terraform", "Linux"],
+  },
+  {
+    id: "ai-solutions",
+    title: "AI Integration & Automation",
+    description:
+      "Implementing LLM workflows, Retrieval-Augmented Generation (RAG), and intelligent agents using Python, FastAPI, and Gemini/OpenAI to automate business processes.",
+    icon: Sparkles,
+    skills: ["Python", "FastAPI", "Gemini API", "RAG", "Vector Search", "LLMs"],
   },
 ];
