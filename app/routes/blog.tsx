@@ -38,7 +38,13 @@ export const meta: MetaFunction = () => {
 export async function loader() {
   try {
     const res = await fetch(
-      "https://dev.to/api/articles?username=coder7475&per_page=4"
+      "https://dev.to/api/articles?username=coder7475&per_page=4",
+      {
+        headers: {
+          "User-Agent": "RobiulHossainPortfolio/1.0 (https://robiulhossain.com)",
+          Accept: "application/vnd.forem.api-v1+json",
+        },
+      }
     );
     if (!res.ok) {
       return json<BlogLoaderData>(
