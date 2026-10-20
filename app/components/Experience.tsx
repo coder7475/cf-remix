@@ -8,6 +8,7 @@ interface ExperienceItem {
   date: string;
   description: string[];
   skills: string[];
+  logo?: string;
 }
 
 export const Experience = () => {
@@ -18,8 +19,10 @@ export const Experience = () => {
       title: "Junior Software Engineer",
       company: "Elementix Software Ventures LLC",
       date: "Dec 2025 - Present",
+      logo: "/elementix.jpeg",
       description: [
         "Architected responsive web applications using Next.js and Tailwind CSS, improving interaction fluidity and Core Web Vitals.",
+        "Delivered client-facing production systems including GRE Quant School LMS (interactive drills & student analytics) and Naza Noor (DTC e-commerce storefront).",
         "Designed and maintained type-safe RESTful microservices and backend endpoints using TypeScript, Express.js, NestJS, and PostgreSQL.",
         "Authored comprehensive automated test suites using Jest and Playwright to guarantee regression-free production releases.",
         "Orchestrated cloud infrastructure automation and continuous deployment pipelines utilizing AWS, Docker, Terraform, and GitHub Actions.",
@@ -30,6 +33,7 @@ export const Experience = () => {
       title: "Junior Software Engineer",
       company: "OctopusX",
       date: "Apr 2024 - Apr 2025",
+      logo: "/octopusx.jpeg",
       description: [
         "Engineered scalable web client interfaces and centralized state management systems utilizing React, Next.js, and Redux Toolkit.",
         "Built performant backend APIs with TypeScript, Express.js, and MongoDB, optimizing database queries for high transaction volumes.",
@@ -42,6 +46,7 @@ export const Experience = () => {
       title: "Software Engineering Intern",
       company: "OctopusX",
       date: "Jan 2024 - Mar 2024",
+      logo: "/octopusx.jpeg",
       description: [
         "Developed full-stack web features across the MERN stack in close collaboration with senior engineering leads.",
         "Participated in daily agile standups, peer code reviews, and Git feature-branch workflows to uphold code quality.",
@@ -84,8 +89,19 @@ export const Experience = () => {
                 style={{ animationDelay: `${0.1 + index * 0.12}s` }}
               >
                 <div className="relative z-10 shrink-0">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary border-2 border-primary flex items-center justify-center shadow-lg">
-                    <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary border-2 border-primary flex items-center justify-center shadow-lg overflow-hidden p-0.5">
+                    {item.logo ? (
+                      <img
+                        src={item.logo}
+                        alt={`${item.company} logo`}
+                        className="w-full h-full object-cover rounded-full"
+                        width={48}
+                        height={48}
+                        loading="lazy"
+                      />
+                    ) : (
+                      <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                    )}
                   </div>
                 </div>
 
@@ -100,9 +116,21 @@ export const Experience = () => {
                     </span>
                   </div>
 
-                  <p className="text-primary font-semibold text-base mb-4 font-display">
-                    {item.company}
-                  </p>
+                  <div className="flex items-center gap-2 mb-4">
+                    {item.logo && (
+                      <img
+                        src={item.logo}
+                        alt=""
+                        className="w-5 h-5 rounded object-cover border border-border/60 shrink-0"
+                        width={20}
+                        height={20}
+                        loading="lazy"
+                      />
+                    )}
+                    <p className="text-primary font-semibold text-base font-display">
+                      {item.company}
+                    </p>
+                  </div>
 
                   <ul className="space-y-2.5 text-sm text-muted-foreground mb-6">
                     {item.description.map((desc, i) => (
