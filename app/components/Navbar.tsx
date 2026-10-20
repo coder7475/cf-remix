@@ -4,7 +4,7 @@ import { cn } from "~/libs/utils";
 import { Link, useLocation, useNavigate } from "@remix-run/react";
 import { ThemeToggle } from "~/components/ThemeToggle";
 
-const SECTION_IDS = ["hero", "what-i-do", "about", "skills", "experience", "projects", "contact"];
+const SECTION_IDS = ["hero", "what-i-do", "about", "skills", "experience", "projects", "articles", "contact"];
 
 const usePrefersReducedMotion = () => {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -243,7 +243,7 @@ export const Navbar = () => {
             const sectionId = isAnchor ? link.href.replace("#", "") : null;
             const isActive = isAnchor
               ? isHomePage && activeSection === sectionId
-              : location.pathname === link.href;
+              : location.pathname === link.href || (isHomePage && link.href === "/blog" && activeSection === "articles");
             return isAnchor ? (
               <button
                 key={link.name}
@@ -330,7 +330,7 @@ export const Navbar = () => {
               const sectionId = isAnchor ? link.href.replace("#", "") : null;
               const isActive = isAnchor
                 ? isHomePage && activeSection === sectionId
-                : location.pathname === link.href;
+                : location.pathname === link.href || (isHomePage && link.href === "/blog" && activeSection === "articles");
               return isAnchor ? (
                 <button
                   key={link.name}

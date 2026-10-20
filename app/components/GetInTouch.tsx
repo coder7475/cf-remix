@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { cn } from "~/libs/utils";
+import { useInView } from "~/hooks/use-in-view";
 import { Mail, Github, Linkedin, Youtube, Users, Calendar, Copy, Check, Clock } from "lucide-react";
 import { Link } from "@remix-run/react";
 
@@ -15,31 +16,12 @@ const XIcon = ({ className }: { className?: string }) => (
 );
 
 export const Contact = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
+  const [sectionRef, isVisible] = useInView<HTMLElement>({ threshold: 0.1 });
 
   const [form, setForm] = useState({ name: "", email: "", subjectType: "job", message: "" });
   const [formStatus, setFormStatus] = useState<null | "success" | "error">(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });

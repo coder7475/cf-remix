@@ -2,10 +2,14 @@ import { AboutMe } from "~/components/AboutMe";
 import { Hero } from "~/components/Banner";
 import { WhatIDo } from "~/components/WhatIDo";
 import type { MetaFunction } from "@remix-run/cloudflare";
+import { json } from "@remix-run/cloudflare";
+import { useLoaderData } from "@remix-run/react";
 import { Skills } from "~/components/Skills";
 import { Experience } from "~/components/Experience";
 import { Projects } from "~/components/Projects";
+import { RecentArticles } from "~/components/RecentArticles";
 import { Contact } from "~/components/GetInTouch";
+import type { BlogPost } from "~/components/Blog";
 
 export const meta: MetaFunction = () => {
   return [
@@ -46,7 +50,30 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export async function loader() {
+  try {
+    const res = await fetch(
+      "https://dev.to/api/articles?username=coder7475&per_page=3",
+      {
+        headers: {
+          "User-Agent": "RobiulHossainPortfolio/1.0 (https://robiulhossain.com)",
+          Accept: "application/vnd.forem.api-v1+json",
+        },
+      }
+    );
+    if (!res.ok) {
+      return json<{ recentPosts: BlogPost[] }>({ recentPosts: [] });
+    }
+    const data: BlogPost[] = await res.json();
+    return json<{ recentPosts: BlogPost[] }>({ recentPosts: data });
+  } catch {
+    return json<{ recentPosts: BlogPost[] }>({ recentPosts: [] });
+  }
+}
+
 export default function Index() {
+  const { recentPosts } = useLoaderData<typeof loader>();
+
   return (
     <div className="flex flex-col">
       <div id="hero">
@@ -66,6 +93,9 @@ export default function Index() {
       </div>
       <div id="projects">
         <Projects />
+      </div>
+      <div id="articles">
+        <RecentArticles posts={recentPosts} />
       </div>
       <div id="contact">
         <Contact />
