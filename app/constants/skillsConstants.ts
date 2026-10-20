@@ -7,84 +7,86 @@ import {
   Code2Icon,
   FlaskConical,
   Layout,
+  Cloud,
 } from "lucide-react";
 
-interface Skill {
+export interface Skill {
   name: string;
   icon: React.ComponentType<{ className?: string }>;
   category: string;
 }
 
-interface SkillCategory {
+export interface SkillCategory {
   name: string;
   skills: Skill[];
 }
 
 export const categories: SkillCategory[] = [
   {
-    name: "Languages",
+    name: "Core Languages",
     skills: [
-      { name: "JavaScript", icon: Code, category: "Languages" },
       { name: "TypeScript", icon: Code, category: "Languages" },
+      { name: "JavaScript", icon: Code, category: "Languages" },
       { name: "Python", icon: Code, category: "Languages" },
       { name: "SQL", icon: Database, category: "Languages" },
-      { name: "HTML/CSS", icon: Layout, category: "Languages" },
+      { name: "HTML5/CSS3", icon: Layout, category: "Languages" },
     ],
   },
   {
-    name: "Frontend",
+    name: "Modern Frontend",
     skills: [
       { name: "React", icon: Code, category: "Frontend" },
-      { name: "React Native", icon: Code, category: "Frontend" },
       { name: "Next.js", icon: Code, category: "Frontend" },
       { name: "Remix", icon: Code, category: "Frontend" },
       { name: "Tailwind CSS", icon: Layout, category: "Frontend" },
+      { name: "React Native", icon: Code, category: "Frontend" },
     ],
   },
   {
-    name: "Backend",
+    name: "Scalable Backend",
     skills: [
       { name: "Node.js", icon: Server, category: "Backend" },
-      { name: "Express", icon: Code2Icon, category: "Backend" },
+      { name: "Express.js", icon: Code2Icon, category: "Backend" },
       { name: "NestJS", icon: Code2Icon, category: "Backend" },
       { name: "FastAPI", icon: Code2Icon, category: "Backend" },
-      { name: "REST APIs", icon: Server, category: "Backend" },
+      { name: "REST & GraphQL", icon: Server, category: "Backend" },
     ],
   },
   {
-    name: "Databases",
+    name: "Databases & Storage",
     skills: [
       { name: "PostgreSQL", icon: Database, category: "Databases" },
       { name: "MongoDB", icon: Database, category: "Databases" },
       { name: "Redis", icon: Database, category: "Databases" },
+      { name: "Drizzle ORM", icon: Database, category: "Databases" },
     ],
   },
   {
-    name: "Tools & Practices",
+    name: "Cloud, DevOps & Testing",
     skills: [
-      { name: "Git", icon: Settings, category: "Tools & Practices" },
-      { name: "Docker", icon: Server, category: "Tools & Practices" },
-      { name: "CI/CD", icon: GitBranch, category: "Tools & Practices" },
-      { name: "Jest", icon: FlaskConical, category: "Tools & Practices" },
-      { name: "Vitest", icon: FlaskConical, category: "Tools & Practices" },
-      { name: "Playwright", icon: FlaskConical, category: "Tools & Practices" },
+      { name: "AWS", icon: Cloud, category: "Cloud" },
+      { name: "Cloudflare", icon: Cloud, category: "Cloud" },
+      { name: "Docker", icon: Server, category: "DevOps" },
+      { name: "CI/CD & Actions", icon: GitBranch, category: "DevOps" },
+      { name: "Terraform", icon: Settings, category: "DevOps" },
+      { name: "Jest & Playwright", icon: FlaskConical, category: "Testing" },
     ],
   },
 ];
 
 export const additionalSkills = [
-  "Agile/Scrum",
-  "Code Review",
-  "Design Patterns",
-  "GitHub",
-  "GitHub Actions",
-  "Jira",
   "Microservices",
-  "npm/pnpm",
-  "OOP",
-  "Postman",
-  "RESTful APIs",
   "System Design",
-  "VS Code",
-  "WebSocket",
+  "Design Patterns",
+  "Git & GitHub Workflows",
+  "RabbitMQ",
+  "Kong Gateway",
+  "Keycloak / Auth",
+  "Turborepo / Monorepos",
+  "Linux Administration",
+  "Agile / Scrum",
+  "Code Review Mentorship",
+  "Postman / OpenAPI",
+  "WebSockets",
+  "Vector Search & RAG",
 ];
