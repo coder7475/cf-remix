@@ -94,7 +94,7 @@ export default function Index() {
       <div id="projects">
         <Projects />
       </div>
-      <div id="articles">
+      <div id="blog">
         <RecentArticles posts={recentPosts} />
       </div>
       <div id="contact">

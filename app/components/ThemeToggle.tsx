@@ -25,6 +25,7 @@ export function ThemeToggle({ className }: { className?: string }) {
         className
       )}
       aria-label={nextLabel[theme]}
+      title={`Current: ${theme} (${nextLabel[theme]})`}
     >
       {theme === "system" && <Monitor className="h-5 w-5" />}
       {theme === "dark" && <Sun className="h-5 w-5" />}
