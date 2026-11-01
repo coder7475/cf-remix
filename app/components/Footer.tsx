@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Youtube } from "lucide-react";
+import { Github, Linkedin, Mail, Youtube, ArrowUpRight } from "lucide-react";
 import { Link } from "@remix-run/react";
 
 const XIcon = ({ className }: { className?: string }) => (
@@ -12,14 +12,33 @@ const XIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "About Me", href: "/about" },
+  { label: "Projects", href: "/projects" },
+  { label: "Experience", href: "/experiences" },
+  { label: "Blog & Articles", href: "/blog" },
+  { label: "Schedule Call", href: "/schedule" },
+  { label: "Contact", href: "/contact" },
+];
+
+const capabilities = [
+  { label: "React Native & Mobile", href: "/projects?category=mobile" },
+  { label: "Hono & Edge Systems", href: "/projects" },
+  { label: "Cloudflare Pages & KV", href: "/projects" },
+  { label: "TypeScript & Node.js", href: "/projects" },
+  { label: "FocusGuard App", href: "https://github.com/coder7475/focusGuard", external: true },
+  { label: "PulseStream Platform", href: "/projects", external: false },
+];
+
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="border-t border-border/80 bg-background/80 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex flex-col items-center md:items-start">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-border/60">
+          <div className="lg:col-span-5 space-y-4">
             <Link
               to="/"
               className="inline-block hover:opacity-90 transition-opacity"
@@ -40,62 +59,152 @@ export const Footer = () => {
                 height={36}
               />
             </Link>
-            <p className="text-muted-foreground text-sm mt-3 font-mono text-center md:text-left">
-              Full-Stack Software Engineer &amp; API Architect
+            <p className="text-muted-foreground text-sm font-mono max-w-sm">
+              Full-Stack, Mobile &amp; Edge Systems Engineer architecting type-safe applications with React, React Native, Hono, and Cloudflare.
             </p>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-mono">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Available for Full-Time &amp; Contracts</span>
+            </div>
           </div>
 
-          <div className="flex gap-3 items-center">
-            <Link
-              target="_blank"
-              rel="noopener noreferrer"
-              to="https://github.com/coder7475"
-              className="w-10 h-10 rounded-lg bg-slate-500/10 text-foreground border border-border/60 hover:bg-[#24292e] hover:text-white hover:border-[#24292e] transition-all flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary/40"
-              aria-label="GitHub"
-            >
-              <Github className="w-4 h-4" />
-            </Link>
-            <Link
-              target="_blank"
-              rel="noopener noreferrer"
-              to="https://www.linkedin.com/in/robiul7475"
-              className="w-10 h-10 rounded-lg bg-[#0A66C2]/10 text-[#0A66C2] border border-[#0A66C2]/30 hover:bg-[#0A66C2] hover:text-white hover:border-[#0A66C2] transition-all flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary/40"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-4 h-4" />
-            </Link>
-            <Link
-              target="_blank"
-              rel="noopener noreferrer"
-              to="https://x.com/robiul7475"
-              className="w-10 h-10 rounded-lg bg-black/10 dark:bg-white/10 text-foreground border border-border/60 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black hover:border-black dark:hover:border-white transition-all flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary/40"
-              aria-label="X"
-            >
-              <XIcon className="w-4 h-4" />
-            </Link>
-            <Link
-              target="_blank"
-              rel="noopener noreferrer"
-              to="https://www.youtube.com/@RobiulHossain-f2k"
-              className="w-10 h-10 rounded-lg bg-[#FF0000]/10 text-[#FF0000] border border-[#FF0000]/30 hover:bg-[#FF0000] hover:text-white hover:border-[#FF0000] transition-all flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary/40"
-              aria-label="YouTube"
-            >
-              <Youtube className="w-4 h-4" />
-            </Link>
-            <Link
-              to="mailto:contact@robiulhossain.com"
-              className="w-10 h-10 rounded-lg bg-primary/10 text-primary border border-primary/20 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary/40"
-              aria-label="Email"
-            >
-              <Mail className="w-4 h-4" />
-            </Link>
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="font-mono text-xs uppercase tracking-wider text-foreground font-semibold">
+              Navigation
+            </h4>
+            <ul className="space-y-2 text-sm">
+              {navLinks.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    to={item.href}
+                    className="text-muted-foreground hover:text-primary transition-colors inline-block"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="font-mono text-xs uppercase tracking-wider text-foreground font-semibold">
+              Specialization
+            </h4>
+            <ul className="space-y-2 text-sm">
+              {capabilities.map((item) => (
+                <li key={item.label}>
+                  {item.external ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1"
+                    >
+                      <span>{item.label}</span>
+                      <ArrowUpRight className="w-3 h-3 opacity-60" />
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      className="text-muted-foreground hover:text-primary transition-colors inline-block"
+                    >
+                      {item.label}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="lg:col-span-3 space-y-3">
+            <h4 className="font-mono text-xs uppercase tracking-wider text-foreground font-semibold">
+              Connect
+            </h4>
+            <p className="text-muted-foreground text-sm">
+              Have a project or open role? Feel free to reach out directly.
+            </p>
+            <div className="flex flex-wrap gap-2.5 pt-1">
+              <Link
+                target="_blank"
+                rel="noopener noreferrer"
+                to="https://github.com/coder7475"
+                className="w-9 h-9 rounded-lg bg-secondary/60 text-foreground border border-border/60 hover:bg-[#24292e] hover:text-white hover:border-[#24292e] transition-all flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary/40"
+                aria-label="GitHub"
+              >
+                <Github className="w-4 h-4" />
+              </Link>
+              <Link
+                target="_blank"
+                rel="noopener noreferrer"
+                to="https://www.linkedin.com/in/robiul7475"
+                className="w-9 h-9 rounded-lg bg-[#0A66C2]/10 text-[#0A66C2] border border-[#0A66C2]/30 hover:bg-[#0A66C2] hover:text-white hover:border-[#0A66C2] transition-all flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary/40"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4" />
+              </Link>
+              <Link
+                target="_blank"
+                rel="noopener noreferrer"
+                to="https://x.com/robiul7475"
+                className="w-9 h-9 rounded-lg bg-secondary/60 text-foreground border border-border/60 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black hover:border-black dark:hover:border-white transition-all flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary/40"
+                aria-label="X"
+              >
+                <XIcon className="w-4 h-4" />
+              </Link>
+              <Link
+                target="_blank"
+                rel="noopener noreferrer"
+                to="https://www.youtube.com/@RobiulHossain-f2k"
+                className="w-9 h-9 rounded-lg bg-[#FF0000]/10 text-[#FF0000] border border-[#FF0000]/30 hover:bg-[#FF0000] hover:text-white hover:border-[#FF0000] transition-all flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary/40"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-4 h-4" />
+              </Link>
+              <Link
+                to="mailto:contact@robiulhossain.com"
+                className="w-9 h-9 rounded-lg bg-primary/10 text-primary border border-primary/20 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary/40"
+                aria-label="Email"
+              >
+                <Mail className="w-4 h-4" />
+              </Link>
+            </div>
+            <div className="pt-1">
+              <Link
+                to="/schedule"
+                className="text-xs font-mono text-primary hover:underline inline-flex items-center gap-1"
+              >
+                <span>Schedule a 30-min call</span>
+                <ArrowUpRight className="w-3 h-3" />
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-border/50 text-center">
-          <p className="text-muted-foreground text-xs font-mono">
-            &copy; {currentYear} Robiul Hossain. All rights reserved.
-          </p>
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-muted-foreground">
+          <p>&copy; {currentYear} Robiul Hossain. All rights reserved.</p>
+          <div className="flex gap-4">
+            <Link to="/about" className="hover:text-foreground transition-colors">
+              About
+            </Link>
+            <Link to="/projects" className="hover:text-foreground transition-colors">
+              Projects
+            </Link>
+            <Link to="/contact" className="hover:text-foreground transition-colors">
+              Contact
+            </Link>
+            <a
+              href="/sitemap.xml"
+              className="hover:text-foreground transition-colors"
+            >
+              Sitemap
+            </a>
+            <a
+              href="/llms.txt"
+              className="hover:text-foreground transition-colors"
+            >
+              llms.txt
+            </a>
+          </div>
         </div>
       </div>
     </footer>

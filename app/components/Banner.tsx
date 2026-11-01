@@ -30,18 +30,19 @@ const SystemArchitectureCard = () => (
       <pre className="text-slate-300 overflow-hidden whitespace-pre-wrap break-words text-[11px] sm:text-xs leading-relaxed select-text font-mono">
 {`{
   "name": "Robiul Hossain",
-  "role": "Full-Stack Software Engineer",
-  "focus": ["Web Apps", "APIs", "Cloud"],
+  "role": "Full-Stack, Mobile & Edge Systems Engineer",
+  "focus": ["Web Apps", "Mobile Apps", "Edge APIs"],
   "core_stack": {
     "languages": ["TypeScript", "Python", "SQL"],
-    "frontend": ["React", "Next.js", "Tailwind"],
-    "backend": ["Node.js", "Express", "FastAPI"],
-    "databases": ["PostgreSQL", "MongoDB", "Redis"]
+    "frontend": ["React", "Next.js", "Tailwind CSS"],
+    "mobile": ["React Native", "Expo", "Android"],
+    "backend": ["Node.js", "Hono", "FastAPI"],
+    "databases": ["PostgreSQL", "Cloudflare KV", "Redis"]
   },
-  "deployment": ["AWS", "Cloudflare", "Docker", "CI/CD"],
+  "deployment": ["Cloudflare", "AWS", "Docker", "CI/CD"],
   "availability": {
     "status": "Available",
-    "roles": ["Full-Time", "Contract"],
+    "roles": ["Full-Time", "High-Impact Contract"],
     "location": "Remote / Worldwide"
   }
 }`}
@@ -96,7 +97,7 @@ export const Hero = () => {
             )}
             style={{ animationDelay: "0.3s" }}
           >
-            Full-Stack Software Engineer &amp; API Architect
+            Full-Stack, Mobile &amp; Edge Systems Engineer
           </p>
 
           <p
@@ -106,7 +107,7 @@ export const Hero = () => {
             )}
             style={{ animationDelay: "0.4s" }}
           >
-            I engineer reliable, scalable web applications and distributed backend architectures. From clean TypeScript interfaces to high-throughput microservices, I deliver software that accelerates company growth.
+            I engineer reliable web apps, cross-platform mobile apps with React Native, and distributed edge APIs with Hono and Cloudflare. Built for speed, accessibility, and zero-downtime reliability.
           </p>
 
           <div

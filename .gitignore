@@ -13,3 +13,5 @@ node_modules
 # Windows WSL metadata
 *:Zone.Identifier
 *Zone.Identifier*
+
+.agents

@@ -4,10 +4,10 @@ import { whatIDoCards } from "~/constants/whatIDoConstants";
 import { CheckCircle2 } from "lucide-react";
 
 const valueProps = [
-  "Production-Grade Quality: Strict TypeScript & tested architectures",
+  "Production-Grade: Strict TypeScript & tested architectures",
   "High Velocity: Rapid MVPs and iterative sprint delivery",
   "Direct Communication: Proactive, clear, and transparent updates",
-  "End-to-End Ownership: From database schema to polished UI",
+  "Full Ownership: From schema design to mobile and web UI",
 ];
 
 export const WhatIDo = () => {
@@ -39,7 +39,7 @@ export const WhatIDo = () => {
           )}
           style={{ animationDelay: "0.1s" }}
         >
-          Whether joining an engineering team full-time or partnering as a consultant to launch a new product, I provide end-to-end technical leadership that bridges robust systems with intuitive user experiences.
+          From concept to global production, I architect web apps, cross-platform mobile experiences, and edge APIs that balance velocity with long-term maintainability.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">

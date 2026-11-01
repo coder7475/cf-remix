@@ -1,0 +1,35 @@
+# Robiul Hossain - Portfolio & Engineering Profile
+
+> Full-Stack & Mobile Software Engineer specializing in TypeScript, React, React Native, Node.js, Hono, Cloudflare Workers & KV, and distributed cloud systems.
+
+## Summary
+Robiul Hossain (coder7475) is a Software Engineer with production experience across web platforms, cross-platform mobile applications, edge backends, and cloud infrastructure. Available for full-time roles and high-impact engineering projects.
+
+## Core Capabilities
+- Mobile Engineering: React Native, Expo, Kotlin, Android, offline persistence, native modules.
+- Frontend: React, Next.js, Remix, TypeScript, Tailwind CSS, responsive design.
+- Backend & Edge: Node.js, Hono, NestJS, FastAPI, Express.js, REST & GraphQL APIs.
+- Databases & Storage: PostgreSQL, Cloudflare KV, Redis, MongoDB, Drizzle ORM.
+- Cloud & DevOps: Cloudflare Workers & Pages, AWS, Docker, GitHub Actions CI/CD, Terraform.
+
+## Featured Projects
+- [FocusGuard](https://github.com/coder7475/focusGuard): Privacy-first focus and sleep discipline app built with React Native, Expo, and custom Kotlin native enforcement engine.
+- [GlucoseTracker](https://github.com/coder7475/GlocoseTracker): Daily nutrition and biometric tracking mobile app built with React Native, Expo, TypeScript, and local notifications.
+- [E-Commerce Microservices](https://github.com/coder7475/ecommerce_microservices): Distributed event-driven microservices with Kong Gateway, RabbitMQ, Redis, and Keycloak.
+- [School Management APIs](https://school-management-apis.vercel.app/api): Enterprise education administration API with NestJS, Drizzle ORM, and PostgreSQL.
+
+## Canonical Links
+- Website: https://robiulhossain.com
+- Projects: https://robiulhossain.com/projects
+- About: https://robiulhossain.com/about
+- Experience: https://robiulhossain.com/experiences
+- Blog: https://robiulhossain.com/blog
+- Schedule: https://robiulhossain.com/schedule
+- Contact: https://robiulhossain.com/contact
+
+## External Profiles
+- GitHub: https://github.com/coder7475
+- LinkedIn: https://www.linkedin.com/in/robiul7475
+- X: https://x.com/robiul7475
+- Dev.to: https://dev.to/coder7475
+- YouTube: https://www.youtube.com/@RobiulHossain-f2k

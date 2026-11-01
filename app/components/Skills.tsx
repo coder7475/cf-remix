@@ -46,9 +46,9 @@ export const Skills = () => {
                   return (
                     <div
                       key={skill.name}
-                      className="flex items-center gap-3 p-3.5 rounded-xl bg-secondary/40 hover:bg-secondary/70 transition-all border border-border/60 hover:border-primary/30 group"
+                      className="flex items-center gap-3 p-3.5 rounded-xl bg-secondary/40 hover:bg-secondary/70 transition-all border border-border/60 hover:border-primary/40 group"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                      <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                         <IconComponent className="w-4 h-4 text-primary" />
                       </div>
                       <span className="text-sm font-medium text-foreground break-words min-w-0 leading-tight">
@@ -74,7 +74,7 @@ export const Skills = () => {
               Architecture Patterns &amp; Methodologies
             </h3>
             <span className="text-xs font-mono text-muted-foreground">
-              Built for production scalability
+              Engineered for production reliability
             </span>
           </div>
           <div className="flex flex-wrap gap-2.5">
