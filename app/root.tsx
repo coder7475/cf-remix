@@ -52,13 +52,13 @@ export const meta: MetaFunction = () => {
     {
       name: "description",
       content:
-        "Full-Cycle Software Engineer specializing in backend engineering, modern frontend, release automation, DevOps, and spec-driven AI development. Delivering scalable systems and real business value.",
+        "Software Engineer specializing in backend systems, distributed architectures, cloud automation, and modern full-stack web and mobile applications.",
     },
     { name: "author", content: "Robiul Hossain" },
     {
       name: "keywords",
       content:
-        "Robiul Hossain, coder7475, Full-Cycle Software Engineer, Backend Engineer, Mobile App Developer, React Native, TypeScript, React, Next.js, Remix, Node.js, NestJS, PostgreSQL, Docker, DevOps, AI Engineering, Spec-Driven Development",
+        "Robiul Hossain, coder7475, Software Engineer, Backend Engineer, Distributed Systems, Cloud Automation, Docker, Kubernetes, AWS, Terraform, TypeScript, Node.js, NestJS, PostgreSQL, Redis, React",
     },
     { name: "robots", content: "index, follow" },
     { property: "og:site_name", content: "Robiul Hossain Portfolio" },
@@ -68,7 +68,7 @@ export const meta: MetaFunction = () => {
     {
       property: "og:description",
       content:
-        "Full-Cycle Software Engineer specializing in backend engineering, modern frontend, release automation, DevOps, and spec-driven AI development.",
+        "Software Engineer specializing in backend systems, distributed architectures, cloud automation, and modern web and mobile applications.",
     },
     { property: "og:url", content: BASE_URL },
     { property: "og:image", content: `${BASE_URL}/open-graph-image.jpeg` },
@@ -84,7 +84,7 @@ export const meta: MetaFunction = () => {
     {
       name: "twitter:description",
       content:
-        "Full-Cycle Software Engineer specializing in backend engineering, modern frontend, release automation, DevOps, and spec-driven AI development.",
+        "Software Engineer specializing in backend systems, distributed architectures, cloud automation, and modern full-stack web and mobile applications.",
     },
     { name: "twitter:image", content: `${BASE_URL}/open-graph-image.jpeg` },
     { name: "twitter:image:alt", content: "Robiul Hossain Portfolio" },
@@ -93,7 +93,8 @@ export const meta: MetaFunction = () => {
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
-  const canonicalUrl = `${BASE_URL}${location.pathname === "/" ? "" : location.pathname}`;
+  const normalizedPath = location.pathname.replace(/\/+$/, "");
+  const canonicalUrl = `${BASE_URL}${normalizedPath}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -103,14 +104,33 @@ export function Layout({ children }: { children: React.ReactNode }) {
         "@id": `${BASE_URL}/#person`,
         name: "Robiul Hossain",
         alternateName: "coder7475",
-        jobTitle: "Full-Cycle Software Engineer",
+        jobTitle: "Software Engineer",
         description:
-          "Full-Cycle Software Engineer specializing in backend engineering, modern frontend, release automation, DevOps, and spec-driven AI development.",
+          "Software Engineer focused on scalable, secure, and high-performance backend systems, distributed architectures, and cloud automation.",
         image: `${BASE_URL}/open-graph-image.jpeg`,
         url: BASE_URL,
         worksFor: {
           "@type": "Organization",
           name: "Elementix Software Ventures LLC",
+        },
+        hasOccupation: {
+          "@type": "Occupation",
+          name: "Software Engineer",
+          occupationalCategory: "15-1252.00",
+          skills: [
+            "TypeScript",
+            "Node.js",
+            "NestJS",
+            "PostgreSQL",
+            "Redis",
+            "Docker",
+            "Kubernetes",
+            "AWS",
+            "Terraform",
+            "React",
+            "React Native",
+            "CI/CD",
+          ],
         },
         knowsAbout: [
           "TypeScript",
@@ -131,7 +151,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
           "Cloudflare KV",
           "Cloudflare Workers",
           "Docker",
+          "Kubernetes",
           "AWS",
+          "Terraform",
           "Microservices",
           "RESTful APIs",
           "GraphQL",
@@ -154,7 +176,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         "@id": `${BASE_URL}/#website`,
         url: BASE_URL,
         name: "Robiul Hossain Portfolio",
-        description: "Portfolio of Robiul Hossain, Full-Cycle Software Engineer.",
+        description: "Portfolio of Robiul Hossain, Software Engineer.",
+        inLanguage: "en-US",
         publisher: {
           "@id": `${BASE_URL}/#person`,
         },
@@ -164,6 +187,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         "@id": `${BASE_URL}/#profilepage`,
         url: BASE_URL,
         name: "Robiul Hossain Profile",
+        inLanguage: "en-US",
         mainEntity: {
           "@id": `${BASE_URL}/#person`,
         },
@@ -176,13 +200,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="author" content="Robiul Hossain" />
-        <meta
-          name="keywords"
-          content="Robiul Hossain, coder7475, Full-Stack Engineer, Mobile App Developer, React Native, TypeScript, React, Next.js, Remix, Node.js, Hono, Cloudflare Workers, Cloudflare KV, PostgreSQL, API Architect"
-        />
-        <meta property="og:site_name" content="Robiul Hossain Portfolio" />
-        <meta property="og:locale" content="en_US" />
         <link rel="canonical" href={canonicalUrl} />
         <script
           dangerouslySetInnerHTML={{

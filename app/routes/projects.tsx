@@ -33,7 +33,7 @@ export const meta: MetaFunction = () => {
 };
 
 const projects = () => {
-  return <Projects />;
+  return <Projects asPage={true} />;
 };
 
 export function ErrorBoundary() {

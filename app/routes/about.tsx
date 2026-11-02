@@ -32,7 +32,7 @@ export const meta: MetaFunction = () => {
 };
 
 const About = () => {
-  return <AboutMe />;
+  return <AboutMe asPage={true} />;
 };
 
 export default About;

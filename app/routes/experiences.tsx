@@ -32,7 +32,7 @@ export const meta: MetaFunction = () => {
 };
 
 const experience = () => {
-  return <Experience />;
+  return <Experience asPage={true} />;
 };
 
 export default experience;

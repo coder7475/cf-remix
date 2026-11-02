@@ -8,7 +8,7 @@ export const meta: MetaFunction = () => {
     {
       name: "description",
       content:
-        "Comprehensive technical arsenal of Robiul Hossain: TypeScript, React, Next.js, Remix, Node.js, NestJS, PostgreSQL, AWS, Cloudflare, and automated testing.",
+        "Technical skills of Robiul Hossain: TypeScript, Node.js, NestJS, PostgreSQL, Redis, Docker, Kubernetes, AWS, Terraform, and modern web and mobile frameworks.",
     },
     { property: "og:site_name", content: "Robiul Hossain Portfolio" },
     { property: "og:type", content: "website" },
@@ -34,7 +34,7 @@ export const meta: MetaFunction = () => {
 
 
 const skills = () => {
-  return <Skills />;
+  return <Skills asPage={true} />;
 };
 
 export default skills;

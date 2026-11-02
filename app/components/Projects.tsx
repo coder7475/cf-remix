@@ -39,7 +39,11 @@ const StatusBadge = ({ status }: { status: "in-progress" | "finished" }) => {
   );
 };
 
-export const Projects = () => {
+interface ProjectsProps {
+  asPage?: boolean;
+}
+
+export const Projects = ({ asPage = false }: ProjectsProps) => {
   const [sectionRef, isVisible] = useInView<HTMLElement>({ threshold: 0.1 });
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -143,9 +147,15 @@ export const Projects = () => {
             <span className="font-mono text-xs uppercase tracking-widest text-primary block mb-1">
               Engineered Works &amp; Case Studies
             </span>
-            <h2 id="featured-projects-heading" className="text-3xl md:text-4xl font-display font-bold tracking-tight">
-              <span className="text-gradient">Featured Projects</span>
-            </h2>
+            {asPage ? (
+              <h1 id="featured-projects-heading" className="text-3xl md:text-4xl font-display font-bold tracking-tight">
+                <span className="text-gradient">Featured Projects</span>
+              </h1>
+            ) : (
+              <h2 id="featured-projects-heading" className="text-3xl md:text-4xl font-display font-bold tracking-tight">
+                <span className="text-gradient">Featured Projects</span>
+              </h2>
+            )}
           </div>
         </div>
         <p

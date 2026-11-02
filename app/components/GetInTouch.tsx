@@ -15,7 +15,11 @@ const XIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-export const Contact = () => {
+interface ContactProps {
+  asPage?: boolean;
+}
+
+export const Contact = ({ asPage = false }: ContactProps) => {
   const [sectionRef, isVisible] = useInView<HTMLElement>({ threshold: 0.1 });
 
   const [form, setForm] = useState({ name: "", email: "", subjectType: "job", message: "" });
@@ -82,9 +86,15 @@ export const Contact = () => {
             <span className="font-mono text-xs uppercase tracking-widest text-primary block mb-1">
               Start a Conversation
             </span>
-            <h2 id="contact-heading" className="text-3xl md:text-4xl font-display font-bold tracking-tight">
-              <span className="text-gradient">Get In Touch</span>
-            </h2>
+            {asPage ? (
+              <h1 id="contact-heading" className="text-3xl md:text-4xl font-display font-bold tracking-tight">
+                <span className="text-gradient">Get In Touch</span>
+              </h1>
+            ) : (
+              <h2 id="contact-heading" className="text-3xl md:text-4xl font-display font-bold tracking-tight">
+                <span className="text-gradient">Get In Touch</span>
+              </h2>
+            )}
           </div>
         </div>
 

@@ -32,7 +32,7 @@ export const meta: MetaFunction = () => {
 };
 
 const ContactRoute = () => {
-  return <Contact />;
+  return <Contact asPage={true} />;
 };
 
 export default ContactRoute;

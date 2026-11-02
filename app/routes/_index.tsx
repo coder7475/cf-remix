@@ -17,12 +17,12 @@ export const meta: MetaFunction = () => {
     {
       name: "description",
       content:
-        "Full-Cycle Software Engineer specializing in backend engineering, modern frontend, release automation, DevOps, and spec-driven AI development. Delivering scalable systems and real business value.",
+        "Software Engineer specializing in backend systems, distributed architectures, cloud automation, and modern full-stack web and mobile applications.",
     },
     {
       name: "keywords",
       content:
-        "Robiul Hossain, coder7475, Full-Cycle Software Engineer, Backend Engineer, Mobile App Developer, React Native, TypeScript, React, Next.js, Remix, Node.js, NestJS, PostgreSQL, Docker, DevOps, AI Engineering, Spec-Driven Development",
+        "Robiul Hossain, coder7475, Software Engineer, Backend Engineer, Distributed Systems, Cloud Automation, Docker, Kubernetes, AWS, Terraform, TypeScript, Node.js, NestJS, PostgreSQL, Redis, React",
     },
     { name: "robots", content: "index, follow" },
     { property: "og:site_name", content: "Robiul Hossain Portfolio" },
@@ -31,7 +31,7 @@ export const meta: MetaFunction = () => {
     {
       property: "og:description",
       content:
-        "Full-Cycle Software Engineer specializing in backend engineering, modern frontend, release automation, DevOps, and spec-driven AI development.",
+        "Software Engineer specializing in backend systems, distributed architectures, cloud automation, and modern web and mobile applications.",
     },
     { property: "og:type", content: "website" },
     { property: "og:url", content: "https://robiulhossain.com" },
@@ -48,7 +48,7 @@ export const meta: MetaFunction = () => {
     {
       name: "twitter:description",
       content:
-        "Full-Cycle Software Engineer specializing in backend engineering, modern frontend, release automation, DevOps, and spec-driven AI development.",
+        "Software Engineer specializing in backend systems, distributed architectures, cloud automation, and modern full-stack web and mobile applications.",
     },
     { name: "twitter:image", content: "https://robiulhossain.com/open-graph-image.jpeg" },
     { name: "twitter:image:alt", content: "Robiul Hossain Portfolio" },

@@ -11,7 +11,11 @@ interface ExperienceItem {
   logo?: string;
 }
 
-export const Experience = () => {
+interface ExperienceProps {
+  asPage?: boolean;
+}
+
+export const Experience = ({ asPage = false }: ExperienceProps) => {
   const [sectionRef, isVisible] = useInView<HTMLElement>({ threshold: 0.1 });
 
   const experiences: ExperienceItem[] = [
@@ -69,9 +73,15 @@ export const Experience = () => {
             <span className="font-mono text-xs uppercase tracking-widest text-primary block mb-1">
               Career Trajectory &amp; Impact
             </span>
-            <h2 id="experience-heading" className="text-3xl md:text-4xl font-display font-bold tracking-tight">
-              <span className="text-gradient">Work Experience</span>
-            </h2>
+            {asPage ? (
+              <h1 id="experience-heading" className="text-3xl md:text-4xl font-display font-bold tracking-tight">
+                <span className="text-gradient">Work Experience</span>
+              </h1>
+            ) : (
+              <h2 id="experience-heading" className="text-3xl md:text-4xl font-display font-bold tracking-tight">
+                <span className="text-gradient">Work Experience</span>
+              </h2>
+            )}
           </div>
         </div>
 

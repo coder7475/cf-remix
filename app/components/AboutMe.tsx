@@ -9,7 +9,11 @@ const quickHighlights = [
   { label: "Current Role", val: "Software Engineer at Elementix", icon: Globe },
 ];
 
-export const AboutMe = () => {
+interface AboutMeProps {
+  asPage?: boolean;
+}
+
+export const AboutMe = ({ asPage = false }: AboutMeProps) => {
   const [sectionRef, isVisible] = useInView<HTMLElement>({ threshold: 0.2 });
 
   return (
@@ -28,9 +32,15 @@ export const AboutMe = () => {
                 <span className="font-mono text-xs uppercase tracking-widest text-primary block mb-1">
                   Background &amp; Philosophy
                 </span>
-                <h2 id="about-me-heading" className="text-3xl md:text-4xl font-display font-bold tracking-tight">
-                  <span className="text-gradient">About Me</span>
-                </h2>
+                {asPage ? (
+                  <h1 id="about-me-heading" className="text-3xl md:text-4xl font-display font-bold tracking-tight">
+                    <span className="text-gradient">About Me</span>
+                  </h1>
+                ) : (
+                  <h2 id="about-me-heading" className="text-3xl md:text-4xl font-display font-bold tracking-tight">
+                    <span className="text-gradient">About Me</span>
+                  </h2>
+                )}
               </div>
             </div>
 

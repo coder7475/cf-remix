@@ -2,7 +2,11 @@ import { additionalSkills, categories } from "~/constants/skillsConstants";
 import { useInView } from "~/hooks/use-in-view";
 import { cn } from "~/libs/utils";
 
-export const Skills = () => {
+interface SkillsProps {
+  asPage?: boolean;
+}
+
+export const Skills = ({ asPage = false }: SkillsProps) => {
   const [sectionRef, isVisible] = useInView<HTMLElement>({ threshold: 0.1 });
 
   return (
@@ -19,9 +23,15 @@ export const Skills = () => {
             <span className="font-mono text-xs uppercase tracking-widest text-primary block mb-1">
               Stack &amp; Capabilities
             </span>
-            <h2 id="skills-heading" className="text-3xl md:text-4xl font-display font-bold tracking-tight">
-              <span className="text-gradient">Technical Arsenal</span>
-            </h2>
+            {asPage ? (
+              <h1 id="skills-heading" className="text-3xl md:text-4xl font-display font-bold tracking-tight">
+                <span className="text-gradient">Technical Arsenal</span>
+              </h1>
+            ) : (
+              <h2 id="skills-heading" className="text-3xl md:text-4xl font-display font-bold tracking-tight">
+                <span className="text-gradient">Technical Arsenal</span>
+              </h2>
+            )}
           </div>
         </div>
 
