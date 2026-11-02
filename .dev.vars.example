@@ -1,0 +1,15 @@
+# Local Development Environment Variables (.dev.vars)
+# Copy this template to .dev.vars for local testing:
+# cp .dev.vars.example .dev.vars
+
+# Environment designation: development | preview | production
+ENVIRONMENT=development
+
+# Base URL for canonical tags, schema, and local linking
+SITE_URL=http://localhost:5173
+
+# Destination inbox for portfolio inquiries
+CONTACT_EMAIL=contact@robiulhossain.com
+
+# Optional Resend API key for transactional email dispatches
+RESEND_API_KEY=re_your_api_key_here

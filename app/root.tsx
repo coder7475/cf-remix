@@ -1,4 +1,5 @@
-import type { MetaFunction, LinksFunction } from "@remix-run/cloudflare";
+import type { MetaFunction, LinksFunction, LoaderFunctionArgs } from "@remix-run/cloudflare";
+import { json } from "@remix-run/cloudflare";
 
 import {
   Links,
@@ -8,6 +9,7 @@ import {
   ScrollRestoration,
   useLocation,
   useRouteError,
+  useRouteLoaderData,
 } from "@remix-run/react";
 
 import "./tailwind.css";
@@ -16,6 +18,17 @@ import { Navbar } from "~/components/Navbar";
 import { ScrollToTop } from "~/components/ScrollToTop";
 import { Toaster } from "~/components/ui/toaster";
 import { ThemeProvider } from "~/hooks/use-theme";
+import { getAppEnv, getPublicEnv } from "~/libs/env.server";
+
+declare global {
+  interface Window {
+    ENV?: {
+      ENVIRONMENT: string;
+      SITE_URL: string;
+      CONTACT_EMAIL: string;
+    };
+  }
+}
 
 export const links: LinksFunction = () => [
   { rel: "icon", href: "/favicon.ico" },
@@ -44,9 +57,18 @@ export const links: LinksFunction = () => [
   },
 ];
 
-const BASE_URL = "https://robiulhossain.com";
+const DEFAULT_BASE_URL = "https://robiulhossain.com";
 
-export const meta: MetaFunction = () => {
+export async function loader({ context }: LoaderFunctionArgs) {
+  const env = getAppEnv(context);
+  return json({
+    ENV: getPublicEnv(env),
+  });
+}
+
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  const baseUrl = data?.ENV?.SITE_URL || DEFAULT_BASE_URL;
+
   return [
     { title: "Robiul Hossain Portfolio" },
     {
@@ -70,9 +92,9 @@ export const meta: MetaFunction = () => {
       content:
         "Software Engineer specializing in backend systems, distributed architectures, cloud automation, and modern web and mobile applications.",
     },
-    { property: "og:url", content: BASE_URL },
-    { property: "og:image", content: `${BASE_URL}/open-graph-image.jpeg` },
-    { property: "og:image:secure_url", content: `${BASE_URL}/open-graph-image.jpeg` },
+    { property: "og:url", content: baseUrl },
+    { property: "og:image", content: `${baseUrl}/open-graph-image.jpeg` },
+    { property: "og:image:secure_url", content: `${baseUrl}/open-graph-image.jpeg` },
     { property: "og:image:type", content: "image/jpeg" },
     { property: "og:image:width", content: "2848" },
     { property: "og:image:height", content: "1504" },
@@ -86,29 +108,31 @@ export const meta: MetaFunction = () => {
       content:
         "Software Engineer specializing in backend systems, distributed architectures, cloud automation, and modern full-stack web and mobile applications.",
     },
-    { name: "twitter:image", content: `${BASE_URL}/open-graph-image.jpeg` },
+    { name: "twitter:image", content: `${baseUrl}/open-graph-image.jpeg` },
     { name: "twitter:image:alt", content: "Robiul Hossain Portfolio" },
   ];
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const loaderData = useRouteLoaderData<typeof loader>("root");
   const location = useLocation();
   const normalizedPath = location.pathname.replace(/\/+$/, "");
-  const canonicalUrl = `${BASE_URL}${normalizedPath}`;
+  const baseUrl = loaderData?.ENV?.SITE_URL || DEFAULT_BASE_URL;
+  const canonicalUrl = `${baseUrl}${normalizedPath}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Person",
-        "@id": `${BASE_URL}/#person`,
+        "@id": `${baseUrl}/#person`,
         name: "Robiul Hossain",
         alternateName: "coder7475",
         jobTitle: "Software Engineer",
         description:
           "Software Engineer focused on scalable, secure, and high-performance backend systems, distributed architectures, and cloud automation.",
-        image: `${BASE_URL}/open-graph-image.jpeg`,
-        url: BASE_URL,
+        image: `${baseUrl}/open-graph-image.jpeg`,
+        url: baseUrl,
         worksFor: {
           "@type": "Organization",
           name: "Elementix Software Ventures LLC",
@@ -173,23 +197,23 @@ export function Layout({ children }: { children: React.ReactNode }) {
       },
       {
         "@type": "WebSite",
-        "@id": `${BASE_URL}/#website`,
-        url: BASE_URL,
+        "@id": `${baseUrl}/#website`,
+        url: baseUrl,
         name: "Robiul Hossain Portfolio",
         description: "Portfolio of Robiul Hossain, Software Engineer.",
         inLanguage: "en-US",
         publisher: {
-          "@id": `${BASE_URL}/#person`,
+          "@id": `${baseUrl}/#person`,
         },
       },
       {
         "@type": "ProfilePage",
-        "@id": `${BASE_URL}/#profilepage`,
-        url: BASE_URL,
+        "@id": `${baseUrl}/#profilepage`,
+        url: baseUrl,
         name: "Robiul Hossain Profile",
         inLanguage: "en-US",
         mainEntity: {
-          "@id": `${BASE_URL}/#person`,
+          "@id": `${baseUrl}/#person`,
         },
       },
     ],
@@ -204,6 +228,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <script
           dangerouslySetInnerHTML={{
             __html: `try{var t=localStorage.getItem("theme");if(t==="dark"){document.documentElement.classList.remove("light")}else if(t==="light"){document.documentElement.classList.add("light")}else{var d=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(d){document.documentElement.classList.remove("light")}else{document.documentElement.classList.add("light")}}}catch(e){}`,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.ENV = ${JSON.stringify(loaderData?.ENV || {})};`,
           }}
         />
         <Meta />

@@ -9,6 +9,46 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.1.0] - 2026-11-02
+
+### Added
+
+- **Environment Architecture (Dev, Preview, Production)**:
+  - Centralized server environment helper (`app/libs/env.server.ts`) with typed `getAppEnv(context)` and `getPublicEnv(env)`, resolving configuration across local development, preview deployments, and production.
+  - Declared default non-sensitive runtime variables in `wrangler.jsonc` for production and preview environments (`ENVIRONMENT`, `SITE_URL`, `CONTACT_EMAIL`).
+  - Added `.dev.vars.example` providing an annotated template for local developer onboarding.
+  - Synchronized Cloudflare runtime types in `worker-configuration.d.ts` for strict typing of `interface Env`.
+  - Exposed safe public runtime variables via root loader to client window (`window.ENV`).
+  - Implemented server-side form action in `app/routes/contact.tsx` supporting transactional email dispatch via the Resend API when `RESEND_API_KEY` is configured.
+- **Technical SEO & Structured Data**:
+  - Enriched schema.org JSON-LD structured data in `app/root.tsx` with `hasOccupation` (`Software Engineer`), expanded skill taxonomy (`Docker`, `Kubernetes`, `AWS`, `Terraform`, `PostgreSQL`, `NestJS`), and interconnected `WebSite` and `ProfilePage` graphs.
+  - Implemented dynamic `asPage` prop across section components (`AboutMe`, `Experience`, `Skills`, `Projects`, `Contact`) to render semantic `h1` headings on standalone routes and `h2` headings when embedded on the homepage.
+  - Added explicit `robots: "noindex, nofollow"` and standardized title metadata to the 404 catch-all route (`app/routes/$.tsx`).
+- **Documentation**:
+  - Expanded `README.md` with a comprehensive Environment Configuration & Variables guide covering `.dev.vars`, `wrangler.jsonc`, Cloudflare Pages secrets, and step-by-step setup instructions.
+
+### Changed
+
+- **Hero & Landing Page Copy**:
+  - Refined hero banner messaging to emphasize backend engineering, distributed systems, cloud automation, and spec-driven agentic development.
+  - Synchronized experience information and company branding with LinkedIn profile (Elementix Software Ventures LLC).
+  - Streamlined copy and eliminated em dash punctuation across all landing sections and metadata.
+- **SEO & Canonical Normalization**:
+  - Normalized canonical URL generation in `app/root.tsx` to strip trailing slashes, harmonizing with `public/sitemap.xml`.
+  - Removed duplicate `<meta>` tags from `app/root.tsx` `<head>` to prevent conflicting tags with Remix route meta exports.
+  - Updated `sitemap.xml` with current lastmod timestamps and normalized root path.
+- **UI & Palette Refinements**:
+  - Polished dark mode button styling to ensure high-contrast white text.
+  - Streamlined hero CTA layout and removed status badge clutter.
+
+### Fixed
+
+- Resolved unhandled exception in `captureRemixErrorBoundaryError` within `app/root.tsx` by replacing the unimplemented throw with standard error logging.
+- Fixed duplicate `id="blog"` attribute conflict between `_index.tsx` section wrapper and `RecentArticles.tsx`.
+- Updated contact email references in `GetInTouch.tsx` to dynamically use environment configuration instead of hardcoded strings.
+
+---
+
 ## [2.0.0] - 2026-10-20
 
 ### Added
@@ -156,7 +196,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - GitHub Actions CI/CD pipeline
 - TypeScript, Tailwind CSS, Radix UI, Lucide React
 
-[Unreleased]: https://github.com/coder7475/cf-remix/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/coder7475/cf-remix/compare/v2.1.0...HEAD
+[2.1.0]: https://github.com/coder7475/cf-remix/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/coder7475/cf-remix/compare/v1.3.0...v2.0.0
 [1.3.0]: https://github.com/coder7475/cf-remix/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/coder7475/cf-remix/compare/v1.1.0...v1.2.0

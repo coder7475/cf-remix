@@ -17,10 +17,15 @@ const XIcon = ({ className }: { className?: string }) => (
 
 interface ContactProps {
   asPage?: boolean;
+  contactEmail?: string;
 }
 
-export const Contact = ({ asPage = false }: ContactProps) => {
+export const Contact = ({ asPage = false, contactEmail }: ContactProps) => {
   const [sectionRef, isVisible] = useInView<HTMLElement>({ threshold: 0.1 });
+  const activeEmail =
+    contactEmail ||
+    (typeof window !== "undefined" && window.ENV?.CONTACT_EMAIL) ||
+    "contact@robiulhossain.com";
 
   const [form, setForm] = useState({ name: "", email: "", subjectType: "job", message: "" });
   const [formStatus, setFormStatus] = useState<null | "success" | "error">(null);
@@ -33,7 +38,7 @@ export const Contact = ({ asPage = false }: ContactProps) => {
 
   const handleCopyEmail = async () => {
     try {
-      await navigator.clipboard.writeText("contact@robiulhossain.com");
+      await navigator.clipboard.writeText(activeEmail);
       setCopiedEmail(true);
       setTimeout(() => setCopiedEmail(false), 2500);
     } catch {
@@ -61,7 +66,7 @@ export const Contact = ({ asPage = false }: ContactProps) => {
 
     const subject = `${intentPrefix} Inquiry from ${form.name}`;
     const body = `Sender: ${form.name}\r\nEmail: ${form.email}\r\nPurpose: ${form.subjectType}\r\n\r\nMessage:\r\n${form.message}`;
-    const mailto = `mailto:contact@robiulhossain.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailto = `mailto:${activeEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     window.location.href = mailto;
 
@@ -244,13 +249,13 @@ export const Contact = ({ asPage = false }: ContactProps) => {
                 </h4>
                 <div className="space-y-2">
                   <a
-                    href="mailto:contact@robiulhossain.com"
+                    href={`mailto:${activeEmail}`}
                     className="flex items-center gap-3 text-foreground hover:text-primary transition-colors font-mono text-sm break-all"
                   >
                     <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
                       <Mail className="w-4 h-4 text-primary" />
                     </div>
-                    <span>contact@robiulhossain.com</span>
+                    <span>{activeEmail}</span>
                   </a>
 
                   <button

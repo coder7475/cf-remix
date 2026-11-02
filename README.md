@@ -66,7 +66,23 @@ cd cf-remix
 pnpm install
 ```
 
-### 3. Launch local development server
+### 3. Configure environment variables
+
+Copy the example environment file and customize your local settings:
+
+```bash
+cp .dev.vars.example .dev.vars
+```
+
+### 4. Generate Cloudflare runtime types
+
+Synchronize TypeScript bindings with your Cloudflare environment:
+
+```bash
+pnpm run typegen
+```
+
+### 5. Launch local development server
 
 ```bash
 pnpm run dev
@@ -168,11 +184,50 @@ cf-remix/
 
 ---
 
-## Configuration
+## Configuration & Environment Variables
 
-### Cloudflare Pages (`wrangler.jsonc`)
+The project uses a unified environment architecture supporting local development, preview deployments, and production on Cloudflare Pages.
 
-Cloudflare runtime settings are managed in [`wrangler.jsonc`](file:///home/fahad/Projects/cf-remix/wrangler.jsonc):
+### Environment Variable Reference
+
+| Variable | Required | Default (Dev) | Production | Description |
+|---|---|---|---|---|
+| `ENVIRONMENT` | Yes | `development` | `production` | Deployment runtime identifier (`development`, `preview`, or `production`). |
+| `SITE_URL` | Yes | `http://localhost:5173` | `https://robiulhossain.com` | Base URL used for canonical links, Open Graph tags, and schema.org JSON-LD. |
+| `CONTACT_EMAIL` | Yes | `contact@robiulhossain.com` | `contact@robiulhossain.com` | Destination inbox for contact form submissions. |
+| `RESEND_API_KEY` | Optional | `re_...` | Set via Cloudflare Secrets | API key for transactional email delivery via the Resend REST API. |
+
+---
+
+### 1. Local Development (`.dev.vars`)
+
+For local development with Remix Vite and Wrangler, environment variables are loaded from `.dev.vars` (which is excluded from Git via `.gitignore`).
+
+1. Copy the template file:
+   ```bash
+   cp .dev.vars.example .dev.vars
+   ```
+
+2. Inspect and adjust `.dev.vars` as needed:
+   ```ini
+   ENVIRONMENT=development
+   SITE_URL=http://localhost:5173
+   CONTACT_EMAIL=contact@robiulhossain.com
+   RESEND_API_KEY=re_your_api_key_here
+   ```
+
+3. Regenerate TypeScript bindings:
+   ```bash
+   pnpm run typegen
+   ```
+
+Wrangler inspects `.dev.vars` along with `wrangler.jsonc` and automatically updates `worker-configuration.d.ts` with typed definitions for `interface Env`.
+
+---
+
+### 2. Cloudflare Pages Configuration (`wrangler.jsonc`)
+
+Non-sensitive production and preview defaults are declared in [`wrangler.jsonc`](file:///home/fahad/Projects/cf-remix/wrangler.jsonc):
 
 ```jsonc
 {
@@ -182,24 +237,64 @@ Cloudflare runtime settings are managed in [`wrangler.jsonc`](file:///home/fahad
   "pages_build_output_dir": "./build/client",
   "observability": {
     "enabled": true
+  },
+  "vars": {
+    "ENVIRONMENT": "production",
+    "SITE_URL": "https://robiulhossain.com",
+    "CONTACT_EMAIL": "contact@robiulhossain.com"
+  },
+  "env": {
+    "preview": {
+      "vars": {
+        "ENVIRONMENT": "preview",
+        "SITE_URL": "https://preview.robiulhossain.com",
+        "CONTACT_EMAIL": "contact@robiulhossain.com"
+      }
+    }
   }
 }
 ```
 
-Whenever you add environment bindings, KV namespaces, or D1 databases to `wrangler.jsonc`, regenerate worker type definitions:
+Whenever you modify `vars` or bindings in `wrangler.jsonc`, run `pnpm run typegen` to update the type definitions.
 
+---
+
+### 3. Production Secrets (Cloudflare Dashboard & CLI)
+
+Never commit sensitive credentials (such as `RESEND_API_KEY`) to version control. Set secrets for Cloudflare Pages using one of the following methods:
+
+#### Option A: Cloudflare Dashboard
+1. Navigate to **Cloudflare Dashboard > Workers & Pages > cf-remix > Settings > Environment variables**.
+2. Under **Production**, click **Add variable**.
+3. Select **Encrypt** (Secret), enter the variable name (e.g., `RESEND_API_KEY`), and paste the value.
+4. Save and trigger a new deployment.
+
+#### Option B: Wrangler CLI
 ```bash
-pnpm run typegen
+npx wrangler pages secret put RESEND_API_KEY --project-name=cf-remix
 ```
 
-### Environment Variables
+---
 
-For local development with Cloudflare secrets, create a `.dev.vars` file in the root directory:
+### 4. Application Code Usage
 
-```ini
-# .dev.vars (ignored by git)
-# CLOUDFLARE_API_TOKEN=your_token_here
+Server loaders and actions access environment configuration through the typed helper `getAppEnv(context)` in `app/libs/env.server.ts`:
+
+```typescript
+import type { LoaderFunctionArgs } from "@remix-run/cloudflare";
+import { json } from "@remix-run/cloudflare";
+import { getAppEnv, getPublicEnv } from "~/libs/env.server";
+
+export async function loader({ context }: LoaderFunctionArgs) {
+  const env = getAppEnv(context);
+
+  return json({
+    ENV: getPublicEnv(env),
+  });
+}
 ```
+
+Safe public values (`ENVIRONMENT`, `SITE_URL`, `CONTACT_EMAIL`) are provided to the root loader and exposed to client components via `window.ENV`. Sensitive keys (such as `RESEND_API_KEY`) remain strictly server-side.
 
 ---
 
