@@ -1,5 +1,12 @@
-import { json, LoaderFunctionArgs } from "@remix-run/cloudflare";
+import { json, LoaderFunctionArgs, type MetaFunction } from "@remix-run/cloudflare";
 import { Link } from "@remix-run/react";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Page Not Found | Robiul Hossain" },
+    { name: "robots", content: "noindex, nofollow" },
+  ];
+};
 
 export async function loader({ params }: LoaderFunctionArgs) {
   return json(

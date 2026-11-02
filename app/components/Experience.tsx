@@ -98,6 +98,7 @@ export const Experience = () => {
                         width={48}
                         height={48}
                         loading="lazy"
+                        decoding="async"
                       />
                     ) : (
                       <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />

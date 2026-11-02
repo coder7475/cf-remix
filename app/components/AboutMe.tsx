@@ -5,8 +5,8 @@ import { Globe, MapPin, Sparkles, UserCheck } from "lucide-react";
 const quickHighlights = [
   { label: "Location", val: "Dhaka, Bangladesh (Remote Worldwide)", icon: MapPin },
   { label: "Experience", val: "2+ Years in Production Environments", icon: UserCheck },
-  { label: "Primary Stack", val: "TypeScript, React, React Native, Hono, Node.js", icon: Sparkles },
-  { label: "Availability", val: "Full-Time Roles & High-Impact Contracts", icon: Globe },
+  { label: "Primary Stack", val: "TypeScript, Node.js, PostgreSQL, React, Next.js", icon: Sparkles },
+  { label: "Current Role", val: "Software Engineer at Elementix", icon: Globe },
 ];
 
 export const AboutMe = () => {
@@ -35,7 +35,7 @@ export const AboutMe = () => {
             </div>
 
             <p className="text-lg text-foreground font-medium leading-relaxed">
-              Engineering resilient, type-safe software systems across web, mobile, and distributed edge infrastructure.
+              Engineering dependable backend systems, responsive client apps, and automated pipelines.
             </p>
 
             <div className="p-5 rounded-xl glass-morphism border border-primary/20 bg-primary/[0.02] space-y-3 font-mono text-xs">
@@ -48,7 +48,7 @@ export const AboutMe = () => {
               </div>
               <div className="flex items-center justify-between text-muted-foreground border-b border-border/50 pb-2.5">
                 <span>FOCUS</span>
-                <span className="text-foreground">Web · Mobile · Edge APIs</span>
+                <span>Backend · Full-Stack · DevOps · AI</span>
               </div>
               <div className="flex items-center justify-between text-muted-foreground">
                 <span>TIMEZONE</span>
@@ -66,13 +66,10 @@ export const AboutMe = () => {
           >
             <div className="space-y-4 text-muted-foreground text-base sm:text-lg leading-relaxed">
               <p>
-                Assalamu Alaikum! I&apos;m <span className="text-foreground font-semibold">Robiul Hossain</span>, a Software Engineer dedicated to architecting resilient, scalable applications that deliver measurable business outcomes.
+                Assalamu Alaikum! I&apos;m <span className="text-foreground font-semibold">Robiul Hossain</span>, a software engineer partnering with teams to turn product visions into fast, dependable production systems.
               </p>
               <p>
-                My engineering spans the entire product lifecycle: crafting responsive web frontends with React, Next.js, and Remix, building native-feel mobile applications with React Native and Expo, and deploying low-latency edge APIs using Hono, Node.js, and Cloudflare KV with PostgreSQL storage.
-              </p>
-              <p>
-                When working with teams or founders, I don&apos;t just write code — I partner to eliminate product bottlenecks, enforce rigorous type-safety, and automate testing with Playwright and Jest for zero-regression deployments.
+                My foundation is solid backend engineering: clean PostgreSQL schemas, high-throughput Node.js &amp; NestJS services, and rock-solid data integrity. Across the full cycle, I pair robust APIs with polished React and React Native apps, CI/CD pipelines, automated testing, and spec-driven AI agent workflows to ship real business value.
               </p>
             </div>
 

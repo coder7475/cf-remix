@@ -1,7 +1,7 @@
 import { useMemo, useRef } from "react";
 import { ExternalLink, Github, CheckCircle2, Clock } from "lucide-react";
 import { cn } from "~/libs/utils";
-import { Link, useSearchParams } from "@remix-run/react";
+import { useSearchParams } from "@remix-run/react";
 import { projects } from "~/constants";
 import { ProjectCategory } from "~/types";
 import { useInView } from "~/hooks/use-in-view";
@@ -155,7 +155,7 @@ export const Projects = () => {
           )}
           style={{ animationDelay: "0.1s" }}
         >
-          A curated portfolio of real-world systems, microservices, and production web applications. Each demonstrates strict type safety, tested logic, and scalable architectural patterns.
+          Production systems, APIs, and client applications built with strict type safety, automated tests, and scalable architectures.
         </p>
 
         <div
@@ -185,7 +185,7 @@ export const Projects = () => {
                 className={cn(
                   "px-4 py-2.5 rounded-lg font-mono text-sm whitespace-nowrap transition-all duration-200 border",
                   isSelected
-                    ? "bg-primary text-primary-foreground border-primary shadow-sm font-semibold"
+                    ? "bg-primary text-white border-primary shadow-sm font-semibold"
                     : "border-border/60 text-muted-foreground hover:text-foreground hover:bg-secondary/60 hover:border-border"
                 )}
               >
@@ -194,7 +194,7 @@ export const Projects = () => {
                   className={cn(
                     "ml-2 text-xs py-0.5 px-1.5 rounded-full",
                     isSelected
-                      ? "bg-primary-foreground/20 text-primary-foreground"
+                      ? "bg-white/20 text-white"
                       : "bg-secondary text-muted-foreground"
                   )}
                 >
@@ -253,8 +253,8 @@ export const Projects = () => {
               <div className="flex items-center justify-between pt-4 border-t border-border/50">
                 <div className="flex items-center gap-3">
                   {project.githubUrl && (
-                    <Link
-                      to={project.githubUrl}
+                    <a
+                      href={project.githubUrl}
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-secondary hover:bg-secondary/80 text-foreground text-xs font-mono transition-colors border border-border/60 hover:border-primary/40"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -262,15 +262,15 @@ export const Projects = () => {
                     >
                       <Github className="w-3.5 h-3.5" />
                       <span>Source Code</span>
-                    </Link>
+                    </a>
                   )}
                   {project.liveUrl && (
-                    <Link
-                      to={project.liveUrl}
+                    <a
+                      href={project.liveUrl}
                       className={cn(
                         "inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono transition-colors",
                         project.client
-                          ? "bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-xs"
+                          ? "bg-primary text-white hover:bg-primary/90 font-semibold shadow-xs"
                           : "bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30"
                       )}
                       target="_blank"
@@ -279,7 +279,7 @@ export const Projects = () => {
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
                       <span>{project.client ? "Visit Live Site" : "Live Demo"}</span>
-                    </Link>
+                    </a>
                   )}
                 </div>
               </div>

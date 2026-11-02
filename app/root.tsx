@@ -48,27 +48,27 @@ const BASE_URL = "https://robiulhossain.com";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Robiul Hossain — Full-Stack & Mobile Software Engineer" },
+    { title: "Robiul Hossain Portfolio" },
     {
       name: "description",
       content:
-        "Full-Stack & Mobile Software Engineer specializing in TypeScript, React, React Native, Node.js, Hono, Cloudflare, and PostgreSQL. Engineering scalable web platforms and mobile apps.",
+        "Full-Cycle Software Engineer specializing in backend engineering, modern frontend, release automation, DevOps, and spec-driven AI development. Delivering scalable systems and real business value.",
     },
     { name: "author", content: "Robiul Hossain" },
     {
       name: "keywords",
       content:
-        "Robiul Hossain, coder7475, Full-Stack Engineer, Mobile App Developer, React Native, TypeScript, React, Next.js, Remix, Node.js, Hono, Cloudflare Workers, Cloudflare KV, PostgreSQL, NestJS, AWS, API Architect",
+        "Robiul Hossain, coder7475, Full-Cycle Software Engineer, Backend Engineer, Mobile App Developer, React Native, TypeScript, React, Next.js, Remix, Node.js, NestJS, PostgreSQL, Docker, DevOps, AI Engineering, Spec-Driven Development",
     },
     { name: "robots", content: "index, follow" },
     { property: "og:site_name", content: "Robiul Hossain Portfolio" },
     { property: "og:locale", content: "en_US" },
     { property: "og:type", content: "website" },
-    { property: "og:title", content: "Robiul Hossain — Full-Stack & Mobile Software Engineer" },
+    { property: "og:title", content: "Robiul Hossain Portfolio" },
     {
       property: "og:description",
       content:
-        "Full-Stack & Mobile Software Engineer specializing in TypeScript, React, React Native, Node.js, Hono, Cloudflare, and PostgreSQL.",
+        "Full-Cycle Software Engineer specializing in backend engineering, modern frontend, release automation, DevOps, and spec-driven AI development.",
     },
     { property: "og:url", content: BASE_URL },
     { property: "og:image", content: `${BASE_URL}/open-graph-image.jpeg` },
@@ -76,18 +76,18 @@ export const meta: MetaFunction = () => {
     { property: "og:image:type", content: "image/jpeg" },
     { property: "og:image:width", content: "2848" },
     { property: "og:image:height", content: "1504" },
-    { property: "og:image:alt", content: "Robiul Hossain — Full-Stack & Mobile Software Engineer Portfolio" },
+    { property: "og:image:alt", content: "Robiul Hossain Portfolio" },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:site", content: "@robiul7475" },
     { name: "twitter:creator", content: "@robiul7475" },
-    { name: "twitter:title", content: "Robiul Hossain — Full-Stack & Mobile Software Engineer" },
+    { name: "twitter:title", content: "Robiul Hossain Portfolio" },
     {
       name: "twitter:description",
       content:
-        "Full-Stack & Mobile Software Engineer specializing in TypeScript, React, React Native, Node.js, Hono, Cloudflare, and PostgreSQL.",
+        "Full-Cycle Software Engineer specializing in backend engineering, modern frontend, release automation, DevOps, and spec-driven AI development.",
     },
     { name: "twitter:image", content: `${BASE_URL}/open-graph-image.jpeg` },
-    { name: "twitter:image:alt", content: "Robiul Hossain — Full-Stack & Mobile Software Engineer Portfolio" },
+    { name: "twitter:image:alt", content: "Robiul Hossain Portfolio" },
   ];
 };
 
@@ -103,9 +103,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         "@id": `${BASE_URL}/#person`,
         name: "Robiul Hossain",
         alternateName: "coder7475",
-        jobTitle: "Full-Stack & Mobile Software Engineer",
+        jobTitle: "Full-Cycle Software Engineer",
         description:
-          "Full-Stack & Mobile Software Engineer specializing in TypeScript, React, React Native, Node.js, Hono, Cloudflare KV, and PostgreSQL.",
+          "Full-Cycle Software Engineer specializing in backend engineering, modern frontend, release automation, DevOps, and spec-driven AI development.",
         image: `${BASE_URL}/open-graph-image.jpeg`,
         url: BASE_URL,
         worksFor: {
@@ -137,6 +137,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
           "GraphQL",
           "Python",
           "FastAPI",
+          "Spec-Driven Development",
+          "AI Agents",
+          "CI/CD",
         ],
         sameAs: [
           "https://github.com/coder7475",
@@ -150,8 +153,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         "@type": "WebSite",
         "@id": `${BASE_URL}/#website`,
         url: BASE_URL,
-        name: "Robiul Hossain — Software Engineer Portfolio",
-        description: "Portfolio of Robiul Hossain, Full-Stack and Mobile Software Engineer.",
+        name: "Robiul Hossain Portfolio",
+        description: "Portfolio of Robiul Hossain, Full-Cycle Software Engineer.",
         publisher: {
           "@id": `${BASE_URL}/#person`,
         },
@@ -241,8 +244,7 @@ export const ErrorBoundary = () => {
 };
 
 function captureRemixErrorBoundaryError(error: unknown) {
-  console.log(error);
-  throw new Error("Function not implemented.");
+  console.error("Application error captured by boundary:", error);
 }
 
 export default App;

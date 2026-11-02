@@ -1,4 +1,4 @@
-import { Cloud, Code, Server, Smartphone } from "lucide-react";
+import { Cloud, Code, Cpu, Server } from "lucide-react";
 
 export interface WhatIDoCard {
   id: string;
@@ -10,35 +10,35 @@ export interface WhatIDoCard {
 
 export const whatIDoCards: WhatIDoCard[] = [
   {
-    id: "fullstack",
-    title: "Full-Stack Web Apps",
-    description:
-      "Crafting performant, accessible web applications from discovery to production. Expert in React, Next.js, and Remix with responsive, pixel-perfect Tailwind CSS design.",
-    icon: Code,
-    skills: ["React", "Next.js", "Remix", "TypeScript", "Tailwind CSS"],
-  },
-  {
-    id: "mobile",
-    title: "Mobile App Development",
-    description:
-      "Building robust cross-platform iOS and Android mobile applications using React Native and Expo, with custom native Kotlin modules, offline-first SQLite storage, and smooth 60fps animations.",
-    icon: Smartphone,
-    skills: ["React Native", "Expo", "TypeScript", "Kotlin", "Android", "iOS"],
-  },
-  {
     id: "backend",
-    title: "Scalable APIs & Edge Systems",
+    title: "Backend Engineering & Architecture",
     description:
-      "Architecting high-throughput REST and GraphQL services, event-driven architectures, and lightweight edge microservices with Hono, Node.js, NestJS, Cloudflare KV, and PostgreSQL.",
+      "High-throughput REST and GraphQL APIs, PostgreSQL schema design, Redis caching, and resilient architectures with zero data loss.",
     icon: Server,
-    skills: ["Node.js", "Hono", "NestJS", "Cloudflare KV", "PostgreSQL", "Redis"],
+    skills: ["Node.js", "NestJS", "PostgreSQL", "Redis", "FastAPI", "TypeScript"],
   },
   {
-    id: "cloud",
-    title: "Cloud & DevOps Engineering",
+    id: "frontend",
+    title: "Frontend & Mobile Engineering",
     description:
-      "Automating infrastructure, zero-downtime deployment pipelines, and global edge hosting across Cloudflare and AWS using Docker, Terraform, and GitHub Actions.",
+      "Polished, accessible web and mobile apps using React, Next.js, and React Native with smooth UX, 60fps animations, and high conversion.",
+    icon: Code,
+    skills: ["React", "Next.js", "React Native", "Expo", "TypeScript", "Tailwind CSS"],
+  },
+  {
+    id: "devops",
+    title: "DevOps, Release & Automation",
+    description:
+      "Automated CI/CD via GitHub Actions, Docker containerization, Playwright testing, and zero-downtime releases on AWS and Cloudflare.",
     icon: Cloud,
-    skills: ["Cloudflare", "AWS", "Docker", "CI/CD", "Terraform", "Linux"],
+    skills: ["Docker", "CI/CD", "AWS", "Cloudflare", "Linux", "Playwright"],
+  },
+  {
+    id: "ai",
+    title: "AI Engineering & Spec-Driven Workflows",
+    description:
+      "Fast-paced feature delivery using spec-driven AI agent workflows, practical LLM feature integration, and production RAG pipelines.",
+    icon: Cpu,
+    skills: ["Spec-Driven Agents", "LLM APIs", "RAG Pipelines", "Python", "Vector Search", "Automation"],
   },
 ];

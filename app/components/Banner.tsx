@@ -1,6 +1,4 @@
 import { Link } from "@remix-run/react";
-import { useInView } from "~/hooks/use-in-view";
-import { cn } from "~/libs/utils";
 import { ArrowDown, Calendar, Mail, Sparkles, Terminal } from "lucide-react";
 
 const SystemArchitectureCard = () => (
@@ -30,21 +28,17 @@ const SystemArchitectureCard = () => (
       <pre className="text-slate-300 overflow-hidden whitespace-pre-wrap break-words text-[11px] sm:text-xs leading-relaxed select-text font-mono">
 {`{
   "name": "Robiul Hossain",
-  "role": "Full-Stack, Mobile & Edge Systems Engineer",
-  "focus": ["Web Apps", "Mobile Apps", "Edge APIs"],
+  "role": "Software Engineer",
+  "focus": "Scalable, secure & high-performance systems",
   "core_stack": {
-    "languages": ["TypeScript", "Python", "SQL"],
-    "frontend": ["React", "Next.js", "Tailwind CSS"],
-    "mobile": ["React Native", "Expo", "Android"],
-    "backend": ["Node.js", "Hono", "FastAPI"],
-    "databases": ["PostgreSQL", "Cloudflare KV", "Redis"]
+    "languages": ["TypeScript", "JavaScript", "SQL", "Python"],
+    "backend": ["Node.js", "NestJS", "Express.js", "FastAPI"],
+    "databases": ["PostgreSQL", "MongoDB", "Redis", "ElasticSearch"],
+    "devops_cloud": ["AWS", "Docker", "Kubernetes", "Terraform", "CI/CD"],
+    "frontend": ["React", "Next.js", "React Native", "Tailwind CSS"]
   },
-  "deployment": ["Cloudflare", "AWS", "Docker", "CI/CD"],
-  "availability": {
-    "status": "Available",
-    "roles": ["Full-Time", "High-Impact Contract"],
-    "location": "Remote / Worldwide"
-  }
+  "company": "Elementix Software Ventures LLC",
+  "location": "Remote / Worldwide"
 }`}
       </pre>
 
@@ -59,63 +53,36 @@ const SystemArchitectureCard = () => (
 );
 
 export const Hero = () => {
-  const [sectionRef, isVisible] = useInView<HTMLElement>({ threshold: 0.1 });
-
   return (
     <section
-      ref={sectionRef}
       className="relative min-h-[92vh] flex items-center px-4 sm:px-6 lg:px-8 py-16 sm:py-20 overflow-hidden"
       aria-label="Introduction and summary"
     >
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
         <div className="lg:col-span-7 z-10">
-          <div
-            className={cn(
-              "inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-mono font-medium mb-6",
-              isVisible ? "animate-fade-in" : "opacity-0"
-            )}
-            style={{ animationDelay: "0.1s" }}
-          >
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>Open for Full-Time Roles &amp; High-Impact Contracts</span>
-          </div>
-
           <h1
-            className={cn(
-              "text-4xl sm:text-5xl md:text-6xl font-display font-bold mb-4 tracking-tight text-foreground leading-[1.1]",
-              isVisible ? "animate-fade-in" : "opacity-0"
-            )}
-            style={{ animationDelay: "0.2s" }}
+            className="text-4xl sm:text-5xl md:text-6xl font-display font-bold mb-3 tracking-tight text-foreground leading-[1.1] motion-safe:animate-fade-in"
           >
             Hi, I&apos;m <span className="text-gradient">Robiul Hossain</span>
           </h1>
 
           <p
-            className={cn(
-              "font-mono text-base sm:text-lg mb-6 tracking-wide text-primary font-medium",
-              isVisible ? "animate-fade-in" : "opacity-0"
-            )}
-            style={{ animationDelay: "0.3s" }}
+            className="font-mono text-base sm:text-lg mb-4 tracking-wide text-primary font-medium motion-safe:animate-fade-in"
+            style={{ animationDelay: "0.1s" }}
           >
-            Full-Stack, Mobile &amp; Edge Systems Engineer
+            Software Engineer · Backend &amp; Cloud Systems
           </p>
 
           <p
-            className={cn(
-              "text-muted-foreground max-w-xl mb-8 text-base sm:text-lg leading-relaxed",
-              isVisible ? "animate-fade-in" : "opacity-0"
-            )}
-            style={{ animationDelay: "0.4s" }}
+            className="text-muted-foreground max-w-xl mb-8 text-base sm:text-lg leading-relaxed motion-safe:animate-fade-in font-medium"
+            style={{ animationDelay: "0.2s" }}
           >
-            I engineer reliable web apps, cross-platform mobile apps with React Native, and distributed edge APIs with Hono and Cloudflare. Built for speed, accessibility, and zero-downtime reliability.
+            Focused on scalable, secure, and high-performance backend systems, distributed architectures, and cloud automation.
           </p>
 
           <div
-            className={cn(
-              "flex flex-wrap gap-4 items-center mb-10",
-              isVisible ? "animate-fade-in" : "opacity-0"
-            )}
-            style={{ animationDelay: "0.5s" }}
+            className="flex flex-wrap gap-4 items-center mb-10 motion-safe:animate-fade-in"
+            style={{ animationDelay: "0.3s" }}
           >
             <button
               type="button"
@@ -124,7 +91,7 @@ export const Hero = () => {
                   .getElementById("contact")
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3.5 px-7 rounded-lg shadow-md transition-all duration-200 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 flex items-center gap-2 text-sm sm:text-base"
+              className="bg-primary hover:bg-primary/90 text-white font-semibold py-3.5 px-7 rounded-lg shadow-md transition-all duration-200 transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary/50 flex items-center gap-2 text-sm sm:text-base cursor-pointer"
               aria-label="Scroll down to contact form"
             >
               <Mail className="w-4 h-4 shrink-0" />
@@ -147,7 +114,7 @@ export const Hero = () => {
                   .getElementById("projects")
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="text-muted-foreground hover:text-foreground font-medium py-3 px-4 rounded-lg transition-colors flex items-center gap-1.5 text-sm"
+              className="text-muted-foreground hover:text-foreground font-medium py-3 px-4 rounded-lg transition-colors flex items-center gap-1.5 text-sm cursor-pointer"
               aria-label="Scroll to featured projects"
             >
               <span>View Projects</span>
@@ -156,10 +123,7 @@ export const Hero = () => {
           </div>
 
           <div
-            className={cn(
-              "grid grid-cols-3 gap-4 pt-6 border-t border-border/50 max-w-lg",
-              isVisible ? "animate-fade-in" : "opacity-0"
-            )}
+            className="grid grid-cols-3 gap-4 pt-6 border-t border-border/50 max-w-lg motion-safe:animate-fade-in"
             style={{ animationDelay: "0.6s" }}
           >
             <div>
@@ -168,20 +132,17 @@ export const Hero = () => {
             </div>
             <div>
               <div className="text-xl sm:text-2xl font-bold font-display text-foreground">15+</div>
-              <div className="text-xs text-muted-foreground font-mono">Shipped Projects</div>
+              <div className="text-xs text-muted-foreground font-mono">Shipped Apps</div>
             </div>
             <div>
-              <div className="text-xl sm:text-2xl font-bold font-display text-foreground">100%</div>
-              <div className="text-xs text-muted-foreground font-mono">Type-Safe Stack</div>
+              <div className="text-xl sm:text-2xl font-bold font-display text-foreground">Full-Cycle</div>
+              <div className="text-xs text-muted-foreground font-mono">Concept to Prod</div>
             </div>
           </div>
         </div>
 
         <div
-          className={cn(
-            "lg:col-span-5 w-full flex items-center justify-center",
-            isVisible ? "animate-fade-in" : "opacity-0"
-          )}
+          className="lg:col-span-5 w-full flex items-center justify-center motion-safe:animate-fade-in"
           style={{ animationDelay: "0.45s" }}
         >
           <SystemArchitectureCard />

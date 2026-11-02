@@ -95,7 +95,7 @@ export const Contact = () => {
           )}
           style={{ animationDelay: "0.1s" }}
         >
-          I&apos;m currently available for full-time engineering roles, high-impact consulting, and contract MVP development. Reach out directly or choose a time on my calendar.
+          Available for full-time roles, high-impact contracts, and MVP development. Send a message or pick a time on Calendly.
         </p>
 
         <div className="flex flex-col lg:flex-row gap-10">
@@ -110,7 +110,7 @@ export const Contact = () => {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-border/50">
               <div>
                 <h3 className="text-xl font-display font-bold text-foreground">Send a Direct Message</h3>
-                <p className="text-xs text-muted-foreground mt-0.5">Launches your default email composer with pre-filled details</p>
+                <p className="text-xs text-muted-foreground mt-0.5">Launches your email client with pre-filled details</p>
               </div>
               <div className="inline-flex items-center gap-1.5 text-xs font-mono text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20 self-start sm:self-auto">
                 <Clock className="w-3.5 h-3.5" />
@@ -199,7 +199,7 @@ export const Contact = () => {
             <button
               type="submit"
               className={cn(
-                "w-full py-3 px-6 rounded-lg bg-primary text-primary-foreground font-bold font-mono text-sm transition-all hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/50 flex items-center justify-center gap-2 shadow-md",
+                "w-full py-3 px-6 rounded-lg bg-primary text-white font-bold font-mono text-sm transition-all hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/50 flex items-center justify-center gap-2 shadow-md",
                 isSubmitting && "opacity-60 cursor-not-allowed"
               )}
               disabled={isSubmitting}

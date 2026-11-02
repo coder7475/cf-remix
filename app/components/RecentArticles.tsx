@@ -55,7 +55,7 @@ export const RecentArticles = ({ posts }: RecentArticlesProps) => {
   };
 
   return (
-    <section id="blog" ref={sectionRef} aria-labelledby="blog-heading" className="py-20 border-b border-border/50">
+    <section ref={sectionRef} aria-labelledby="blog-heading" className="py-20 border-b border-border/50">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div
           className={cn(
@@ -72,7 +72,7 @@ export const RecentArticles = ({ posts }: RecentArticlesProps) => {
               Engineering Blog
             </h2>
             <p className="text-muted-foreground text-sm max-w-xl mt-2">
-              Practical guides, system design patterns, and engineering notes published on DEV.to.
+              System design patterns, Linux automation, and engineering notes published on DEV.to.
             </p>
           </div>
         </div>

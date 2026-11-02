@@ -23,12 +23,12 @@ const navLinks = [
 ];
 
 const capabilities = [
-  { label: "React Native & Mobile", href: "/projects?category=mobile" },
-  { label: "Hono & Edge Systems", href: "/projects" },
-  { label: "Cloudflare Pages & KV", href: "/projects" },
-  { label: "TypeScript & Node.js", href: "/projects" },
+  { label: "Backend Engineering", href: "/projects?category=backend" },
+  { label: "Full-Stack Web & Mobile", href: "/projects?category=fullstack" },
+  { label: "DevOps & Releases", href: "/projects?category=backend" },
+  { label: "AI & Spec-Driven Agents", href: "/projects?category=ai-ml" },
   { label: "FocusGuard App", href: "https://github.com/coder7475/focusGuard", external: true },
-  { label: "PulseStream Platform", href: "/projects", external: false },
+  { label: "GRE Quant School LMS", href: "https://lms.grequantschool.com/", external: true },
 ];
 
 export const Footer = () => {
@@ -50,6 +50,8 @@ export const Footer = () => {
                 className="h-8 sm:h-9 w-auto dark-logo object-contain"
                 width={184}
                 height={36}
+                loading="lazy"
+                decoding="async"
               />
               <img
                 src="/logo_white-removebg-preview.png"
@@ -57,10 +59,12 @@ export const Footer = () => {
                 className="h-8 sm:h-9 w-auto light-logo object-contain"
                 width={184}
                 height={36}
+                loading="lazy"
+                decoding="async"
               />
             </Link>
             <p className="text-muted-foreground text-sm font-mono max-w-sm">
-              Full-Stack, Mobile &amp; Edge Systems Engineer architecting type-safe applications with React, React Native, Hono, and Cloudflare.
+              Full-cycle software engineer building resilient backend systems, modern web and mobile apps, and automated release workflows.
             </p>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-mono">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />

@@ -1,9 +1,9 @@
-# Robiul Hossain - Portfolio & Engineering Profile
+# Robiul Hossain: Portfolio & Engineering Profile
 
-> Full-Stack & Mobile Software Engineer specializing in TypeScript, React, React Native, Node.js, Hono, Cloudflare Workers & KV, and distributed cloud systems.
+> Software Engineer focused on scalable, secure, and high-performance systems across backend architecture, distributed systems, and cloud infrastructure.
 
 ## Summary
-Robiul Hossain (coder7475) is a Software Engineer with production experience across web platforms, cross-platform mobile applications, edge backends, and cloud infrastructure. Available for full-time roles and high-impact engineering projects.
+Robiul Hossain (coder7475) is a Software Engineer at Elementix Software Ventures LLC with production experience across backend systems, distributed architectures, cloud platforms, and modern web applications.
 
 ## Core Capabilities
 - Mobile Engineering: React Native, Expo, Kotlin, Android, offline persistence, native modules.

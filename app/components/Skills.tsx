@@ -74,7 +74,7 @@ export const Skills = () => {
               Architecture Patterns &amp; Methodologies
             </h3>
             <span className="text-xs font-mono text-muted-foreground">
-              Engineered for production reliability
+              Production-proven patterns
             </span>
           </div>
           <div className="flex flex-wrap gap-2.5">

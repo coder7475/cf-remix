@@ -7,7 +7,7 @@ export const meta: MetaFunction = () => {
     {
       name: "description",
       content:
-        "Learn about Robiul Hossain — background, engineering values, and production experience building web systems with TypeScript, React, Node.js, and cloud platforms.",
+        "Learn about Robiul Hossain: background, engineering values, and production experience building web systems with TypeScript, React, Node.js, and cloud platforms.",
     },
     { property: "og:site_name", content: "Robiul Hossain Portfolio" },
     { property: "og:type", content: "profile" },
@@ -15,7 +15,7 @@ export const meta: MetaFunction = () => {
     {
       property: "og:description",
       content:
-        "Learn about Robiul Hossain — background, engineering values, and production experience building web systems.",
+        "Learn about Robiul Hossain: background, engineering values, and production experience building web systems.",
     },
     { property: "og:url", content: "https://robiulhossain.com/about" },
     { property: "og:image", content: "https://robiulhossain.com/open-graph-image.jpeg" },
@@ -25,7 +25,7 @@ export const meta: MetaFunction = () => {
     {
       name: "twitter:description",
       content:
-        "Learn about Robiul Hossain — background, engineering values, and production experience building web systems.",
+        "Learn about Robiul Hossain: background, engineering values, and production experience building web systems.",
     },
     { name: "twitter:image", content: "https://robiulhossain.com/open-graph-image.jpeg" },
   ];

@@ -4,10 +4,10 @@ import { whatIDoCards } from "~/constants/whatIDoConstants";
 import { CheckCircle2 } from "lucide-react";
 
 const valueProps = [
-  "Production-Grade: Strict TypeScript & tested architectures",
-  "High Velocity: Rapid MVPs and iterative sprint delivery",
-  "Direct Communication: Proactive, clear, and transparent updates",
-  "Full Ownership: From schema design to mobile and web UI",
+  "Full-Cycle Ownership: Architecture, backend, client UI, and deployment",
+  "Backend Depth: High-throughput APIs, clean schemas, and zero data loss",
+  "Spec-Driven Speed: AI agent workflows to ship quality code faster",
+  "Business-First Focus: Pragmatic decisions tied directly to product goals",
 ];
 
 export const WhatIDo = () => {
@@ -39,7 +39,7 @@ export const WhatIDo = () => {
           )}
           style={{ animationDelay: "0.1s" }}
         >
-          From concept to global production, I architect web apps, cross-platform mobile experiences, and edge APIs that balance velocity with long-term maintainability.
+          Full-cycle ownership across backend architecture, modern client apps, automated deployment, and spec-driven AI.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
